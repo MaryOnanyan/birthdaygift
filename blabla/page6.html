@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — Interview II</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0d0d0d;
+    display:flex; justify-content:center; align-items:center;
+    min-height:100vh; padding:20px;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  .page {
+    position:relative;
+    width:520px; height:740px;
+    background:#f5f0e8;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    padding:35px 40px 30px;
+    display:flex; flex-direction:column;
+  }
+
+  .corner { position:absolute; width:40px; height:40px;
+    border:1px solid rgba(201,169,97,0.7); z-index:10; }
+  .corner.tl { top:14px; left:14px; border-right:none; border-bottom:none; }
+  .corner.tr { top:14px; right:14px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:14px; left:14px; border-right:none; border-top:none; }
+  .corner.br { bottom:14px; right:14px; border-left:none; border-top:none; }
+
+  .header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.15);
+    margin-bottom:14px;
+  }
+  .header-left {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:900; font-size:20px;
+    letter-spacing:4px; color:#1a1a1a;
+  }
+  .header-right {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c; text-align:right;
+  }
+
+  .page-label {
+    text-align:center; font-family:'Montserrat', sans-serif;
+    font-size:7px; font-weight:600; letter-spacing:7px;
+    text-transform:uppercase; color:#c9a961; margin-bottom:6px;
+  }
+
+  .title {
+    text-align:center; font-family:'Playfair Display', serif;
+    font-weight:900; font-style:italic; font-size:23px;
+    line-height:1.15; color:#1a1a1a; margin-bottom:4px;
+  }
+  .title-ornament {
+    text-align:center; color:#c9a961; font-size:11px;
+    letter-spacing:7px; margin-bottom:16px;
+  }
+
+  /* ── ՀԱՐՑՈՒՊԱՏԱՍԽԱՆՆԵՐ ── */
+  .qa {
+    flex:1;
+    display:flex; flex-direction:column;
+    gap:14px;
+    overflow:hidden;
+  }
+
+  .qa-item {
+    display:flex; gap:12px;
+    align-items:flex-start;
+  }
+
+  .qa-letter {
+    font-family:'Playfair Display', serif;
+    font-weight:900; font-style:italic;
+    font-size:24px;
+    line-height:1;
+    color:#c9a961;
+    flex-shrink:0;
+    width:24px;
+    text-align:center;
+  }
+
+  .qa-content { flex:1; padding-top:2px; }
+
+  .qa-question {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:13.5px;
+    color:#1a1a1a;
+    line-height:1.35;
+    margin-bottom:4px;
+  }
+
+  .qa-answer {
+    font-family:'Cormorant Garamond', serif;
+    font-size:13px;
+    color:#2a2a2a;
+    line-height:1.55;
+    text-align:justify;
+    padding-left:12px;
+    border-left:1px solid rgba(201,169,97,0.4);
+  }
+
+  .qa-answer em {
+    font-style:italic;
+    color:#8a7a5c;
+    font-weight:600;
+  }
+
+  /* ── ԱՎԱՐՏԱԿԱՆ ՓԱԿԱԳԻԾ ── */
+  .closing {
+    margin-top:auto;
+    padding-top:14px;
+    border-top:1px solid rgba(201,169,97,0.4);
+    text-align:center;
+  }
+
+  .closing-quote {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:16px;
+    color:#1a1a1a;
+    line-height:1.4;
+    letter-spacing:0.3px;
+    margin-bottom:8px;
+  }
+
+  .closing-author {
+    font-family:'Montserrat', sans-serif;
+    font-size:8px;
+    font-weight:600;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#c9a961;
+  }
+
+  .closing-ornament {
+    color:#c9a961;
+    font-size:11px;
+    letter-spacing:7px;
+    margin-top:8px;
+  }
+
+  .footer {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:10px; border-top:1px solid rgba(0,0,0,0.15);
+    margin-top:12px;
+  }
+  .page-number {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-size:15px; color:#c9a961;
+  }
+  .footer-text {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="header">
+    <div class="header-left">Vogue</div>
+    <div class="header-right">
+      October 2026<br>
+      Special Edition
+    </div>
+  </div>
+
+  <div class="page-label">Interview • The Art of Balance</div>
+  <div class="title">Երազանք, որ սկսվում է<br>ժպիտից</div>
+  <div class="title-ornament">✦ ✦ ✦</div>
+
+  <div class="qa">
+
+    <div class="qa-item">
+      <div class="qa-letter">Q</div>
+      <div class="qa-content">
+        <div class="qa-question">
+          Ի՞նչն է քեզ ամենաշատը ոգեշնչում ստոմատոլոգիայում։
+        </div>
+        <div class="qa-answer">
+          Ամեն ինչ սկսվում է <em>մարդու ժպիտից</em>։ Երբ տեսնում ես, որ ինչ-որ մեկը վստահությամբ է ժպտում հայելու առաջ, հասկանում ես, որ քո աշխատանքը իմաստ ունի։ Դա այն զգացողությունն է, որ ուզում ես կրկնել անվերջ։
+        </div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-letter">Q</div>
+      <div class="qa-content">
+        <div class="qa-question">
+          Հունական պարե՞րը, թե՞ ժամանակակիցը։
+        </div>
+        <div class="qa-answer">
+          Երկուսն էլ։ Հունական պարերում կա <em>հոգի, պատմություն, ռիթմ</em>, որ գալիս է դարերից։ Իսկ ժամանակակից պարում՝ ազատություն ու նոր շնչառություն։ Ես ուզում եմ երկուսն էլ կրել ինձ հետ։
+        </div>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-letter">Q</div>
+      <div class="qa-content">
+        <div class="qa-question">
+          Ինչպիսի՞ն ես տեսնում քեզ 5 տարի հետո։
+        </div>
+        <div class="qa-answer">
+          Ավարտած ստոմատոլոգիական ֆակուլտետ, աշխատող բժիշկ, բայց նաև՝ <em>պարող</em>։ Որովհետև ես հավատում եմ, որ մարդը կարող է լինել միաժամանակ և՛ լուրջ, և՛ թեթև, և՛ ուժեղ, և՛ նուրբ։
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Փակագիծ -->
+  <div class="closing">
+    <div class="closing-quote">
+      «Ժպիտը լավագույն զարդն է, որ կինը կարող է կրել»։
+    </div>
+    <div class="closing-author">— Sona</div>
+    <div class="closing-ornament">✦ ✦ ✦</div>
+  </div>
+
+  <div class="footer">
+    <div class="page-number">06</div>
+    <div class="footer-text">Vogue • Interview Edition</div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — Behind the Scenes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0d0d0d;
+    display:flex; justify-content:center; align-items:center;
+    min-height:100vh; padding:20px;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  .page {
+    position:relative;
+    width:520px; height:740px;
+    background:#f5f0e8;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    padding:35px 40px 30px;
+    display:flex; flex-direction:column;
+  }
+
+  .corner { position:absolute; width:40px; height:40px;
+    border:1px solid rgba(201,169,97,0.7); z-index:10; }
+  .corner.tl { top:14px; left:14px; border-right:none; border-bottom:none; }
+  .corner.tr { top:14px; right:14px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:14px; left:14px; border-right:none; border-top:none; }
+  .corner.br { bottom:14px; right:14px; border-left:none; border-top:none; }
+
+  .header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.15);
+    margin-bottom:14px;
+  }
+  .header-left {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:900; font-size:20px;
+    letter-spacing:4px; color:#1a1a1a;
+  }
+  .header-right {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c; text-align:right;
+  }
+
+  .page-label {
+    text-align:center; font-family:'Montserrat', sans-serif;
+    font-size:7px; font-weight:600; letter-spacing:7px;
+    text-transform:uppercase; color:#c9a961; margin-bottom:6px;
+  }
+
+  .title {
+    text-align:center; font-family:'Playfair Display', serif;
+    font-weight:900; font-style:italic; font-size:21px;
+    line-height:1.2; color:#1a1a1a; margin-bottom:4px;
+  }
+  .title-ornament {
+    text-align:center; color:#c9a961; font-size:11px;
+    letter-spacing:7px; margin-bottom:14px;
+  }
+
+  /* ── ՆԿԱՐՆԵՐԻ GRID ── */
+  .photo-grid {
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    flex:1;
+  }
+
+  .photo-item {
+    position:relative;
+    padding:5px; background:#fff;
+    box-shadow:0 5px 20px rgba(0,0,0,0.12);
+  }
+
+  .photo-item:nth-child(1) { transform:rotate(-1.5deg); }
+  .photo-item:nth-child(2) { transform:rotate(1.2deg); }
+  .photo-item:nth-child(3) { transform:rotate(-1deg); }
+
+  .photo-item img {
+    width:100%; height:100%;
+    object-fit:cover; display:block;
+    filter:sepia(0.05) contrast(1.03);
+  }
+
+  .photo-item .placeholder {
+    width:100%; height:100%;
+    background:linear-gradient(135deg,#e8ddd8 0%,#d4c5b0 100%);
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    color:#8a7a5c; font-family:'Montserrat', sans-serif;
+    font-size:8px; letter-spacing:2px; text-align:center;
+    padding:8px;
+  }
+  .photo-item .placeholder span { font-size:24px; margin-bottom:4px; }
+
+  /* ── ՄԵԾ ՆԿԱՐ ── */
+  .photo-large {
+    height:180px;
+  }
+
+  /* ── 2 ՓՈՔՐ ՆԿԱՐ ԿՈՂՔ-ԿՈՂՔԻ ── */
+  .photo-row {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+
+  .photo-small {
+    height:130px;
+  }
+
+  /* ── ԿԱՏԱԿԱՅԻՆ ՄԱԿԱԳՐՈՒԹՅՈՒՆՆԵՐ ── */
+  .caption-text {
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:12px;
+    color:#8a7a5c;
+    line-height:1.45;
+    margin-top:6px;
+    padding:0 8px;
+    letter-spacing:0.2px;
+  }
+
+  .caption-text em {
+    font-style:normal;
+    font-weight:600;
+    color:#1a1a1a;
+  }
+
+  /* ── ՆԵՐՔԵՎԻ ՓԱԿԱԳԻԾ ── */
+  .closing-note {
+    margin-top:auto;
+    padding-top:12px;
+    border-top:1px solid rgba(201,169,97,0.4);
+    text-align:center;
+  }
+
+  .closing-quote {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:14px;
+    color:#1a1a1a;
+    line-height:1.4;
+    letter-spacing:0.3px;
+  }
+
+  .closing-ornament {
+    color:#c9a961;
+    font-size:10px;
+    letter-spacing:6px;
+    margin-top:6px;
+  }
+
+  .footer {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:10px; border-top:1px solid rgba(0,0,0,0.15);
+    margin-top:10px;
+  }
+  .page-number {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-size:15px; color:#c9a961;
+  }
+  .footer-text {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="header">
+    <div class="header-left">Vogue</div>
+    <div class="header-right">
+      October 2026<br>
+      Special Edition
+    </div>
+  </div>
+
+  <div class="page-label">Behind the Scenes • Funny Moments</div>
+  <div class="title">«Կյանքն առանց ֆիլտրերի<br>կամ մեր խելահեղ օրերը»</div>
+  <div class="title-ornament">✦ ✦ ✦</div>
+
+  <div class="photo-grid">
+
+    <!-- 👇 ՄԵԾ ՆԿԱՐ 👇 -->
+    <div class="photo-item photo-large">
+      <img src="funny-main.jpg" alt="Funny moment">
+      <!--
+      <div class="placeholder">
+        <span>😄</span>
+        ԾԻԾԱՂԻ ՆԿԱՐ
+      </div>
+      -->
+    </div>
+    <div class="caption-text">
+      «Այն պահը, երբ փորձում էինք լուրջ ու ֆեյշն նկարվել, բայց <em>չստացվեց</em> (ինչպես միշտ)։»
+    </div>
+
+    <!-- 👇 2 ՓՈՔՐ ՆԿԱՐ 👇 -->
+    <div class="photo-row">
+      <div class="photo-item photo-small">
+        <img src="funny-1.jpg" alt="Funny moment 1">
+        <!-- <div class="placeholder"><span>📷</span>ՆԿԱՐ 1</div> -->
+      </div>
+      <div class="photo-item photo-small">
+        <img src="funny-2.jpg" alt="Funny moment 2">
+        <!-- <div class="placeholder"><span>📷</span>ՆԿԱՐ 2</div> -->
+      </div>
+    </div>
+    <div class="caption-text">
+      «Մեր ընկերության ամենաանկեղծ, <em>ծիծաղով ու խելագար</em> պահերը։»
+    </div>
+
+  </div>
+
+  <!-- Փակագիծ -->
+  <div class="closing-note">
+    <div class="closing-quote">
+      «Որովհետև ամենալավ նկարները<br>էն են, որտեղ մենք <em>մենք ենք</em>։»
+    </div>
+    <div class="closing-ornament">✦ ✦ ✦</div>
+  </div>
+
+  <div class="footer">
+    <div class="page-number">12</div>
+    <div class="footer-text">Vogue • Unfiltered</div>
+  </div>
+
+</div>
+
+</body>
+</html>

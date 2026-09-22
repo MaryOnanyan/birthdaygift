@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — SONA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background:#0d0d0d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    font-family:'Cormorant Garamond', serif;
+    padding:20px;
+  }
+
+  .cover {
+    position:relative;
+    width:520px;
+    height:740px;
+    background:#111;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+  }
+
+  /* ── ՆԿԱՐ ── */
+  .photo {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:1;
+    filter:contrast(1.05) saturate(0.95);
+  }
+
+  /* Մուգ շերտ նկարի վրա՝ տեքստը կարդալու համար */
+  .overlay {
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      180deg,
+      rgba(0,0,0,0.55) 0%,
+      rgba(0,0,0,0.15) 25%,
+      rgba(0,0,0,0.05) 50%,
+      rgba(0,0,0,0.35) 75%,
+      rgba(0,0,0,0.85) 100%
+    );
+    z-index:2;
+  }
+
+  /* Նկար տեղադրելու placeholder */
+  .placeholder {
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,#2a2520 0%,#1a1510 100%);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:#c9a961;
+    z-index:0;
+    text-align:center;
+    padding:40px;
+    font-size:14px;
+    letter-spacing:3px;
+  }
+  .placeholder span { font-size:60px; margin-bottom:20px; }
+
+  /* ── VOGUE ՎԵՐՆԱԳԻՐ ── */
+  .vogue {
+    position:absolute;
+    top:20px;
+    left:0;
+    right:0;
+    text-align:center;
+    z-index:4;
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:118px;
+    letter-spacing:14px;
+    color:#fff;
+    line-height:1;
+    text-shadow:
+      0 2px 20px rgba(0,0,0,0.6),
+      0 0 40px rgba(0,0,0,0.4);
+  }
+
+  /* ── ԱՄՍԱԹԻՎ ── */
+  .issue {
+    position:absolute;
+    top:135px;
+    left:0;
+    right:0;
+    text-align:center;
+    z-index:4;
+    color:#fff;
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    text-shadow:0 2px 8px rgba(0,0,0,0.7);
+  }
+
+  .issue::before,
+  .issue::after {
+    content:"";
+    display:inline-block;
+    width:40px;
+    height:1px;
+    background:rgba(255,255,255,0.6);
+    vertical-align:middle;
+    margin:0 14px;
+  }
+
+  /* ── SONA — ԳԼԽԱՎՈՐ ԱՆՈՒՆ ── */
+  .sona-hero {
+    position:absolute;
+    top:150px;
+    left:0;
+    right:0;
+    text-align:center;
+    z-index:4;
+    color:#fff;
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size:78px;
+    letter-spacing:18px;
+    line-height:1;
+    text-shadow:
+      0 4px 30px rgba(0,0,0,0.8),
+      0 0 60px rgba(0,0,0,0.5);
+  }
+
+  .sona-sub {
+    position:absolute;
+    top:235px;
+    left:0;
+    right:0;
+    text-align:center;
+    z-index:4;
+    color:#e8d5a8;
+    font-family:'Montserrat', sans-serif;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    text-shadow:0 2px 8px rgba(0,0,0,0.8);
+  }
+
+  /* ── ԿՈՂՄԵՐԻ HEADLINE-ՆԵՐ ── */
+  .left-col {
+    position:absolute;
+    top:410px;
+    left:28px;
+    z-index:4;
+    color:#fff;
+    max-width:180px;
+  }
+
+  .right-col {
+    position:absolute;
+    top:410px;
+    right:28px;
+    z-index:4;
+    color:#fff;
+    text-align:right;
+    max-width:170px;
+  }
+
+  .hl-big {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:22px;
+    letter-spacing:2px;
+    line-height:1.15;
+    text-transform:uppercase;
+    text-shadow:0 3px 12px rgba(0,0,0,0.9);
+    margin-bottom:6px;
+  }
+
+  .hl-small {
+    font-family:'Montserrat', sans-serif;
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    text-shadow:0 2px 8px rgba(0,0,0,0.9);
+    margin-bottom:14px;
+    opacity:0.95;
+  }
+
+  .hl-item {
+    font-family:'Cormorant Garamond', serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    text-shadow:0 2px 8px rgba(0,0,0,0.9);
+    margin-bottom:6px;
+  }
+
+  .divider {
+    width:30px;
+    height:1px;
+    background:rgba(255,255,255,0.7);
+    margin:10px 0;
+  }
+  .right-col .divider { margin-left:auto; }
+
+  /* ── ՆԵՐՔԵՎԻ ՄԱՍ ── */
+  .bottom {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:4;
+    padding:24px 28px 20px;
+    color:#fff;
+  }
+
+  .bottom-line {
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(232,213,168,0.8),transparent);
+    margin-bottom:14px;
+  }
+
+  .tagline {
+    text-align:center;
+    font-family:'Montserrat', sans-serif;
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:#e8d5a8;
+    margin-bottom:16px;
+    text-shadow:0 2px 8px rgba(0,0,0,0.9);
+  }
+
+  .bottom-row {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+  }
+
+  .bottom-left {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:15px;
+    line-height:1.3;
+    letter-spacing:1px;
+    text-shadow:0 3px 10px rgba(0,0,0,0.9);
+  }
+
+  .bottom-right {
+    text-align:right;
+    font-family:'Montserrat', sans-serif;
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    line-height:1.9;
+    text-shadow:0 2px 8px rgba(0,0,0,0.9);
+  }
+
+  /* ── ՎԵՐՋԻ ՏՈՂԸ ── */
+  .footer {
+    position:absolute;
+    bottom:6px;
+    left:0;
+    right:0;
+    text-align:center;
+    z-index:5;
+    font-family:'Montserrat', sans-serif;
+    font-size:7px;
+    font-weight:400;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.55);
+  }
+
+  /* ── ՈՍԿԵ ԱՆԿՅՈՒՆՆԵՐ ── */
+  .corner {
+    position:absolute;
+    width:40px;
+    height:40px;
+    border:1px solid rgba(232,213,168,0.5);
+    z-index:4;
+  }
+  .corner.tl { top:8px; left:8px; border-right:none; border-bottom:none; }
+  .corner.tr { top:8px; right:8px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:8px; left:8px; border-right:none; border-top:none; }
+  .corner.br { bottom:8px; right:8px; border-left:none; border-top:none; }
+
+</style>
+</head>
+<body>
+
+<div class="cover">
+
+  <!-- 👇 ԱՅՍՏԵՂ ԴԻՐ ՍՈՆԱՅԻ ՆԿԱՐԸ 👇 -->
+  <!-- Փոխարինիր "sona.jpg" քո նկարի անունով -->
+  <img src="sona5.png" class="photo" alt="Sona">
+
+  <!-- Եթե նկար չկա՝ placeholder (կջնջես, երբ նկարը դնես) -->
+  <!--
+  <div class="placeholder">
+    <span>📸</span>
+    ԱՅՍՏԵՂ ԿՏԵՂԱԴՐՎԻ ՍՈՆԱՅԻ ՆԿԱՐԸ
+  </div>
+  -->
+
+  <!-- Մուգ շերտ տեքստի ընթեռնելիության համար -->
+  <div class="overlay"></div>
+
+  <!-- Ոսկե անկյուններ -->
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <!-- VOGUE -->
+  <div class="vogue">VOGUE</div>
+
+  <!-- OCTOBER 2026 -->
+  <div class="issue">October 2026</div>
+
+  <!-- SONA — hero -->
+  <div class="sona-hero">SONA</div>
+  <div class="sona-sub">The New Face of Beauty</div>
+
+  <!-- Ձախ սյունակ -->
+  <div class="left-col">
+    <div class="hl-big">Dentistry</div>
+    <div class="divider"></div>
+    <div class="hl-big">Dance</div>
+    <div class="divider"></div>
+    <div class="hl-big">Greek Dance</div>
+    <div class="divider"></div>
+    <div class="hl-small" style="margin-top:14px;">Passion • Elegance • Confidence</div>
+  </div>
+
+  <!-- Աջ սյունակ -->
+  <div class="right-col">
+    <div class="hl-item">Beauty</div>
+    <div class="hl-item">Student</div>
+    <div class="hl-item">Dancer</div>
+    <div class="hl-item">Dreamer</div>
+    <div class="divider"></div>
+    <div class="hl-big" style="font-size:18px;">The Art of<br>Being Yourself</div>
+  </div>
+
+  <!-- Ներքևի մաս -->
+  <div class="bottom">
+    <div class="bottom-line"></div>
+    <div class="tagline">Special Birthday Edition</div>
+    <div class="bottom-row">
+      <div class="bottom-left">
+        Sona<br>
+        <span style="font-size:10px; letter-spacing:3px; font-style:normal; font-family:'Montserrat',sans-serif; font-weight:600; text-transform:uppercase; opacity:0.85;">A New Generation of Women</span>
+      </div>
+      <div class="bottom-right">
+        Beauty<br>
+        Elegance<br>
+        Confidence
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Vogue • Special Edition • 2026</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — The Art of Being Sona</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0d0d0d;
+    display:flex; justify-content:center; align-items:center;
+    min-height:100vh; padding:20px;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  .page {
+    position:relative;
+    width:520px; height:740px;
+    background:#f5f0e8;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* Ոսկե անկյուններ */
+  .corner { position:absolute; width:40px; height:40px;
+    border:1px solid rgba(201,169,97,0.7); z-index:10; }
+  .corner.tl { top:14px; left:14px; border-right:none; border-bottom:none; }
+  .corner.tr { top:14px; right:14px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:14px; left:14px; border-right:none; border-top:none; }
+  .corner.br { bottom:14px; right:14px; border-left:none; border-top:none; }
+
+  /* ── ՎԵՐԵՎԻ ՀԱՏՎԱԾ ── */
+  .top-bar {
+    padding:24px 30px 12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(0,0,0,0.12);
+  }
+
+  .header-left {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:900; font-size:20px;
+    letter-spacing:4px; color:#1a1a1a;
+  }
+
+  .header-right {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c; text-align:right;
+  }
+
+  /* ── ՎԵՐՆԱԳԻՐ ── */
+  .title-block {
+    padding:20px 30px 14px;
+    text-align:center;
+  }
+
+  .page-label {
+    font-family:'Montserrat', sans-serif;
+    font-size:7px; font-weight:600; letter-spacing:7px;
+    text-transform:uppercase; color:#c9a961;
+    margin-bottom:8px;
+  }
+
+  .title {
+    font-family:'Playfair Display', serif;
+    font-weight:900; font-style:italic;
+    font-size:32px;
+    line-height:1.1;
+    color:#1a1a1a;
+    letter-spacing:0.5px;
+    margin-bottom:6px;
+  }
+
+  .title-ornament {
+    color:#c9a961;
+    font-size:12px;
+    letter-spacing:8px;
+  }
+
+  /* ── ՖԵՅՇՆ ՖՈՏՈՇԱՐՔ ── */
+  .fashion-grid {
+    flex:1;
+    padding:8px 30px 16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    overflow:hidden;
+  }
+
+  /* Մեծ նկար՝ 2/3 բարձրություն */
+  .photo-hero {
+    position:relative;
+    height:280px;
+    padding:6px;
+    background:#fff;
+    box-shadow:0 10px 30px rgba(0,0,0,0.18);
+    transform:rotate(-0.5deg);
+  }
+  .photo-hero::after {
+    content:"";
+    position:absolute;
+    inset:6px;
+    border:1px solid rgba(201,169,97,0.4);
+    pointer-events:none;
+  }
+  .photo-hero img {
+    width:100%; height:100%;
+    object-fit:cover; display:block;
+    filter:sepia(0.05) contrast(1.04);
+  }
+  .photo-hero .placeholder {
+    width:100%; height:100%;
+    background:linear-gradient(135deg,#e8ddd0 0%,#d4c5b0 100%);
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    color:#8a7a5c; font-family:'Montserrat', sans-serif;
+    font-size:10px; letter-spacing:3px; text-align:center;
+    padding:20px;
+  }
+  .photo-hero .placeholder span { font-size:42px; margin-bottom:8px; }
+
+  /* 2 փոքր նկար կողք-կողքի */
+  .fashion-duo {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .fashion-item {
+    position:relative;
+    height:150px;
+    padding:5px;
+    background:#fff;
+    box-shadow:0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .fashion-item:nth-child(1) { transform:rotate(-1deg); }
+  .fashion-item:nth-child(2) { transform:rotate(1deg); }
+
+  .fashion-item img {
+    width:100%; height:100%;
+    object-fit:cover; display:block;
+    filter:sepia(0.05) contrast(1.04);
+  }
+
+  .fashion-item .placeholder {
+    width:100%; height:100%;
+    background:linear-gradient(135deg,#e8ddd8 0%,#d4c5b0 100%);
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    color:#8a7a5c; font-family:'Montserrat', sans-serif;
+    font-size:8px; letter-spacing:2px; text-align:center;
+    padding:8px;
+  }
+  .fashion-item .placeholder span { font-size:24px; margin-bottom:4px; }
+
+  /* ── ՄԱԿԱԳՐՈՒԹՅՈՒՆ ── */
+  .caption-block {
+    padding:0 30px 18px;
+    text-align:center;
+  }
+
+  .caption {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:13px;
+    color:#8a7a5c;
+    line-height:1.5;
+    letter-spacing:0.2px;
+  }
+
+  .caption em {
+    font-style:normal;
+    font-weight:600;
+    color:#1a1a1a;
+    border-bottom:1px solid rgba(201,169,97,0.6);
+    padding-bottom:1px;
+  }
+
+  /* ── ՆԵՐՔԵՎԻ ՄԱՍ ── */
+  .footer {
+    padding:10px 30px 14px;
+    border-top:1px solid rgba(0,0,0,0.12);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  .page-number {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-size:15px; color:#c9a961;
+  }
+
+  .footer-text {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <!-- Վերևի bar -->
+  <div class="top-bar">
+    <div class="header-left">Vogue</div>
+    <div class="header-right">
+      October 2026<br>
+      Special Edition
+    </div>
+  </div>
+
+  <!-- Վերնագիր -->
+  <div class="title-block">
+    <div class="page-label">Vogue Editorial</div>
+    <div class="title">The Art of<br>Being Sona</div>
+    <div class="title-ornament">✦ ✦ ✦</div>
+  </div>
+
+  <!-- ՖԵՅՇՆ ՖՈՏՈՇԱՐՔ -->
+  <div class="fashion-grid">
+
+    <!-- 👇 ՄԵԾ ՖԵՅՇՆ ՆԿԱՐ 👇 -->
+    <div class="photo-hero">
+      <img src="fashion-main.jpg" alt="Sona editorial">
+      <!--
+      <div class="placeholder">
+        <span>📸</span>
+        ՖԵՅՇՆ ՆԿԱՐ
+      </div>
+      -->
+    </div>
+
+    <!-- 👇 2 ՓՈՔՐ ՆԿԱՐ 👇 -->
+    <div class="fashion-duo">
+      <div class="fashion-item">
+        <img src="fashion-1.jpg" alt="Fashion 1">
+        <!-- <div class="placeholder"><span>📷</span>ՆԿԱՐ</div> -->
+      </div>
+      <div class="fashion-item">
+        <img src="fashion-2.jpg" alt="Fashion 2">
+        <!-- <div class="placeholder"><span>📷</span>ՆԿԱՐ</div> -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Մակագրություն -->
+  <div class="caption-block">
+    <div class="caption">
+      Ոճ, նրբանկատություն և <em>բնական շքեղություն</em>։<br>
+      Մարդ, ով ամենուր բերում է իր <em>անկրկնելի գեղեցկությունը</em>։
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="page-number">14</div>
+    <div class="footer-text">Vogue • Editorial Edition</div>
+  </div>
+
+</div>
+
+</body>
+</html>

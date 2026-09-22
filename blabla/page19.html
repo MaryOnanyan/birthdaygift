@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — Color It Your Way</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0d0d0d;
+    display:flex; justify-content:center; align-items:center;
+    min-height:100vh; padding:20px;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  .page {
+    position:relative;
+    width:520px; height:740px;
+    background:#faf8f2;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    padding:35px 40px 30px;
+    display:flex; flex-direction:column;
+  }
+
+  .corner { position:absolute; width:40px; height:40px;
+    border:1px solid rgba(201,169,97,0.7); z-index:10; }
+  .corner.tl { top:14px; left:14px; border-right:none; border-bottom:none; }
+  .corner.tr { top:14px; right:14px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:14px; left:14px; border-right:none; border-top:none; }
+  .corner.br { bottom:14px; right:14px; border-left:none; border-top:none; }
+
+  .header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.15);
+    margin-bottom:14px;
+  }
+  .header-left {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:900; font-size:20px;
+    letter-spacing:4px; color:#1a1a1a;
+  }
+  .header-right {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c; text-align:right;
+  }
+
+  .page-label {
+    text-align:center; font-family:'Montserrat', sans-serif;
+    font-size:7px; font-weight:600; letter-spacing:7px;
+    text-transform:uppercase; color:#c9a961; margin-bottom:6px;
+  }
+
+  .title {
+    text-align:center; font-family:'Playfair Display', serif;
+    font-weight:900; font-style:italic; font-size:22px;
+    line-height:1.15; color:#1a1a1a; margin-bottom:4px;
+  }
+
+  .subtitle {
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:12px;
+    color:#8a7a5c;
+    margin-bottom:6px;
+    letter-spacing:1px;
+  }
+
+  .title-ornament {
+    text-align:center; color:#c9a961; font-size:11px;
+    letter-spacing:7px; margin-bottom:14px;
+  }
+
+  /* ── ԳՈՒՆԱԶԱՐԴՄԱՆ ՆԿԱՐ ── */
+  .coloring-frame {
+    flex:1;
+    position:relative;
+    background:#fff;
+    border: 3px double #1a1a1a;  /* Կրկնակի գիծ */
+    border-radius:2px;
+    padding:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    display:flex;
+    flex-direction:column;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+
+  /* Անկյունների դեկոր */
+  .coloring-frame::before,
+  .coloring-frame::after {
+    content:"";
+    position:absolute;
+    width:24px; height:24px;
+    border:2px solid #c9a961;
+    z-index:5;
+  }
+  .coloring-frame::before {
+    top:6px; left:6px;
+    border-right:none; border-bottom:none;
+  }
+  .coloring-frame::after {
+    bottom:6px; right:6px;
+    border-left:none; border-top:none;
+  }
+
+  /* Թիվ վերևի անկյունում */
+  .frame-number {
+    position:absolute;
+    top:-2px; right:14px;
+    background:#1a1a1a;
+    color:#fff;
+    font-family:'Montserrat', sans-serif;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    padding:4px 12px;
+    z-index:6;
+  }
+
+  /* Գունազարդման նկարը */
+  .coloring-image {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+  }
+
+  .coloring-placeholder {
+    width:100%;
+    height:100%;
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    color:#8a7a5c;
+    font-family:'Montserrat', sans-serif;
+    font-size:10px; letter-spacing:3px; text-align:center;
+    padding:20px;
+    border:2px dashed rgba(201,169,97,0.5);
+  }
+  .coloring-placeholder span { font-size:60px; margin-bottom:12px; }
+
+  /* ── ԿՈՃԱԿՆԵՐԻ ՏՈՒՊ ── */
+  .palette {
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:12px;
+  }
+
+  .color-dot {
+    width:22px; height:22px;
+    border-radius:50%;
+    border:2px solid #fff;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+    cursor:pointer;
+    transition:transform 0.2s;
+  }
+
+  .color-dot:hover { transform:scale(1.15); }
+
+  .c1 { background:#1a1a1a; }       /* Սև */
+  .c2 { background:#c9a961; }       /* Ոսկի */
+  .c3 { background:#b76e79; }       /* Ռոզ */
+  .c4 { background:#4a5568; }       /* Մոխրագույն */
+  .c5 { background:#f5f0e8; }       /* Կրեմ */
+  .c6 { background:#8b4513; }  /* Շագանակագույն */
+  .c7 { background:#2d5016; }  /* Մուգ կանաչ */
+  .c8 { background:#6b2c5c; }  /* Մանուշակագույն */
+
+  /* ── ՏԵՔՍՏ ── */
+  .quote-block {
+    text-align:center;
+    padding:12px 18px;
+    background:linear-gradient(135deg,#fff 0%,#faf6ee 100%);
+    border:1px solid rgba(201,169,97,0.4);
+    position:relative;
+  }
+
+  .quote-text {
+    font-family:'Cormorant Garamond', serif;
+    font-size:12.5px;
+    line-height:1.55;
+    color:#2a2a2a;
+    font-style:italic;
+  }
+
+  .quote-text em {
+    font-style:normal;
+    font-weight:600;
+    color:#1a1a1a;
+    background:linear-gradient(180deg, transparent 60%, rgba(201,169,97,0.4) 60%);
+    padding:0 2px;
+  }
+
+  .quote-signature {
+    font-family:'Montserrat', sans-serif;
+    font-size:7px;
+    font-weight:600;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#c9a961;
+    margin-top:10px;
+    padding-top:8px;
+    border-top:1px solid rgba(201,169,97,0.3);
+  }
+
+  .footer {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:10px; border-top:1px solid rgba(0,0,0,0.15);
+    margin-top:12px;
+  }
+  .page-number {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-size:15px; color:#c9a961;
+  }
+  .footer-text {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="header">
+    <div class="header-left">Vogue</div>
+    <div class="header-right">
+      October 2026<br>
+      Special Edition
+    </div>
+  </div>
+
+  <div class="page-label">Vogue Creative • Color It Your Way</div>
+  <div class="title">«Ներկիր այն քո ոճով»</div>
+  <div class="subtitle">— Սոնա լինելու արվեստը —</div>
+  <div class="title-ornament">✦ ✦ ✦</div>
+
+  <!-- ═══════════════════════════════════
+       ԳՈՒՆԱԶԱՐԴՄԱՆ ՆԿԱՐ
+       ═══════════════════════════════════ -->
+  <div class="coloring-frame">
+    <div class="frame-number">04</div>
+  <img src="coloring-4.png" class="coloring-image" alt="Coloring page 4">
+
+    <!--
+    <div class="coloring-placeholder">
+      <span>🎨</span>
+      ՈՒՐՎԱԳԾԱՅԻՆ ՆԿԱՐ 1
+    </div>
+    -->
+  </div>
+
+  <!-- Կոճակների տուփ -->
+  <div class="palette">
+    <div class="color-dot c1"></div>
+    <div class="color-dot c2"></div>
+    <div class="color-dot c3"></div>
+    <div class="color-dot c4"></div>
+    <div class="color-dot c5"></div>
+    <div class="color-dot c6"></div>
+    
+  </div>
+
+  <!-- Տեքստ -->
+  <div class="quote-block">
+    <div class="quote-text">
+      Սոն ջան, այս վերջին նկարը քեզ համար եմ թողել։ Ներկիր այն, ինչպես ուզում ես՝ լինի վառ, լինի մեղմ, լինի քաոսային։ Կարևորը՝ քո ձեռքով լինի։
+    </div>
+    <div class="quote-signature">Your Canvas • Your Rules</div>
+  </div>
+
+  <div class="footer">
+    <div class="page-number">19</div>
+    <div class="footer-text">Vogue • Creative Edition</div>
+  </div>
+
+</div>
+
+</body>
+</html>

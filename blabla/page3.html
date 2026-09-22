@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — Family Ties</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0d0d0d;
+    display:flex; justify-content:center; align-items:center;
+    min-height:100vh; padding:20px;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  .page {
+    position:relative;
+    width:520px; height:740px;
+    background:#f5f0e8;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    padding:35px 40px 30px;
+    display:flex; flex-direction:column;
+  }
+
+  .corner { position:absolute; width:40px; height:40px;
+    border:1px solid rgba(201,169,97,0.7); z-index:10; }
+  .corner.tl { top:14px; left:14px; border-right:none; border-bottom:none; }
+  .corner.tr { top:14px; right:14px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:14px; left:14px; border-right:none; border-top:none; }
+  .corner.br { bottom:14px; right:14px; border-left:none; border-top:none; }
+
+  .header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.15);
+    margin-bottom:14px;
+  }
+  .header-left {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:900; font-size:20px;
+    letter-spacing:4px; color:#1a1a1a;
+  }
+  .header-right {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c; text-align:right;
+  }
+
+  .page-label {
+    text-align:center; font-family:'Montserrat', sans-serif;
+    font-size:7px; font-weight:600; letter-spacing:7px;
+    text-transform:uppercase; color:#c9a961; margin-bottom:6px;
+  }
+  .title {
+    text-align:center; font-family:'Playfair Display', serif;
+    font-weight:900; font-style:italic; font-size:24px;
+    line-height:1.15; color:#1a1a1a; margin-bottom:4px;
+  }
+  .title-ornament {
+    text-align:center; color:#c9a961; font-size:11px;
+    letter-spacing:7px; margin-bottom:14px;
+  }
+
+  /* ── ՀԻՄՆԱԿԱՆ ՆԿԱՐ — փոքրացված ── */
+  .main-photo {
+    position:relative;
+    width:75%;
+    height:180px;
+    margin:0 auto 10px;
+    padding:5px; background:#fff;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    transform:rotate(-1deg);
+  }
+  .main-photo::after {
+    content:""; position:absolute; inset:5px;
+    border:1px solid rgba(201,169,97,0.4);
+    pointer-events:none;
+  }
+  .main-photo img {
+    width:100%; height:100%;
+    object-fit:cover; display:block;
+    filter:sepia(0.1) contrast(1.02);
+  }
+  .placeholder {
+    width:100%; height:100%;
+    background:linear-gradient(135deg,#e8ddd0 0%,#d4c5b0 100%);
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    color:#8a7a5c; font-family:'Montserrat', sans-serif;
+    font-size:9px; letter-spacing:3px; text-align:center;
+    padding:10px;
+  }
+  .placeholder span { font-size:28px; margin-bottom:6px; }
+
+  .main-caption {
+    text-align:center; font-family:'Cormorant Garamond', serif;
+    font-style:italic; font-size:12px; color:#8a7a5c;
+    margin-bottom:14px; letter-spacing:0.5px;
+  }
+
+  /* ── ԵՐԿՈՒ ՓՈՔՐ ՆԿԱՐ ── */
+  .duo {
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:14px; margin-bottom:16px;
+    width:95%; margin-left:auto; margin-right:auto;
+  }
+  .duo-item {
+    position:relative;
+    height:145px;
+    padding:5px; background:#fff;
+    box-shadow:0 5px 18px rgba(0,0,0,0.12);
+  }
+  .duo-item:nth-child(1) { transform:rotate(-1.5deg); }
+  .duo-item:nth-child(2) { transform:rotate(1.5deg); }
+  .duo-item img {
+    width:100%; height:100%;
+    object-fit:cover; display:block;
+    filter:sepia(0.1) contrast(1.02);
+  }
+  .duo-item .placeholder { font-size:8px; padding:8px; }
+  .duo-item .placeholder span { font-size:22px; margin-bottom:4px; }
+
+  /* ── ՏԵՔՍՏ ── */
+  .caption-block {
+    text-align:center;
+    margin-top:auto;
+    padding-top:14px;
+    border-top:1px solid rgba(201,169,97,0.3);
+  }
+  .caption-main {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:700;
+    font-size:16px; color:#1a1a1a;
+    line-height:1.35; margin-bottom:6px;
+  }
+  .caption-sub {
+    font-family:'Cormorant Garamond', serif;
+    font-size:12px; color:#8a7a5c;
+    line-height:1.5;
+  }
+
+  .footer {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:10px; border-top:1px solid rgba(0,0,0,0.15);
+    margin-top:12px;
+  }
+  .page-number {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-size:15px; color:#c9a961;
+  }
+  .footer-text {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="header">
+    <div class="header-left">Vogue</div>
+    <div class="header-right">
+      October 2026<br>
+      Special Edition
+    </div>
+  </div>
+
+  <div class="page-label">Family Ties & Golden Memories</div>
+  <div class="title">Ծնողական սիրո<br>և ջերմության տարեգրություն</div>
+  <div class="title-ornament">✦ ✦ ✦</div>
+
+  <div class="main-photo">
+    <img src="par.png" alt="Parents">
+    <!--
+    <div class="placeholder">
+      <span>👨‍👩‍👧</span>
+      ԾՆՈՂՆԵՐԻ ՆԿԱՐԸ
+    </div>
+    -->
+  </div>
+
+  <div class="main-caption">— Հայրիկ և մայրիկ —</div>
+
+  <div class="duo">
+    <div class="duo-item">
+      <img src="father.png" alt="Family moment 1">
+      <!-- <div class="placeholder"><span>📷</span>ՆԿԱՐ 1</div> -->
+    </div>
+    <div class="duo-item">
+      <img src="mam.png" alt="Family moment 2">
+      <!-- <div class="placeholder"><span>📷</span>ՆԿԱՐ 2</div> -->
+    </div>
+  </div>
+
+  <div class="caption-block">
+    <div class="caption-main">«Ամենաուժեղ հենարանն ու ոգեշնչումը»</div>
+    <div class="caption-sub">Նրանք, ովքեր առաջինն են հավատացել քեզ ու միշտ կողքիդ են</div>
+  </div>
+
+  <div class="footer">
+    <div class="page-number">03</div>
+    <div class="footer-text">Vogue • Family Edition</div>
+  </div>
+
+</div>
+
+</body>
+</html>

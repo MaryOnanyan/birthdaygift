@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — Happy Birthday, Sona</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0d0d0d;
+    display:flex; justify-content:center; align-items:center;
+    min-height:100vh; padding:20px;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  .page {
+    position:relative;
+    width:520px; height:740px;
+    background:linear-gradient(160deg,#f5f0e8 0%,#efe8dc 50%,#e8ddd0 100%);
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    padding:35px 40px 30px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* Ոսկե անկյուններ */
+  .corner { position:absolute; width:50px; height:50px;
+    border:1px solid rgba(201,169,97,0.9); z-index:10; }
+  .corner.tl { top:14px; left:14px; border-right:none; border-bottom:none; }
+  .corner.tr { top:14px; right:14px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:14px; left:14px; border-right:none; border-top:none; }
+  .corner.br { bottom:14px; right:14px; border-left:none; border-top:none; }
+
+  /* Դեկորատիվ աստղեր ֆոնի վրա */
+  .star {
+    position:absolute;
+    color:rgba(201,169,97,0.4);
+    font-size:18px;
+    z-index:1;
+  }
+  .star-1 { top:80px; left:40px; }
+  .star-2 { top:140px; right:50px; font-size:24px; }
+  .star-3 { bottom:180px; left:60px; font-size:20px; }
+  .star-4 { bottom:100px; right:45px; }
+  .star-5 { top:50%; left:30px; font-size:14px; }
+  .star-6 { top:60%; right:35px; font-size:16px; }
+
+  /* ── ՎԵՐԵՎԻ ՀԱՏՎԱԾ ── */
+  .header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(201,169,97,0.4);
+    margin-bottom:20px;
+    position:relative;
+    z-index:5;
+  }
+
+  .header-left {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:900; font-size:20px;
+    letter-spacing:4px; color:#1a1a1a;
+  }
+
+  .header-right {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c; text-align:right;
+  }
+
+  /* ── ԿԵՆՏՐՈՆԱԿԱՆ ՀԱՏՎԱԾ ── */
+  .main-content {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:5;
+    padding:20px 0;
+  }
+
+  .page-label {
+    font-family:'Montserrat', sans-serif;
+    font-size:8px;
+    font-weight:600;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    color:#c9a961;
+    margin-bottom:14px;
+  }
+
+  /* Ոսկե դեկոր գիծ */
+  .gold-line {
+    width:60px;
+    height:2px;
+    background:linear-gradient(90deg, transparent, #c9a961, transparent);
+    margin-bottom:24px;
+  }
+
+  /* Happy Birthday - մեծ տողերով */
+  .happy {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:42px;
+    line-height:1;
+    color:#1a1a1a;
+    letter-spacing:2px;
+    margin-bottom:4px;
+  }
+
+  .birthday {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:62px;
+    line-height:1;
+    background:linear-gradient(180deg, #c9a961 0%, #8a6f3d 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    letter-spacing:4px;
+    margin-bottom:20px;
+    text-shadow:0 2px 20px rgba(201,169,97,0.3);
+  }
+
+  /* Անվան մեծ տառեր */
+  .sona-name {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size:80px;
+    line-height:1;
+    color:#1a1a1a;
+    letter-spacing:16px;
+    margin-bottom:8px;
+    margin-left:16px; /* letter-spacing-ի պատճառով */
+  }
+
+  .sona-sub {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:14px;
+    color:#8a7a5c;
+    letter-spacing:3px;
+    margin-bottom:30px;
+  }
+
+  .gold-line-2 {
+    width:100px;
+    height:1px;
+    background:linear-gradient(90deg, transparent, #c9a961, transparent);
+    margin-bottom:24px;
+  }
+
+  /* Վերջին խոսքը */
+  .final-message {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:15px;
+    line-height:1.65;
+    color:#2a2a2a;
+    max-width:380px;
+    margin:0 auto 20px;
+    letter-spacing:0.3px;
+  }
+
+  .final-message em {
+    font-style:normal;
+    font-weight:600;
+    color:#1a1a1a;
+    background:linear-gradient(180deg, transparent 60%, rgba(201,169,97,0.4) 60%);
+    padding:0 2px;
+  }
+
+  /* Ստորագրություն */
+  .signature {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:16px;
+    color:#1a1a1a;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+
+  .signature-sub {
+    font-family:'Montserrat', sans-serif;
+    font-size:7px;
+    font-weight:600;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#c9a961;
+  }
+
+  /* ── ՆԵՐՔԵՎԻ ՀԱՏՎԱԾ ── */
+  .footer {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:14px;
+    border-top:1px solid rgba(201,169,97,0.4);
+    position:relative;
+    z-index:5;
+    margin-top:20px;
+  }
+
+  .page-number {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-size:15px; color:#c9a961;
+  }
+
+  .footer-text {
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c;
+  }
+
+  /* Ոսկե դեկոր ներքևում */
+  .bottom-decoration {
+    text-align:center;
+    font-size:14px;
+    color:#c9a961;
+    letter-spacing:10px;
+    margin-top:12px;
+    position:relative;
+    z-index:5;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <!-- Դեկորատիվ աստղեր -->
+  <div class="star star-1">✦</div>
+  <div class="star star-2">✧</div>
+  <div class="star star-3">✦</div>
+  <div class="star star-4">✧</div>
+  <div class="star star-5">✦</div>
+  <div class="star star-6">✧</div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">Vogue</div>
+    <div class="header-right">
+      October 2026<br>
+      Special Edition
+    </div>
+  </div>
+
+  <!-- Կենտրոնական մաս -->
+  <div class="main-content">
+
+    <div class="page-label">The Final Page</div>
+    <div class="gold-line"></div>
+
+    <div class="happy">Happy</div>
+    <div class="birthday">Birthday</div>
+
+    <div class="sona-name">SONA</div>
+    <div class="sona-sub">— the one and only —</div>
+
+    <div class="gold-line-2"></div>
+
+    <div class="final-message">
+      Այս ամսագիրը ոչ թե նվեր է, այլ <em>շնորհակալություն</em>։<br>
+      Շնորհակալություն՝ որ կաս, որ այդքան ջերմ ես,<br>
+      որ ամեն ինչ ավելի լավն ես դարձնում։<br>
+      Թող այս տարին լինի քո <em>ամենագեղեցիկ</em> տարին։ 💛
+    </div>
+
+    <div class="signature">Սիրով՝ քո Մերիշկա</div>
+    <div class="signature-sub">Forever & Always</div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="page-number">20</div>
+    <div class="footer-text">Vogue • Birthday Edition</div>
+  </div>
+
+  <div class="bottom-decoration">✦ ✦ ✦</div>
+
+</div>
+
+</body>
+</html>

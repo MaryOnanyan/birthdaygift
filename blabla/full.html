@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — SONA | Ամսագրի էջերը</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background:linear-gradient(160deg,#1a1a1a 0%,#0d0d0d 100%);
+    min-height:100vh;
+    font-family:'Cormorant Garamond', serif;
+    padding:40px 20px;
+    color:#f5f0e8;
+  }
+
+  /* ── ՎԵՐԵՎԻ ՀԱՏՎԱԾ ── */
+  .header {
+    max-width:1200px;
+    margin:0 auto 40px;
+    text-align:center;
+    padding:30px 20px;
+    border-bottom:1px solid rgba(201,169,97,0.3);
+  }
+
+  .header-label {
+    font-family:'Montserrat', sans-serif;
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    color:#c9a961;
+    margin-bottom:14px;
+  }
+
+  .header-title {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:64px;
+    letter-spacing:14px;
+    background:linear-gradient(180deg, #e8d5a8 0%, #c9a961 60%, #8a6f3d 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    line-height:1;
+    margin-bottom:10px;
+  }
+
+  .header-sub {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:15px;
+    color:rgba(232,213,168,0.7);
+    letter-spacing:3px;
+    margin-bottom:20px;
+  }
+
+  .header-info {
+    font-family:'Montserrat', sans-serif;
+    font-size:8px;
+    font-weight:600;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:rgba(201,169,97,0.6);
+  }
+
+  /* ── ԷՋԵՐԻ GRID ── */
+  .pages-grid {
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+    gap:20px;
+  }
+
+  .page-card {
+    background:linear-gradient(160deg,#f5f0e8 0%,#e8ddd0 100%);
+    border:1px solid rgba(201,169,97,0.5);
+    padding:20px 18px;
+    text-decoration:none;
+    color:#1a1a1a;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-height:180px;
+    transition:all 0.3s ease;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* Ոսկե անկյուններ */
+  .page-card::before,
+  .page-card::after {
+    content:"";
+    position:absolute;
+    width:18px; height:18px;
+    border:1px solid rgba(201,169,97,0.6);
+    transition:all 0.3s ease;
+  }
+  .page-card::before {
+    top:6px; left:6px;
+    border-right:none; border-bottom:none;
+  }
+  .page-card::after {
+    bottom:6px; right:6px;
+    border-left:none; border-top:none;
+  }
+
+  .page-card:hover {
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(201,169,97,0.3);
+    border-color:#c9a961;
+  }
+
+  .page-card:hover::before,
+  .page-card:hover::after {
+    width:24px; height:24px;
+    border-color:#c9a961;
+  }
+
+  /* Էջի համարը */
+  .page-num {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:38px;
+    color:#c9a961;
+    line-height:1;
+    margin-bottom:12px;
+  }
+
+  .page-title {
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:14px;
+    line-height:1.3;
+    color:#1a1a1a;
+    margin-bottom:6px;
+  }
+
+  .page-desc {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:11px;
+    color:#8a7a5c;
+    line-height:1.4;
+    letter-spacing:0.3px;
+  }
+
+  .page-arrow {
+    font-family:'Playfair Display', serif;
+    font-size:16px;
+    color:#c9a961;
+    margin-top:12px;
+    text-align:right;
+    transition:transform 0.3s ease;
+  }
+
+  .page-card:hover .page-arrow {
+    transform:translateX(5px);
+  }
+
+  /* ── ՀԱՏՈՒԿ ՔԱՐՏԵՐ ── */
+
+  /* Front Cover */
+  .page-card.cover {
+    background:linear-gradient(160deg,#1a1a1a 0%,#0d0d0d 100%);
+    border-color:#c9a961;
+    grid-column:span 2;
+  }
+  .page-card.cover .page-num,
+  .page-card.cover .page-title {
+    color:#e8d5a8;
+  }
+  .page-card.cover .page-desc {
+    color:rgba(232,213,168,0.7);
+  }
+  .page-card.cover .page-arrow {
+    color:#e8d5a8;
+  }
+  .page-card.cover::before,
+  .page-card.cover::after {
+    border-color:rgba(232,213,168,0.6);
+  }
+
+  /* Happy Birthday */
+  .page-card.special {
+    background:linear-gradient(160deg,#f5e8d0 0%,#e8d5a8 100%);
+  }
+
+  /* Back Cover */
+  .page-card.back {
+    background:linear-gradient(160deg,#c9a961 0%,#8a6f3d 100%);
+    color:#1a1a1a;
+    grid-column:span 2;
+  }
+  .page-card.back .page-num,
+  .page-card.back .page-title {
+    color:#1a1a1a;
+  }
+  .page-card.back .page-desc {
+    color:rgba(26,26,26,0.75);
+  }
+  .page-card.back .page-arrow {
+    color:#1a1a1a;
+  }
+
+  /* ── ՖՈՒՏԵՐ ── */
+  .footer {
+    max-width:1200px;
+    margin:50px auto 0;
+    text-align:center;
+    padding-top:30px;
+    border-top:1px solid rgba(201,169,97,0.3);
+  }
+
+  .footer-text {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:13px;
+    color:rgba(232,213,168,0.6);
+    letter-spacing:2px;
+    margin-bottom:6px;
+  }
+
+  .footer-ornament {
+    color:rgba(201,169,97,0.7);
+    font-size:11px;
+    letter-spacing:8px;
+    margin-top:10px;
+  }
+
+  /* ── ԲԱԺԻՆՆԵՐ ── */
+  .section-title {
+    grid-column:1 / -1;
+    text-align:center;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:20px;
+    color:#e8d5a8;
+    letter-spacing:3px;
+    margin:30px 0 10px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(201,169,97,0.3);
+  }
+
+  /* ── ՀԵՌԱԽՈՍԻ ՀԱՄԱՐ ── */
+  @media (max-width: 600px) {
+    .header-title { font-size:44px; letter-spacing:8px; }
+    .pages-grid { grid-template-columns:1fr 1fr; gap:12px; }
+    .page-card.cover,
+    .page-card.back { grid-column:span 2; }
+    .page-num { font-size:30px; }
+    .page-title { font-size:12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     ՎԵՐԵՎԻ ՀԱՏՎԱԾ
+     ═══════════════════════════════════ -->
+<div class="header">
+  <div class="header-label">Vogue Magazine</div>
+  <div class="header-title">SONA</div>
+  <div class="header-sub">— Special Birthday Edition —</div>
+  <div class="header-info">October 2026 • 21 Pages</div>
+</div>
+
+<!-- ═══════════════════════════════════
+     ԷՋԵՐԻ GRID
+     ═══════════════════════════════════ -->
+<div class="pages-grid">
+
+  <!-- Front Cover -->
+  <a href="page1.html" class="page-card cover">
+    <div>
+      <div class="page-num">01</div>
+      <div class="page-title">Front Cover</div>
+      <div class="page-desc">VOGUE — Սոնայի դիմանկարը</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <!-- Բաժին 1: Ընտանիք -->
+  <div class="section-title">✦ Ընտանեկան հիշողություններ</div>
+
+  <a href="page2.html" class="page-card">
+    <div>
+      <div class="page-num">02</div>
+      <div class="page-title">Editor's Note</div>
+      <div class="page-desc">«Այն ամենը, ինչ սկսվել է այս ժպիտից...»</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page3.html" class="page-card">
+    <div>
+      <div class="page-num">03</div>
+      <div class="page-title">Ծնողական սեր</div>
+      <div class="page-desc">Հայրիկ և մայրիկ</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page4.html" class="page-card">
+    <div>
+      <div class="page-num">04</div>
+      <div class="page-title">Քույր, եղբայր</div>
+      <div class="page-desc">Հավերժական կապ</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <!-- Բաժին 2: Հարցազրույց -->
+  <div class="section-title">✦ Հարցազրույց</div>
+
+  <a href="page5.html" class="page-card">
+    <div>
+      <div class="page-num">05</div>
+      <div class="page-title">«Ժպիտը միլիոն դոլար արժե»</div>
+      <div class="page-desc">Մեր խոսքերը Սոնայի մասին</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page6.html" class="page-card">
+    <div>
+      <div class="page-num">06</div>
+      <div class="page-title">Երազանք, որ սկսվում է ժպիտից</div>
+      <div class="page-desc">Լրացուցիչ հարցեր</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <!-- Բաժին 3: Անկեղծ նամակ -->
+  <div class="section-title">✦ Անկեղծ խոսք</div>
+
+  <a href="page7.html" class="page-card">
+    <div>
+      <div class="page-num">07</div>
+      <div class="page-title">Սո՛ն ջան...</div>
+      <div class="page-desc">Նամակ քեզ</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page8.html" class="page-card">
+    <div>
+      <div class="page-num">08</div>
+      <div class="page-title">Դե՛, ասա՛ հիմա...</div>
+      <div class="page-desc">Քո տողերը</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page9.html" class="page-card">
+    <div>
+      <div class="page-num">09</div>
+      <div class="page-title">Այս էջը քեզ համար է</div>
+      <div class="page-desc">Դատարկ էջ Սոնայի համար</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <!-- Բաժին 4: Կյանք և արվեստ -->
+  <div class="section-title">✦ Կյանք, պար և արմատներ</div>
+
+  <a href="page10.html" class="page-card">
+    <div>
+      <div class="page-num">10</div>
+      <div class="page-title">Rhythm of Life</div>
+      <div class="page-desc">Հունական պարեր</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page11.html" class="page-card">
+    <div>
+      <div class="page-num">11</div>
+      <div class="page-title">Սիրենք Ազգայինը</div>
+      <div class="page-desc">Մեր արմատներն ու նվիրումը</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page12.html" class="page-card">
+    <div>
+      <div class="page-num">12</div>
+      <div class="page-title">Behind the Scenes</div>
+      <div class="page-desc">Կյանքն առանց ֆիլտրերի</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <!-- Բաժին 5: Ապագա մասնագիտություն -->
+  <div class="section-title">✦ Ապագա բժիշկ</div>
+
+  <a href="page13.html" class="page-card">
+    <div>
+      <div class="page-num">13</div>
+      <div class="page-title">Future Dr. Sona</div>
+      <div class="page-desc">«Ժպիտների պահապանը»</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <!-- Բաժին 6: Ֆեյշն -->
+  <div class="section-title">✦ Ֆեյշն և ոճ</div>
+
+  <a href="page14.html" class="page-card">
+    <div>
+      <div class="page-num">14</div>
+      <div class="page-title">The Art of Being Sona</div>
+      <div class="page-desc">Vogue Editorial</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page15.html" class="page-card">
+    <div>
+      <div class="page-num">15</div>
+      <div class="page-title">Look of the Day</div>
+      <div class="page-desc">Անթերի դետալներ</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <!-- Բաժին 7: Ստեղծագործական -->
+  <div class="section-title">✦ Ներկիր ինքդ</div>
+
+  <a href="page16.html" class="page-card">
+    <div>
+      <div class="page-num">16</div>
+      <div class="page-title">Ներկիր — Կատակային</div>
+      <div class="page-desc">Your Canvas, Your Rules</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page17.html" class="page-card">
+    <div>
+      <div class="page-num">17</div>
+      <div class="page-title">Ներկիր — Հուզիչ</div>
+      <div class="page-desc">Colors of Your Soul</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page18.html" class="page-card">
+    <div>
+      <div class="page-num">18</div>
+      <div class="page-title">Ներկիր — Ոգեշնչող</div>
+      <div class="page-desc">Create Your Story</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page19.html" class="page-card">
+    <div>
+      <div class="page-num">19</div>
+      <div class="page-title">Ներկիր — Անձնական</div>
+      <div class="page-desc">From Me to You 💛</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <!-- Բաժին 8: Ավարտ -->
+  <div class="section-title">✦ Ավարտ</div>
+
+  <a href="page20.html" class="page-card special">
+    <div>
+      <div class="page-num">20</div>
+      <div class="page-title">Happy Birthday, Sona</div>
+      <div class="page-desc">Վերջին խոսքը</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+  <a href="page21.html" class="page-card back">
+    <div>
+      <div class="page-num">21</div>
+      <div class="page-title">Back Cover</div>
+      <div class="page-desc">VOGUE • Special Edition</div>
+    </div>
+    <div class="page-arrow">→</div>
+  </a>
+
+</div>
+
+<!-- ═══════════════════════════════════
+     ՖՈՒՏԵՐ
+     ═══════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-text">Made with 💛 • For Sona</div>
+  <div class="footer-ornament">✦ ✦ ✦</div>
+</div>
+
+</body>
+</html>
