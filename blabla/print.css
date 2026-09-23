@@ -1,0 +1,69 @@
+/* ═══════════════════════════════════
+   VOGUE SONA — Print Stylesheet
+   Ֆորմատ՝ A5 (148 × 210 mm)
+   ═══════════════════════════════════ */
+
+@media print {
+  
+  /* Էջի չափը՝ A5 */
+  @page {
+    size: A5;
+    margin: 0;
+  }
+  
+  /* Մարմինը՝ ամբողջ էկրան */
+  html, body {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    width: 148mm !important;
+    height: 210mm !important;
+  }
+  
+  /* Էջը՝ A5 չափով */
+  .page {
+    width: 148mm !important;
+    height: 210mm !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 10mm 12mm 8mm !important;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden !important;
+  }
+  
+  /* Ոսկե անկյունները պահիր */
+  .corner {
+    display: block !important;
+  }
+  
+  /* Ֆոնի գույները տպելիս */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  /* Թաքցնել կոճակները */
+  .print-btn,
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Էջի համարը */
+  .footer {
+    page-break-inside: avoid;
+  }
+  
+  /* Նկարները չկտրվեն */
+  img {
+    page-break-inside: avoid;
+    max-width: 100%;
+  }
+}
+
+/* Բրաուզերում դիտելիս */
+@media screen {
+  /* Ոչինչ չի փոխվում */
+}

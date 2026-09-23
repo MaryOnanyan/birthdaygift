@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — SONA | Print Version (A5)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background:#1a1a1a;
+    min-height:100vh;
+    font-family:'Cormorant Garamond', serif;
+    padding:40px 20px;
+    color:#f5f0e8;
+  }
+
+  /* ═══════════════════════════════════
+     ՎԵՐԵՎԻ ՀԱՏՎԱԾ (էկրանին)
+     ═══════════════════════════════════ */
+  .screen-header {
+    max-width:900px;
+    margin:0 auto 30px;
+    text-align:center;
+    padding:20px;
+  }
+
+  .screen-label {
+    font-family:'Montserrat', sans-serif;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    color:#c9a961;
+    margin-bottom:14px;
+  }
+
+  .screen-title {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:48px;
+    letter-spacing:8px;
+    background:linear-gradient(180deg, #e8d5a8 0%, #c9a961 60%, #8a6f3d 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    line-height:1;
+    margin-bottom:14px;
+  }
+
+  .screen-info {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:14px;
+    color:rgba(232,213,168,0.8);
+    letter-spacing:2px;
+    margin-bottom:24px;
+    line-height:1.6;
+  }
+
+  .screen-info strong {
+    color:#c9a961;
+    font-style:normal;
+    font-weight:600;
+  }
+
+  /* ═══════════════════════════════════
+     ՏՊԵԼՈՒ ԿՈՃԱԿ
+     ═══════════════════════════════════ */
+  .print-btn {
+    position:fixed;
+    top:24px;
+    right:24px;
+    z-index:9999;
+    background:linear-gradient(160deg,#c9a961,#8a6f3d);
+    color:#fff;
+    border:none;
+    padding:16px 28px;
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    cursor:pointer;
+    border-radius:2px;
+    box-shadow:0 8px 25px rgba(201,169,97,0.5);
+    transition:all 0.3s ease;
+  }
+
+  .print-btn:hover {
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(201,169,97,0.8);
+  }
+
+  .print-btn:active {
+    transform:translateY(0);
+  }
+
+  /* ═══════════════════════════════════
+     ԷՋԵՐԻ ԿՈՆՏԵՅՆԵՐ
+     ═══════════════════════════════════ */
+  .pages-container {
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:30px;
+  }
+
+  .page-wrapper {
+    position:relative;
+    background:#fff;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    border:1px solid rgba(201,169,97,0.3);
+  }
+
+  /* Էջի համարը wrapper-ի վրա */
+  .page-wrapper::before {
+    content:attr(data-page);
+    position:absolute;
+    top:-12px;
+    left:14px;
+    background:#c9a961;
+    color:#1a1a1a;
+    font-family:'Montserrat', sans-serif;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:2px;
+    padding:4px 12px;
+    z-index:10;
+  }
+
+  /* iframe՝ էջի պարունակությունը */
+  .page-wrapper iframe {
+    width:520px;
+    height:740px;
+    border:none;
+    display:block;
+    background:#f5f0e8;
+  }
+
+  /* ═══════════════════════════════════
+     PRINT CSS — A5 ՖՈՐՄԱՏ
+     ═══════════════════════════════════ */
+  @media print {
+    
+    /* Էջի չափը՝ A5 */
+    @page {
+      size: A5;
+      margin: 0;
+    }
+    
+    /* Էկրանի header-ը թաքցրու */
+    .screen-header {
+      display: none !important;
+    }
+    
+    /* Տպելու կոճակը թաքցրու */
+    .print-btn {
+      display: none !important;
+    }
+    
+    /* Մարմինը */
+    html, body {
+      background: #fff !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 148mm !important;
+    }
+    
+    /* Էջերի կոնտեյները */
+    .pages-container {
+      gap: 0 !important;
+      max-width: none !important;
+      margin: 0 !important;
+      display: block !important;
+    }
+    
+    /* Ամեն էջի wrapper */
+    .page-wrapper {
+      width: 148mm !important;
+      height: 210mm !important;
+      box-shadow: none !important;
+      border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+      display: block !important;
+      overflow: hidden !important;
+    }
+    
+    /* Էջի համարը տպելիս թաքցրու */
+    .page-wrapper::before {
+      display: none !important;
+    }
+    
+    /* iframe-ը՝ ամբողջ էջը */
+    .page-wrapper iframe {
+      width: 148mm !important;
+      height: 210mm !important;
+      border: none !important;
+      display: block !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    /* Գունավոր ֆոնը տպելիս */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+  }
+
+  /* ═══════════════════════════════════
+     ՀԵՌԱԽՈՍԻ ՀԱՄԱՐ
+     ═══════════════════════════════════ */
+  @media (max-width: 600px) {
+    .screen-title { font-size:36px; letter-spacing:6px; }
+    .screen-info { font-size:12px; }
+    .print-btn {
+      top:auto;
+      bottom:20px;
+      right:20px;
+      padding:14px 22px;
+      font-size:10px;
+    }
+    .page-wrapper iframe {
+      width:100%;
+      height:auto;
+      aspect-ratio:520/740;
+    }
+    .page-wrapper {
+      width:100%;
+      max-width:520px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     ՏՊԵԼՈՒ ԿՈՃԱԿ
+     ═══════════════════════════════════ -->
+<button class="print-btn" onclick="window.print()">
+  🖨️ Տպել PDF
+</button>
+
+<!-- ═══════════════════════════════════
+     ԷԿՐԱՆԻ ՀԱՏՎԱԾ
+     ═══════════════════════════════════ -->
+<div class="screen-header">
+  <div class="screen-label">Vogue Magazine • Print Version</div>
+  <div class="screen-title">SONA</div>
+  <div class="screen-info">
+    <strong>21 էջ</strong> • Ֆորմատ՝ <strong>A5</strong> (148 × 210 mm)<br>
+    Սեղմիր <strong>«🖨️ Տպել PDF»</strong> կոճակը վերևի աջ անկյունում
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     ԷՋԵՐԸ
+     ═══════════════════════════════════ -->
+<div class="pages-container">
+
+  <!-- 👇 ՓՈԽԻՐ "page1.html" ... "page21.html" ՔՈ ՖԱՅԼԵՐԻ ԱՆՈՒՆՆԵՐՈՎ 👇 -->
+
+  <div class="page-wrapper" data-page="01">
+    <iframe src="page1.html" title="Page 1"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="02">
+    <iframe src="page2.html" title="Page 2"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="03">
+    <iframe src="page3.html" title="Page 3"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="04">
+    <iframe src="page4.html" title="Page 4"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="05">
+    <iframe src="page5.html" title="Page 5"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="06">
+    <iframe src="page6.html" title="Page 6"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="07">
+    <iframe src="page7.html" title="Page 7"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="08">
+    <iframe src="page8.html" title="Page 8"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="09">
+    <iframe src="page9.html" title="Page 9"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="10">
+    <iframe src="page10.html" title="Page 10"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="11">
+    <iframe src="page11.html" title="Page 11"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="12">
+    <iframe src="page12.html" title="Page 12"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="13">
+    <iframe src="page13.html" title="Page 13"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="14">
+    <iframe src="page14.html" title="Page 14"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="15">
+    <iframe src="page15.html" title="Page 15"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="16">
+    <iframe src="page16.html" title="Page 16"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="17">
+    <iframe src="page17.html" title="Page 17"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="18">
+    <iframe src="page18.html" title="Page 18"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="19">
+    <iframe src="page19.html" title="Page 19"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="20">
+    <iframe src="page20.html" title="Page 20"></iframe>
+  </div>
+
+  <div class="page-wrapper" data-page="21">
+    <iframe src="page21.html" title="Page 21"></iframe>
+  </div>
+
+</div>
+
+</body>
+</html>

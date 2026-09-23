@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>VOGUE — From Your Friends I</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background:#0d0d0d;
+    display:flex; justify-content:center; align-items:center;
+    min-height:100vh; padding:20px;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  /* ═══════════════════════════════════
+     ԷՋ — ՓԱՓՈՒԿ, ՌՈՄԱՆՏԻԿ
+     ═══════════════════════════════════ */
+  .page {
+    position:relative;
+    width:520px; height:740px;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(232,213,168,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(232,213,168,0.3) 0%, transparent 50%),
+      linear-gradient(170deg, #fdfaf3 0%, #f8f0e2 50%, #f2e8d5 100%);
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    padding:30px 38px 26px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ═══════════════════════════════════
+     ՆՈՒՐԲ ԴԵԿՈՐ — ՓԱՓՈՒԿ ԾԱՂԻԿՆԵՐ
+     ═══════════════════════════════════ */
+  .flourish {
+    position:absolute;
+    color:rgba(201,169,97,0.25);
+    font-size:20px;
+    z-index:1;
+    pointer-events:none;
+  }
+  .f1 { top:80px; left:50px; font-size:22px; transform:rotate(-20deg); }
+  .f2 { top:180px; right:55px; font-size:18px; transform:rotate(15deg); }
+  .f3 { bottom:200px; left:60px; font-size:20px; transform:rotate(-10deg); }
+  .f4 { bottom:100px; right:70px; font-size:22px; transform:rotate(25deg); }
+  .f5 { top:45%; right:45px; font-size:16px; transform:rotate(-15deg); }
+
+  /* ═══════════════════════════════════
+     ՆՈՒՐԲ ԱՆԿՅՈՒՆՆԵՐ (կլորացված)
+     ═══════════════════════════════════ */
+  .corner {
+    position:absolute;
+    width:60px; height:60px;
+    z-index:10;
+  }
+  .corner.tl {
+    top:18px; left:18px;
+    border-top:1.5px solid #c9a961;
+    border-left:1.5px solid #c9a961;
+    border-top-left-radius:20px;
+  }
+  .corner.tr {
+    top:18px; right:18px;
+    border-top:1.5px solid #c9a961;
+    border-right:1.5px solid #c9a961;
+    border-top-right-radius:20px;
+  }
+  .corner.bl {
+    bottom:18px; left:18px;
+    border-bottom:1.5px solid #c9a961;
+    border-left:1.5px solid #c9a961;
+    border-bottom-left-radius:20px;
+  }
+  .corner.br {
+    bottom:18px; right:18px;
+    border-bottom:1.5px solid #c9a961;
+    border-right:1.5px solid #c9a961;
+    border-bottom-right-radius:20px;
+  }
+
+  /* ═══════════════════════════════════
+     HEADER
+     ═══════════════════════════════════ */
+  .header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(201,169,97,0.3);
+    margin-bottom:16px;
+    position:relative;
+    z-index:5;
+  }
+
+  .header-left {
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:900; font-size:18px;
+    letter-spacing:5px;
+    background:linear-gradient(180deg, #8a6f3d 0%, #c9a961 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+
+  .header-right {
+    font-family:'Montserrat', sans-serif;
+    font-size:6.5px;
+    font-weight:500;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#a08858;
+    text-align:right;
+    line-height:1.7;
+  }
+
+  /* ═══════════════════════════════════
+     ՎԵՐՆԱԳԻՐ
+     ═══════════════════════════════════ */
+  .title-block {
+    text-align:center;
+    margin-bottom:16px;
+    position:relative;
+    z-index:5;
+  }
+
+  .page-label {
+    font-family:'Montserrat', sans-serif;
+    font-size:7px;
+    font-weight:600;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    color:#c9a961;
+    margin-bottom:8px;
+  }
+
+  .title {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:28px;
+    line-height:1.1;
+    background:linear-gradient(180deg, #4a3f28 0%, #1a1a1a 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:8px;
+    letter-spacing:0.5px;
+  }
+
+  .subtitle {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:13px;
+    color:#a08858;
+    letter-spacing:2px;
+  }
+
+  /* ═══════════════════════════════════
+     QR — ՓԱՓՈՒԿ, ԿԼՈՐ
+     ═══════════════════════════════════ */
+  .qr-section {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    padding:14px 18px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(253,250,243,0.9) 100%);
+    border:1px solid rgba(201,169,97,0.35);
+    border-radius:12px;
+    margin-bottom:18px;
+    box-shadow:0 4px 20px rgba(201,169,97,0.12);
+    position:relative;
+    z-index:5;
+  }
+
+  /* Նուրբ անկյուններ */
+  .qr-section::before,
+  .qr-section::after {
+    content:"";
+    position:absolute;
+    width:10px; height:10px;
+    border:1.5px solid #c9a961;
+  }
+  .qr-section::before {
+    top:-6px; left:-6px;
+    border-right:none; border-bottom:none;
+    border-top-left-radius:6px;
+  }
+  .qr-section::after {
+    bottom:-6px; right:-6px;
+    border-left:none; border-top:none;
+    border-bottom-right-radius:6px;
+  }
+
+  .qr-wrapper {
+    position:relative;
+    padding:7px;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:
+      0 0 0 1px #c9a961,
+      0 4px 12px rgba(201,169,97,0.2);
+    flex-shrink:0;
+  }
+
+  .qr-wrapper img {
+    width:70px;
+    height:70px;
+    display:block;
+    border-radius:4px;
+  }
+
+  .qr-text {
+    flex:1;
+  }
+
+  .qr-title {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:14px;
+    color:#1a1a1a;
+    line-height:1.3;
+    margin-bottom:5px;
+    letter-spacing:0.3px;
+  }
+
+  .qr-sub {
+    font-family:'Montserrat', sans-serif;
+    font-size:6.5px;
+    font-weight:600;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#c9a961;
+  }
+
+  /* ═══════════════════════════════════
+     ԽՈՍՔԵՐԻ ՔԱՐՏԵՐ — ՓԱՓՈՒԿ
+     ═══════════════════════════════════ */
+  .friends-list {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    overflow:hidden;
+    position:relative;
+    z-index:5;
+  }
+
+  .friend-card {
+    position:relative;
+    padding:11px 16px 11px 48px;
+    background:linear-gradient(135deg, #ffffff 0%, #fdfaf3 100%);
+    border:1px solid rgba(201,169,97,0.25);
+    border-radius:10px;
+    box-shadow:0 3px 12px rgba(201,169,97,0.1);
+    transition:all 0.3s ease;
+  }
+
+  .friend-card:hover {
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(201,169,97,0.2);
+    border-color:rgba(201,169,97,0.5);
+  }
+
+  /* Թիվը — կլոր շրջանակում */
+  .friend-num-circle {
+    position:absolute;
+    left:10px;
+    top:50%;
+    transform:translateY(-50%);
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:linear-gradient(135deg, #fdfaf3 0%, #f2e8d5 100%);
+    border:1px solid #c9a961;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:13px;
+    color:#8a6f3d;
+    line-height:1;
+    box-shadow:0 2px 6px rgba(201,169,97,0.2);
+  }
+
+  .friend-name {
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:12.5px;
+    color:#1a1a1a;
+    letter-spacing:0.4px;
+    margin-bottom:3px;
+    line-height:1.2;
+  }
+
+  .friend-words {
+    font-family:'Cormorant Garamond', serif;
+    font-size:11.5px;
+    line-height:1.45;
+    color:#3a3a3a;
+    letter-spacing:0.2px;
+  }
+
+  .friend-words em {
+    font-style:italic;
+    font-weight:600;
+    color:#a08858;
+  }
+
+  /* ═══════════════════════════════════
+     ՓԱԿԱԳԻԾ
+     ═══════════════════════════════════ */
+  .closing {
+    text-align:center;
+    padding-top:12px;
+    margin-top:12px;
+    border-top:1px solid rgba(201,169,97,0.3);
+    position:relative;
+    z-index:5;
+  }
+
+  .closing-ornament {
+    color:#c9a961;
+    font-size:9px;
+    letter-spacing:8px;
+    margin-bottom:6px;
+  }
+
+  .closing-text {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:11.5px;
+    color:#a08858;
+    line-height:1.5;
+    letter-spacing:0.3px;
+  }
+
+  .closing-text em {
+    font-style:normal;
+    font-weight:600;
+    color:#4a3f28;
+  }
+
+  /* ═══════════════════════════════════
+     ՖՈՒՏԵՐ
+     ═══════════════════════════════════ */
+  .footer {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:10px;
+    margin-top:10px;
+    border-top:1px solid rgba(0,0,0,0.08);
+    position:relative;
+    z-index:5;
+  }
+
+  .page-number {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:14px;
+    color:#c9a961;
+  }
+
+  .footer-text {
+    font-family:'Montserrat', sans-serif;
+    font-size:6.5px;
+    font-weight:500;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#a08858;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Փափուկ դեկոր -->
+  <div class="flourish f1">❀</div>
+  <div class="flourish f2">✿</div>
+  <div class="flourish f3">❀</div>
+  <div class="flourish f4">✿</div>
+  <div class="flourish f5">❀</div>
+
+  <!-- Փափուկ անկյուններ -->
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">Vogue</div>
+    <div class="header-right">
+      October 2026<br>
+      Special Edition
+    </div>
+  </div>
+
+  <!-- Վերնագիր -->
+  <div class="title-block">
+    <div class="page-label">From Your Friends</div>
+    <div class="title">Սոնայի ընկերների<br>խոսքերը</div>
+    <div class="subtitle">— սրտից, հոգուց —</div>
+  </div>
+
+  <!-- QR — ՓԱՓՈՒԿ ԲԼՈԿ -->
+  <div class="qr-section">
+    <div class="qr-wrapper">
+      <img src="qr-main.png" alt="QR Code">
+    </div>
+    <div class="qr-text">
+      <div class="qr-title">Սկանավորի՛ր և լսիր նրանց</div>
+      <div class="qr-sub">Scan to Hear Their Voices</div>
+    </div>
+  </div>
+
+  <!-- ԸՆԿԵՐՆԵՐԻ ԽՈՍՔԵՐԸ -->
+  <div class="friends-list">
+
+    <div class="friend-card">
+      <div class="friend-num-circle">01</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն ջան, շնորհավորում եմ։ Թող ամեն օրդ <em>լիքը ժպիտներով</em> լինի։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">02</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Ծնունդդ շնորհավոր, Սոն։ <em>Հպարտ եմ</em>, որ քեզ ճանաչում եմ։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">03</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Մաղթում եմ քեզ <em>անսահման երջանկություն</em>։ Թող երազանքներդ իրականանան։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">04</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն, դու այն մարդկանցից ես, ում մոտ <em>միշտ լավ է</em>։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">05</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Ծնունդդ շնորհավոր, իմ սիրելի՛ ընկերուհի։ <em>Ապրիր</em>, ինչպես սիրտդ ուզում է։
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Փակագիծ -->
+  <div class="closing">
+    <div class="closing-ornament">✦ ✦ ✦</div>
+    <div class="closing-text">
+      Սկանավորի՛ր QR-ը և <em>լսիր նրանց ձայնը</em> 💛
+    </div>
+  </div>
+
+  <!-- Ֆուտեր -->
+  <div class="footer">
+    <div class="page-number">[XX]</div>
+    <div class="footer-text">Vogue • Friends Edition</div>
+  </div>
+
+</div>
+
+</body>
+</html>
