@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
+
   html { scroll-behavior: smooth; }
 
   body {
@@ -15,36 +16,10 @@
     font-family:'Cormorant Garamond', serif;
     color:#f5f0e8;
     overflow-x:hidden;
-    position:relative;
   }
 
   /* ═══════════════════════════════════
-     ՈՍԿԵ ՄԱՍՆԻԿՆԵՐ
-     ═══════════════════════════════════ */
-  .particles {
-    position:fixed;
-    inset:0;
-    z-index:1;
-    pointer-events:none;
-    overflow:hidden;
-  }
-
-  .particle {
-    position:absolute;
-    color:rgba(201,169,97,0.5);
-    animation:floatUp 15s linear infinite;
-    pointer-events:none;
-  }
-
-  @keyframes floatUp {
-    0% { transform:translateY(100vh) rotate(0deg); opacity:0; }
-    10% { opacity:1; }
-    90% { opacity:1; }
-    100% { transform:translateY(-100px) rotate(360deg); opacity:0; }
-  }
-
-  /* ═══════════════════════════════════
-     HERO
+     HERO — ՄԵԾ ՎԵՐՆԱԳԻՐ
      ═══════════════════════════════════ */
   .hero {
     min-height:100vh;
@@ -60,7 +35,6 @@
       radial-gradient(circle at 20% 30%, rgba(201,169,97,0.15) 0%, transparent 50%),
       radial-gradient(circle at 80% 70%, rgba(201,169,97,0.1) 0%, transparent 50%),
       linear-gradient(160deg,#1a1a1a 0%,#0d0d0d 100%);
-    z-index:5;
   }
 
   .hero-star {
@@ -91,53 +65,23 @@
     margin-bottom:24px;
     opacity:0;
     animation:fadeIn 1s ease 0.3s forwards;
-    display:flex;
-    align-items:center;
-    gap:16px;
-  }
-
-  .hero-label::before,
-  .hero-label::after {
-    content:"";
-    width:50px;
-    height:1px;
-    background:linear-gradient(90deg, transparent, #c9a961, transparent);
-  }
-
-  .hero-vogue {
-    font-family:'Playfair Display', serif;
-    font-weight:900;
-    font-style:italic;
-    font-size:clamp(72px, 16vw, 160px);
-    letter-spacing:clamp(6px, 3vw, 18px);
-    background:linear-gradient(180deg, #e8d5a8 0%, #c9a961 50%, #8a6f3d 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    line-height:1;
-    margin-bottom:-8px;
-    opacity:0;
-    animation:fadeIn 1.2s ease 0.5s forwards;
-    text-shadow:0 0 80px rgba(201,169,97,0.3);
-    margin-left:clamp(6px, 3vw, 18px);
-    position:relative;
-    z-index:6;
   }
 
   .hero-title {
     font-family:'Playfair Display', serif;
     font-weight:900;
     font-style:italic;
-    font-size:clamp(40px, 10vw, 90px);
-    letter-spacing:clamp(10px, 4vw, 22px);
-    color:#f5f0e8;
+    font-size:clamp(80px, 18vw, 180px);
+    letter-spacing:clamp(8px, 3vw, 20px);
+    background:linear-gradient(180deg, #e8d5a8 0%, #c9a961 50%, #8a6f3d 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
     line-height:1;
     margin-bottom:20px;
     opacity:0;
-    animation:fadeIn 1.2s ease 0.7s forwards;
-    margin-left:clamp(10px, 4vw, 22px);
-    position:relative;
-    z-index:6;
+    animation:fadeIn 1.2s ease 0.6s forwards;
+    text-shadow:0 0 80px rgba(201,169,97,0.3);
   }
 
   .hero-sub {
@@ -146,37 +90,18 @@
     font-size:clamp(14px, 3vw, 20px);
     color:rgba(232,213,168,0.85);
     letter-spacing:6px;
-    margin-bottom:36px;
+    margin-bottom:40px;
     opacity:0;
     animation:fadeIn 1s ease 1s forwards;
-    position:relative;
-    z-index:6;
   }
 
   .hero-divider {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:16px;
-    margin-bottom:26px;
-    opacity:0;
-    animation:fadeIn 1s ease 1.3s forwards;
-    position:relative;
-    z-index:6;
-  }
-
-  .hero-divider::before,
-  .hero-divider::after {
-    content:"";
-    width:60px;
+    width:80px;
     height:1px;
     background:linear-gradient(90deg, transparent, #c9a961, transparent);
-  }
-
-  .hero-divider-star {
-    color:#c9a961;
-    font-size:13px;
-    letter-spacing:8px;
+    margin-bottom:30px;
+    opacity:0;
+    animation:fadeIn 1s ease 1.3s forwards;
   }
 
   .hero-info {
@@ -189,8 +114,6 @@
     margin-bottom:50px;
     opacity:0;
     animation:fadeIn 1s ease 1.5s forwards;
-    position:relative;
-    z-index:6;
   }
 
   .scroll-indicator {
@@ -207,14 +130,12 @@
     text-align:center;
     opacity:0;
     animation:fadeIn 1s ease 2s forwards;
-    z-index:6;
   }
 
   .scroll-arrow {
     font-size:24px;
     margin-top:10px;
     animation:bounce 2s infinite;
-    color:#c9a961;
   }
 
   @keyframes bounce {
@@ -234,8 +155,6 @@
     padding:80px 20px 60px;
     max-width:1200px;
     margin:0 auto;
-    position:relative;
-    z-index:5;
   }
 
   .section-header {
@@ -423,8 +342,6 @@
     padding:60px 20px 40px;
     border-top:1px solid rgba(201,169,97,0.2);
     margin-top:60px;
-    position:relative;
-    z-index:5;
   }
 
   .footer-text {
@@ -469,13 +386,10 @@
     .page-card.cover,
     .page-card.back { grid-column:span 2; }
     .hero { padding:40px 20px; }
-    .hero-label { font-size:9px; letter-spacing:7px; }
-    .hero-label::before,
-    .hero-label::after { width:30px; }
   }
 
   /* ═══════════════════════════════════
-     SCROLL ԱՆԻՄԱՑԻԱ
+     SCROLL ԱՆԻՄԱՑԻԱՆԵՐ
      ═══════════════════════════════════ */
   .page-card {
     opacity:0;
@@ -495,11 +409,8 @@
 </head>
 <body>
 
-<!-- ՈՍԿԵ ՄԱՍՆԻԿՆԵՐ -->
-<div class="particles" id="particles"></div>
-
 <!-- ═══════════════════════════════════
-     HERO
+     HERO — ՄԵԾ ՎԵՐՆԱԳԻՐ
      ═══════════════════════════════════ -->
 <section class="hero">
 
@@ -511,18 +422,13 @@
   <div class="hero-star hs6">✧</div>
 
   <div class="hero-label">Vogue Magazine</div>
-  <div class="hero-vogue">VOGUE</div>
   <div class="hero-title">SONA</div>
   <div class="hero-sub">— Special Birthday Edition —</div>
-
-  <div class="hero-divider">
-    <span class="hero-divider-star">✦ ✦ ✦</span>
-  </div>
-
+  <div class="hero-divider"></div>
   <div class="hero-info">October 2026 • 23 Pages</div>
 
   <div class="scroll-indicator">
-    Scroll
+    Scroll<br>
     <div class="scroll-arrow">↓</div>
   </div>
 
@@ -643,7 +549,6 @@
       <div class="page-arrow">→</div>
     </a>
 
-    <!-- ՀԻՆ 10-21 → ՆՈՐ 12-23 -->
     <a href="page12.html" class="page-card">
       <div>
         <div class="page-num">12</div>
@@ -766,25 +671,9 @@
 </footer>
 
 <!-- ═══════════════════════════════════
-     SCRIPT
+     SCROLL ԱՆԻՄԱՑԻԱ
      ═══════════════════════════════════ -->
 <script>
-  // ՈՍԿԵ ՄԱՍՆԻԿՆԵՐ
-  const particlesContainer = document.getElementById('particles');
-  const symbols = ['✦', '✧', '❀', '✿', '★'];
-
-  for (let i = 0; i < 18; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    p.style.left = Math.random() * 100 + '%';
-    p.style.fontSize = (Math.random() * 14 + 10) + 'px';
-    p.style.animationDelay = Math.random() * 15 + 's';
-    p.style.animationDuration = (Math.random() * 10 + 12) + 's';
-    particlesContainer.appendChild(p);
-  }
-
-  // SCROLL ԱՆԻՄԱՑԻԱ
   const cards = document.querySelectorAll('.page-card');
 
   const observer = new IntersectionObserver((entries) => {
