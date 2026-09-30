@@ -2,8 +2,9 @@
 <html lang="hy">
 <head>
 <meta charset="UTF-8">
-<title>VOGUE — From Your Friends I</title>
+<title>VOGUE — From Your Friends</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -14,9 +15,6 @@
     font-family:'Cormorant Garamond', serif;
   }
 
-  /* ═══════════════════════════════════
-     ԷՋ — ՓԱՓՈՒԿ, ՌՈՄԱՆՏԻԿ
-     ═══════════════════════════════════ */
   .page {
     position:relative;
     width:520px; height:740px;
@@ -26,253 +24,194 @@
       linear-gradient(170deg, #fdfaf3 0%, #f8f0e2 50%, #f2e8d5 100%);
     overflow:hidden;
     box-shadow:0 30px 80px rgba(0,0,0,0.8);
-    padding:30px 38px 26px;
+    padding:22px 30px 18px;
     display:flex;
     flex-direction:column;
   }
 
-  /* ═══════════════════════════════════
-     ՆՈՒՐԲ ԴԵԿՈՐ — ՓԱՓՈՒԿ ԾԱՂԻԿՆԵՐ
-     ═══════════════════════════════════ */
   .flourish {
     position:absolute;
     color:rgba(201,169,97,0.25);
-    font-size:20px;
+    font-size:18px;
     z-index:1;
     pointer-events:none;
   }
-  .f1 { top:80px; left:50px; font-size:22px; transform:rotate(-20deg); }
-  .f2 { top:180px; right:55px; font-size:18px; transform:rotate(15deg); }
-  .f3 { bottom:200px; left:60px; font-size:20px; transform:rotate(-10deg); }
-  .f4 { bottom:100px; right:70px; font-size:22px; transform:rotate(25deg); }
-  .f5 { top:45%; right:45px; font-size:16px; transform:rotate(-15deg); }
+  .f1 { top:70px; left:45px; font-size:20px; transform:rotate(-20deg); }
+  .f2 { top:170px; right:50px; font-size:16px; transform:rotate(15deg); }
+  .f3 { bottom:180px; left:50px; font-size:18px; transform:rotate(-10deg); }
+  .f4 { bottom:90px; right:60px; font-size:20px; transform:rotate(25deg); }
+  .f5 { top:45%; right:40px; font-size:14px; transform:rotate(-15deg); }
 
-  /* ═══════════════════════════════════
-     ՆՈՒՐԲ ԱՆԿՅՈՒՆՆԵՐ (կլորացված)
-     ═══════════════════════════════════ */
-  .corner {
-    position:absolute;
-    width:60px; height:60px;
-    z-index:10;
-  }
-  .corner.tl {
-    top:18px; left:18px;
-    border-top:1.5px solid #c9a961;
-    border-left:1.5px solid #c9a961;
-    border-top-left-radius:20px;
-  }
-  .corner.tr {
-    top:18px; right:18px;
-    border-top:1.5px solid #c9a961;
-    border-right:1.5px solid #c9a961;
-    border-top-right-radius:20px;
-  }
-  .corner.bl {
-    bottom:18px; left:18px;
-    border-bottom:1.5px solid #c9a961;
-    border-left:1.5px solid #c9a961;
-    border-bottom-left-radius:20px;
-  }
-  .corner.br {
-    bottom:18px; right:18px;
-    border-bottom:1.5px solid #c9a961;
-    border-right:1.5px solid #c9a961;
-    border-bottom-right-radius:20px;
-  }
+  .corner { position:absolute; width:50px; height:50px; z-index:10; }
+  .corner.tl { top:14px; left:14px;
+    border-top:1.5px solid #c9a961; border-left:1.5px solid #c9a961;
+    border-top-left-radius:16px; }
+  .corner.tr { top:14px; right:14px;
+    border-top:1.5px solid #c9a961; border-right:1.5px solid #c9a961;
+    border-top-right-radius:16px; }
+  .corner.bl { bottom:14px; left:14px;
+    border-bottom:1.5px solid #c9a961; border-left:1.5px solid #c9a961;
+    border-bottom-left-radius:16px; }
+  .corner.br { bottom:14px; right:14px;
+    border-bottom:1.5px solid #c9a961; border-right:1.5px solid #c9a961;
+    border-bottom-right-radius:16px; }
 
-  /* ═══════════════════════════════════
-     HEADER
-     ═══════════════════════════════════ */
   .header {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding-bottom:10px;
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:6px;
     border-bottom:1px solid rgba(201,169,97,0.3);
-    margin-bottom:16px;
-    position:relative;
-    z-index:5;
+    margin-bottom:10px;
+    position:relative; z-index:5;
   }
 
+  /* ⬇️ SHՏԿՎԱԾ — padding-bottom + line-height ⬇️ */
   .header-left {
     font-family:'Playfair Display', serif;
-    font-style:italic; font-weight:900; font-size:18px;
-    letter-spacing:5px;
+    font-style:italic; font-weight:900; font-size:16px;
+    letter-spacing:4px;
     background:linear-gradient(180deg, #8a6f3d 0%, #c9a961 100%);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     background-clip:text;
+    padding-bottom:3px;
+    line-height:1.3;
   }
 
   .header-right {
     font-family:'Montserrat', sans-serif;
-    font-size:6.5px;
-    font-weight:500;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:#a08858;
-    text-align:right;
-    line-height:1.7;
+    font-size:6px; font-weight:500;
+    letter-spacing:3px; text-transform:uppercase;
+    color:#a08858; text-align:right; line-height:1.6;
   }
 
-  /* ═══════════════════════════════════
-     ՎԵՐՆԱԳԻՐ
-     ═══════════════════════════════════ */
   .title-block {
     text-align:center;
-    margin-bottom:16px;
-    position:relative;
-    z-index:5;
+    margin-bottom:10px;
+    position:relative; z-index:5;
   }
-
   .page-label {
     font-family:'Montserrat', sans-serif;
-    font-size:7px;
-    font-weight:600;
-    letter-spacing:8px;
-    text-transform:uppercase;
-    color:#c9a961;
-    margin-bottom:8px;
+    font-size:6.5px; font-weight:600;
+    letter-spacing:7px; text-transform:uppercase;
+    color:#c9a961; margin-bottom:5px;
   }
 
+  /* ⬇️ SHՏԿՎԱԾ — padding-bottom + line-height ⬇️ */
   .title {
     font-family:'Playfair Display', serif;
-    font-weight:900;
-    font-style:italic;
-    font-size:28px;
-    line-height:1.1;
+    font-weight:900; font-style:italic;
+    font-size:22px;
+    line-height:1.2;
     background:linear-gradient(180deg, #4a3f28 0%, #1a1a1a 100%);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     background-clip:text;
-    margin-bottom:8px;
+    padding-bottom:4px;
+    margin-bottom:4px;
     letter-spacing:0.5px;
   }
 
   .subtitle {
     font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-size:13px;
-    color:#a08858;
-    letter-spacing:2px;
+    font-style:italic; font-size:11px;
+    color:#a08858; letter-spacing:2px;
   }
 
-  /* ═══════════════════════════════════
-     QR — ՓԱՓՈՒԿ, ԿԼՈՐ
-     ═══════════════════════════════════ */
   .qr-section {
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:16px;
-    padding:14px 18px;
+    gap:12px;
+    padding:8px 14px;
     background:linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(253,250,243,0.9) 100%);
     border:1px solid rgba(201,169,97,0.35);
-    border-radius:12px;
-    margin-bottom:18px;
-    box-shadow:0 4px 20px rgba(201,169,97,0.12);
-    position:relative;
-    z-index:5;
+    border-radius:10px;
+    margin-bottom:10px;
+    box-shadow:0 4px 15px rgba(201,169,97,0.12);
+    position:relative; z-index:5;
   }
-
-  /* Նուրբ անկյուններ */
   .qr-section::before,
   .qr-section::after {
     content:"";
     position:absolute;
-    width:10px; height:10px;
+    width:8px; height:8px;
     border:1.5px solid #c9a961;
   }
   .qr-section::before {
-    top:-6px; left:-6px;
+    top:-5px; left:-5px;
     border-right:none; border-bottom:none;
-    border-top-left-radius:6px;
+    border-top-left-radius:5px;
   }
   .qr-section::after {
-    bottom:-6px; right:-6px;
+    bottom:-5px; right:-5px;
     border-left:none; border-top:none;
-    border-bottom-right-radius:6px;
+    border-bottom-right-radius:5px;
   }
-
   .qr-wrapper {
     position:relative;
-    padding:7px;
+    padding:5px;
     background:#fff;
-    border-radius:8px;
-    box-shadow:
-      0 0 0 1px #c9a961,
-      0 4px 12px rgba(201,169,97,0.2);
+    border-radius:6px;
+    box-shadow:0 0 0 1px #c9a961, 0 3px 10px rgba(201,169,97,0.2);
     flex-shrink:0;
   }
-
   .qr-wrapper img {
-    width:70px;
-    height:70px;
-    display:block;
-    border-radius:4px;
+    width:55px; height:55px;
+    display:block; border-radius:3px;
   }
-
-  .qr-text {
-    flex:1;
-  }
-
+  .qr-text { flex:1; }
   .qr-title {
     font-family:'Playfair Display', serif;
-    font-style:italic;
-    font-weight:700;
-    font-size:14px;
-    color:#1a1a1a;
-    line-height:1.3;
-    margin-bottom:5px;
+    font-style:italic; font-weight:700;
+    font-size:12px; color:#1a1a1a;
+    line-height:1.25; margin-bottom:3px;
     letter-spacing:0.3px;
   }
-
   .qr-sub {
     font-family:'Montserrat', sans-serif;
-    font-size:6.5px;
-    font-weight:600;
-    letter-spacing:4px;
-    text-transform:uppercase;
+    font-size:6px; font-weight:600;
+    letter-spacing:3.5px; text-transform:uppercase;
     color:#c9a961;
   }
 
-  /* ═══════════════════════════════════
-     ԽՈՍՔԵՐԻ ՔԱՐՏԵՐ — ՓԱՓՈՒԿ
-     ═══════════════════════════════════ */
   .friends-list {
     flex:1;
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:5px;
     overflow:hidden;
-    position:relative;
-    z-index:5;
+    position:relative; z-index:5;
+    min-height:0;
   }
 
   .friend-card {
     position:relative;
-    padding:11px 16px 11px 48px;
+    padding:6px 12px 6px 36px;
     background:linear-gradient(135deg, #ffffff 0%, #fdfaf3 100%);
     border:1px solid rgba(201,169,97,0.25);
-    border-radius:10px;
-    box-shadow:0 3px 12px rgba(201,169,97,0.1);
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(201,169,97,0.1);
     transition:all 0.3s ease;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-height:0;
   }
 
   .friend-card:hover {
     transform:translateY(-2px);
-    box-shadow:0 8px 22px rgba(201,169,97,0.2);
+    box-shadow:0 6px 18px rgba(201,169,97,0.2);
     border-color:rgba(201,169,97,0.5);
   }
 
-  /* Թիվը — կլոր շրջանակում */
   .friend-num-circle {
     position:absolute;
-    left:10px;
+    left:8px;
     top:50%;
     transform:translateY(-50%);
-    width:30px;
-    height:30px;
+    width:22px;
+    height:22px;
     border-radius:50%;
     background:linear-gradient(135deg, #fdfaf3 0%, #f2e8d5 100%);
     border:1px solid #c9a961;
@@ -282,27 +221,28 @@
     font-family:'Playfair Display', serif;
     font-weight:900;
     font-style:italic;
-    font-size:13px;
+    font-size:9px;
     color:#8a6f3d;
     line-height:1;
-    box-shadow:0 2px 6px rgba(201,169,97,0.2);
+    box-shadow:0 1px 4px rgba(201,169,97,0.2);
   }
 
+  /* ⬇️ SHՏԿՎԱԾ — line-height 1.25 ⬇️ */
   .friend-name {
     font-family:'Playfair Display', serif;
     font-weight:700;
     font-style:italic;
-    font-size:12.5px;
+    font-size:10px;
     color:#1a1a1a;
-    letter-spacing:0.4px;
-    margin-bottom:3px;
-    line-height:1.2;
+    letter-spacing:0.3px;
+    margin-bottom:1px;
+    line-height:1.25;
   }
 
   .friend-words {
     font-family:'Cormorant Garamond', serif;
-    font-size:11.5px;
-    line-height:1.45;
+    font-size:9px;
+    line-height:1.3;
     color:#3a3a3a;
     letter-spacing:0.2px;
   }
@@ -313,67 +253,48 @@
     color:#a08858;
   }
 
-  /* ═══════════════════════════════════
-     ՓԱԿԱԳԻԾ
-     ═══════════════════════════════════ */
   .closing {
     text-align:center;
-    padding-top:12px;
-    margin-top:12px;
+    padding-top:7px;
+    margin-top:7px;
     border-top:1px solid rgba(201,169,97,0.3);
-    position:relative;
-    z-index:5;
+    position:relative; z-index:5;
   }
-
   .closing-ornament {
     color:#c9a961;
-    font-size:9px;
-    letter-spacing:8px;
-    margin-bottom:6px;
+    font-size:8px;
+    letter-spacing:7px;
+    margin-bottom:3px;
   }
-
   .closing-text {
     font-family:'Cormorant Garamond', serif;
     font-style:italic;
-    font-size:11.5px;
+    font-size:10px;
     color:#a08858;
-    line-height:1.5;
+    line-height:1.4;
     letter-spacing:0.3px;
   }
-
   .closing-text em {
     font-style:normal;
     font-weight:600;
     color:#4a3f28;
   }
 
-  /* ═══════════════════════════════════
-     ՖՈՒՏԵՐ
-     ═══════════════════════════════════ */
   .footer {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding-top:10px;
-    margin-top:10px;
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:6px;
+    margin-top:6px;
     border-top:1px solid rgba(0,0,0,0.08);
-    position:relative;
-    z-index:5;
+    position:relative; z-index:5;
   }
-
   .page-number {
     font-family:'Playfair Display', serif;
-    font-style:italic;
-    font-size:14px;
-    color:#c9a961;
+    font-style:italic; font-size:13px; color:#c9a961;
   }
-
   .footer-text {
     font-family:'Montserrat', sans-serif;
-    font-size:6.5px;
-    font-weight:500;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    font-size:6px; font-weight:500;
+    letter-spacing:3px; text-transform:uppercase;
     color:#a08858;
   }
 </style>
@@ -382,20 +303,17 @@
 
 <div class="page">
 
-  <!-- Փափուկ դեկոր -->
   <div class="flourish f1">❀</div>
   <div class="flourish f2">✿</div>
   <div class="flourish f3">❀</div>
   <div class="flourish f4">✿</div>
   <div class="flourish f5">❀</div>
 
-  <!-- Փափուկ անկյուններ -->
   <div class="corner tl"></div>
   <div class="corner tr"></div>
   <div class="corner bl"></div>
   <div class="corner br"></div>
 
-  <!-- Header -->
   <div class="header">
     <div class="header-left">Vogue</div>
     <div class="header-right">
@@ -404,14 +322,12 @@
     </div>
   </div>
 
-  <!-- Վերնագիր -->
   <div class="title-block">
     <div class="page-label">From Your Friends</div>
-    <div class="title">Սոնայի ընկերների<br>խոսքերը</div>
+    <div class="title">Սոնայի ընկերների խոսքերը</div>
     <div class="subtitle">— սրտից, հոգուց —</div>
   </div>
 
-  <!-- QR — ՓԱՓՈՒԿ ԲԼՈԿ -->
   <div class="qr-section">
     <div class="qr-wrapper">
       <img src="qr-main.png" alt="QR Code">
@@ -422,7 +338,6 @@
     </div>
   </div>
 
-  <!-- ԸՆԿԵՐՆԵՐԻ ԽՈՍՔԵՐԸ -->
   <div class="friends-list">
 
     <div class="friend-card">
@@ -465,9 +380,48 @@
       </div>
     </div>
 
+    <div class="friend-card">
+      <div class="friend-num-circle">06</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն ջան, քո ներկայությունը <em>լույս է</em>։ Շնորհակալ եմ, որ կաս։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">07</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Ծնունդդ շնորհավոր, իմ թանկ ընկեր։ Թող <em>ամեն ինչ լավ լինի</em>։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">08</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն, դու <em>ոգեշնչում ես</em> բոլորիս։ Շարունակիր պարել ու ժպտալ։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">09</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Շնորհավորում եմ, Սոն ջան։ Թող կյանքդ լինի <em>հեքիաթի պես</em>։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">10</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն, դու իմ <em>հոգու ընկերն ես</em>։ Թող միշտ այսպիսին մնաս։
+      </div>
+    </div>
+
   </div>
 
-  <!-- Փակագիծ -->
   <div class="closing">
     <div class="closing-ornament">✦ ✦ ✦</div>
     <div class="closing-text">
@@ -475,9 +429,8 @@
     </div>
   </div>
 
-  <!-- Ֆուտեր -->
   <div class="footer">
-    <div class="page-number">[XX]</div>
+    <div class="page-number">10</div>
     <div class="footer-text">Vogue • Friends Edition</div>
   </div>
 

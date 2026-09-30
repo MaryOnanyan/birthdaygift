@@ -7,10 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
     background:linear-gradient(160deg,#1a1a1a 0%,#0d0d0d 100%);
@@ -18,10 +15,36 @@
     font-family:'Cormorant Garamond', serif;
     color:#f5f0e8;
     overflow-x:hidden;
+    position:relative;
   }
 
   /* ═══════════════════════════════════
-     HERO — ՄԵԾ ՎԵՐՆԱԳԻՐ
+     ՈՍԿԵ ՄԱՍՆԻԿՆԵՐ
+     ═══════════════════════════════════ */
+  .particles {
+    position:fixed;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    overflow:hidden;
+  }
+
+  .particle {
+    position:absolute;
+    color:rgba(201,169,97,0.5);
+    animation:floatUp 15s linear infinite;
+    pointer-events:none;
+  }
+
+  @keyframes floatUp {
+    0% { transform:translateY(100vh) rotate(0deg); opacity:0; }
+    10% { opacity:1; }
+    90% { opacity:1; }
+    100% { transform:translateY(-100px) rotate(360deg); opacity:0; }
+  }
+
+  /* ═══════════════════════════════════
+     HERO
      ═══════════════════════════════════ */
   .hero {
     min-height:100vh;
@@ -37,9 +60,9 @@
       radial-gradient(circle at 20% 30%, rgba(201,169,97,0.15) 0%, transparent 50%),
       radial-gradient(circle at 80% 70%, rgba(201,169,97,0.1) 0%, transparent 50%),
       linear-gradient(160deg,#1a1a1a 0%,#0d0d0d 100%);
+    z-index:5;
   }
 
-  /* Դեկոր աստղեր */
   .hero-star {
     position:absolute;
     color:rgba(201,169,97,0.4);
@@ -68,23 +91,53 @@
     margin-bottom:24px;
     opacity:0;
     animation:fadeIn 1s ease 0.3s forwards;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+
+  .hero-label::before,
+  .hero-label::after {
+    content:"";
+    width:50px;
+    height:1px;
+    background:linear-gradient(90deg, transparent, #c9a961, transparent);
+  }
+
+  .hero-vogue {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:clamp(72px, 16vw, 160px);
+    letter-spacing:clamp(6px, 3vw, 18px);
+    background:linear-gradient(180deg, #e8d5a8 0%, #c9a961 50%, #8a6f3d 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    line-height:1;
+    margin-bottom:-8px;
+    opacity:0;
+    animation:fadeIn 1.2s ease 0.5s forwards;
+    text-shadow:0 0 80px rgba(201,169,97,0.3);
+    margin-left:clamp(6px, 3vw, 18px);
+    position:relative;
+    z-index:6;
   }
 
   .hero-title {
     font-family:'Playfair Display', serif;
     font-weight:900;
     font-style:italic;
-    font-size:clamp(80px, 18vw, 180px);
-    letter-spacing:clamp(8px, 3vw, 20px);
-    background:linear-gradient(180deg, #e8d5a8 0%, #c9a961 50%, #8a6f3d 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
+    font-size:clamp(40px, 10vw, 90px);
+    letter-spacing:clamp(10px, 4vw, 22px);
+    color:#f5f0e8;
     line-height:1;
     margin-bottom:20px;
     opacity:0;
-    animation:fadeIn 1.2s ease 0.6s forwards;
-    text-shadow:0 0 80px rgba(201,169,97,0.3);
+    animation:fadeIn 1.2s ease 0.7s forwards;
+    margin-left:clamp(10px, 4vw, 22px);
+    position:relative;
+    z-index:6;
   }
 
   .hero-sub {
@@ -93,18 +146,37 @@
     font-size:clamp(14px, 3vw, 20px);
     color:rgba(232,213,168,0.85);
     letter-spacing:6px;
-    margin-bottom:40px;
+    margin-bottom:36px;
     opacity:0;
     animation:fadeIn 1s ease 1s forwards;
+    position:relative;
+    z-index:6;
   }
 
   .hero-divider {
-    width:80px;
-    height:1px;
-    background:linear-gradient(90deg, transparent, #c9a961, transparent);
-    margin-bottom:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:26px;
     opacity:0;
     animation:fadeIn 1s ease 1.3s forwards;
+    position:relative;
+    z-index:6;
+  }
+
+  .hero-divider::before,
+  .hero-divider::after {
+    content:"";
+    width:60px;
+    height:1px;
+    background:linear-gradient(90deg, transparent, #c9a961, transparent);
+  }
+
+  .hero-divider-star {
+    color:#c9a961;
+    font-size:13px;
+    letter-spacing:8px;
   }
 
   .hero-info {
@@ -117,9 +189,10 @@
     margin-bottom:50px;
     opacity:0;
     animation:fadeIn 1s ease 1.5s forwards;
+    position:relative;
+    z-index:6;
   }
 
-  /* Scroll ցուցիչ */
   .scroll-indicator {
     position:absolute;
     bottom:30px;
@@ -134,12 +207,14 @@
     text-align:center;
     opacity:0;
     animation:fadeIn 1s ease 2s forwards;
+    z-index:6;
   }
 
   .scroll-arrow {
     font-size:24px;
     margin-top:10px;
     animation:bounce 2s infinite;
+    color:#c9a961;
   }
 
   @keyframes bounce {
@@ -159,6 +234,8 @@
     padding:80px 20px 60px;
     max-width:1200px;
     margin:0 auto;
+    position:relative;
+    z-index:5;
   }
 
   .section-header {
@@ -307,6 +384,18 @@
     border-color:rgba(232,213,168,0.6);
   }
 
+  /* ⬇️ ՆՈՐ՝ ԸՆԿԵՐՆԵՐԻ ՔԱՐՏԵՐ ⬇️ */
+  .page-card.friends {
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(247,215,215,0.3) 0%, transparent 60%),
+      linear-gradient(160deg,#fdfaf8 0%,#faf0ea 100%);
+    border-color:rgba(183,110,121,0.4);
+  }
+
+  .page-card.friends .page-num {
+    color:#b76e79;
+  }
+
   .page-card.special {
     background:linear-gradient(160deg,#f5e8d0 0%,#e8d5a8 100%);
   }
@@ -334,6 +423,8 @@
     padding:60px 20px 40px;
     border-top:1px solid rgba(201,169,97,0.2);
     margin-top:60px;
+    position:relative;
+    z-index:5;
   }
 
   .footer-text {
@@ -378,10 +469,13 @@
     .page-card.cover,
     .page-card.back { grid-column:span 2; }
     .hero { padding:40px 20px; }
+    .hero-label { font-size:9px; letter-spacing:7px; }
+    .hero-label::before,
+    .hero-label::after { width:30px; }
   }
 
   /* ═══════════════════════════════════
-     SCROLL ԱՆԻՄԱՑԻԱՆԵՐ
+     SCROLL ԱՆԻՄԱՑԻԱ
      ═══════════════════════════════════ */
   .page-card {
     opacity:0;
@@ -401,12 +495,14 @@
 </head>
 <body>
 
+<!-- ՈՍԿԵ ՄԱՍՆԻԿՆԵՐ -->
+<div class="particles" id="particles"></div>
+
 <!-- ═══════════════════════════════════
-     HERO — ՄԵԾ ՎԵՐՆԱԳԻՐ
+     HERO
      ═══════════════════════════════════ -->
 <section class="hero">
 
-  <!-- Դեկոր աստղեր -->
   <div class="hero-star hs1">✦</div>
   <div class="hero-star hs2">✧</div>
   <div class="hero-star hs3">✦</div>
@@ -415,13 +511,18 @@
   <div class="hero-star hs6">✧</div>
 
   <div class="hero-label">Vogue Magazine</div>
+  <div class="hero-vogue">VOGUE</div>
   <div class="hero-title">SONA</div>
   <div class="hero-sub">— Special Birthday Edition —</div>
-  <div class="hero-divider"></div>
-  <div class="hero-info">October 2026 • 21 Pages</div>
+
+  <div class="hero-divider">
+    <span class="hero-divider-star">✦ ✦ ✦</span>
+  </div>
+
+  <div class="hero-info">October 2026 • 23 Pages</div>
 
   <div class="scroll-indicator">
-    Scroll<br>
+    Scroll
     <div class="scroll-arrow">↓</div>
   </div>
 
@@ -435,7 +536,7 @@
   <div class="section-header">
     <div class="section-title">Ամսագրի էջերը</div>
     <div class="section-desc">
-      Սեղմիր ցանկացած էջի վրա • <strong>21 էջ</strong> • Սոնայի պատմությունը
+      Սեղմիր ցանկացած էջի վրա • <strong>23 էջ</strong> • Սոնայի պատմությունը
     </div>
   </div>
 
@@ -523,29 +624,31 @@
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page10.html" class="page-card">
+    <!-- ⬇️ ՆՈՐ՝ ԸՆԿԵՐՆԵՐԻ ԷՋԵՐԸ ⬇️ -->
+    <a href="page10.html" class="page-card friends">
       <div>
         <div class="page-num">10</div>
-        <div class="page-title">Rhythm of Life</div>
-        <div class="page-desc">Հունական պարեր</div>
+        <div class="page-title">Ընկերների խոսքերը</div>
+        <div class="page-desc">Սրտից • 1/2</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page11.html" class="page-card">
+    <a href="page11.html" class="page-card friends">
       <div>
         <div class="page-num">11</div>
-        <div class="page-title">Սիրենք Ազգայինը</div>
-        <div class="page-desc">Մեր արմատներն ու նվիրումը</div>
+        <div class="page-title">Շարունակություն</div>
+        <div class="page-desc">Սրտից • 2/2</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- ՀԻՆ 10-21 → ՆՈՐ 12-23 -->
     <a href="page12.html" class="page-card">
       <div>
         <div class="page-num">12</div>
-        <div class="page-title">Behind the Scenes</div>
-        <div class="page-desc">Կյանքն առանց ֆիլտրերի</div>
+        <div class="page-title">Rhythm of Life</div>
+        <div class="page-desc">Հունական պարեր</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
@@ -553,8 +656,8 @@
     <a href="page13.html" class="page-card">
       <div>
         <div class="page-num">13</div>
-        <div class="page-title">Future Dr. Sona</div>
-        <div class="page-desc">«Ժպիտների պահապանը»</div>
+        <div class="page-title">Սիրենք Ազգայինը</div>
+        <div class="page-desc">Մեր արմատներն ու նվիրումը</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
@@ -562,8 +665,8 @@
     <a href="page14.html" class="page-card">
       <div>
         <div class="page-num">14</div>
-        <div class="page-title">The Art of Being Sona</div>
-        <div class="page-desc">Vogue Editorial</div>
+        <div class="page-title">Behind the Scenes</div>
+        <div class="page-desc">Կյանքն առանց ֆիլտրերի</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
@@ -571,8 +674,8 @@
     <a href="page15.html" class="page-card">
       <div>
         <div class="page-num">15</div>
-        <div class="page-title">Look of the Day</div>
-        <div class="page-desc">Անթերի դետալներ</div>
+        <div class="page-title">Future Dr. Sona</div>
+        <div class="page-desc">«Ժպիտների պահապանը»</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
@@ -580,8 +683,8 @@
     <a href="page16.html" class="page-card">
       <div>
         <div class="page-num">16</div>
-        <div class="page-title">Ներկիր — Կատակային</div>
-        <div class="page-desc">Your Canvas, Your Rules</div>
+        <div class="page-title">The Art of Being Sona</div>
+        <div class="page-desc">Vogue Editorial</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
@@ -589,8 +692,8 @@
     <a href="page17.html" class="page-card">
       <div>
         <div class="page-num">17</div>
-        <div class="page-title">Ներկիր — Հուզիչ</div>
-        <div class="page-desc">Colors of Your Soul</div>
+        <div class="page-title">Look of the Day</div>
+        <div class="page-desc">Անթերի դետալներ</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
@@ -598,8 +701,8 @@
     <a href="page18.html" class="page-card">
       <div>
         <div class="page-num">18</div>
-        <div class="page-title">Ներկիր — Ոգեշնչող</div>
-        <div class="page-desc">Create Your Story</div>
+        <div class="page-title">Ներկիր — Կատակային</div>
+        <div class="page-desc">Your Canvas, Your Rules</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
@@ -607,24 +710,42 @@
     <a href="page19.html" class="page-card">
       <div>
         <div class="page-num">19</div>
+        <div class="page-title">Ներկիր — Հուզիչ</div>
+        <div class="page-desc">Colors of Your Soul</div>
+      </div>
+      <div class="page-arrow">→</div>
+    </a>
+
+    <a href="page20.html" class="page-card">
+      <div>
+        <div class="page-num">20</div>
+        <div class="page-title">Ներկիր — Ոգեշնչող</div>
+        <div class="page-desc">Create Your Story</div>
+      </div>
+      <div class="page-arrow">→</div>
+    </a>
+
+    <a href="page21.html" class="page-card">
+      <div>
+        <div class="page-num">21</div>
         <div class="page-title">Ներկիր — Անձնական</div>
         <div class="page-desc">From Me to You 💛</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page20.html" class="page-card special">
+    <a href="page22.html" class="page-card special">
       <div>
-        <div class="page-num">20</div>
+        <div class="page-num">22</div>
         <div class="page-title">Happy Birthday, Sona</div>
         <div class="page-desc">Վերջին խոսքը</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page21.html" class="page-card back">
+    <a href="page23.html" class="page-card back">
       <div>
-        <div class="page-num">21</div>
+        <div class="page-num">23</div>
         <div class="page-title">Back Cover</div>
         <div class="page-desc">VOGUE • Special Edition</div>
       </div>
@@ -645,12 +766,27 @@
 </footer>
 
 <!-- ═══════════════════════════════════
-     SCROLL ԱՆԻՄԱՑԻԱ
+     SCRIPT
      ═══════════════════════════════════ -->
 <script>
-  // Էջերը հայտնվեն scroll-ի ժամանակ
+  // ՈՍԿԵ ՄԱՍՆԻԿՆԵՐ
+  const particlesContainer = document.getElementById('particles');
+  const symbols = ['✦', '✧', '❀', '✿', '★'];
+
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    p.style.left = Math.random() * 100 + '%';
+    p.style.fontSize = (Math.random() * 14 + 10) + 'px';
+    p.style.animationDelay = Math.random() * 15 + 's';
+    p.style.animationDuration = (Math.random() * 10 + 12) + 's';
+    particlesContainer.appendChild(p);
+  }
+
+  // SCROLL ԱՆԻՄԱՑԻԱ
   const cards = document.querySelectorAll('.page-card');
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
@@ -663,7 +799,7 @@
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
   });
-  
+
   cards.forEach(card => observer.observe(card));
 </script>
 
