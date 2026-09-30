@@ -2,346 +2,431 @@
 <html lang="hy">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOGUE — Back Cover</title>
+<title>VOGUE — From Your Friends II</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
 
   body {
     background:#0d0d0d;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    padding:20px;
+    display:flex; justify-content:center; align-items:center;
+    min-height:100vh; padding:20px;
     font-family:'Cormorant Garamond', serif;
   }
 
-  .cover {
+  .page {
     position:relative;
-    width:520px;
-    height:740px;
+    width:520px; height:740px;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(232,213,168,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 90%, rgba(232,213,168,0.3) 0%, transparent 50%),
+      linear-gradient(170deg, #fdfaf3 0%, #f8f0e2 50%, #f2e8d5 100%);
     overflow:hidden;
     box-shadow:0 30px 80px rgba(0,0,0,0.8);
-    background:#f5f0e8;
+    padding:22px 30px 18px;
+    display:flex;
+    flex-direction:column;
   }
 
-  /* ═══════════════════════════════════
-     ՆԿԱՐԸ
-     ═══════════════════════════════════ */
-  .cover-img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-  }
-
-  /* ═══════════════════════════════════
-     ՈՍԿԵ ՇՐՋԱՆԱԿ
-     ═══════════════════════════════════ */
-  .cover::after {
-    content:"";
+  /* Դեկոր ծաղիկներ */
+  .flourish {
     position:absolute;
-    inset:14px;
-    border:1px solid rgba(201,169,97,0.6);
+    color:rgba(201,169,97,0.25);
+    z-index:1;
     pointer-events:none;
+  }
+  .f1 { top:65px; left:42px; font-size:18px; transform:rotate(-20deg); }
+  .f2 { top:160px; right:48px; font-size:14px; transform:rotate(15deg); }
+  .f3 { bottom:200px; left:48px; font-size:16px; transform:rotate(-10deg); }
+  .f4 { bottom:90px; right:58px; font-size:18px; transform:rotate(25deg); }
+  .f5 { top:45%; right:38px; font-size:12px; transform:rotate(-15deg); }
+  .f6 { top:30%; left:45px; font-size:11px; transform:rotate(10deg); }
+
+  /* Անկյուններ */
+  .corner {
+    position:absolute;
+    width:50px; height:50px;
+    z-index:10;
+  }
+  .corner.tl { top:14px; left:14px;
+    border-top:1.5px solid #c9a961;
+    border-left:1.5px solid #c9a961;
+    border-top-left-radius:16px; }
+  .corner.tr { top:14px; right:14px;
+    border-top:1.5px solid #c9a961;
+    border-right:1.5px solid #c9a961;
+    border-top-right-radius:16px; }
+  .corner.bl { bottom:14px; left:14px;
+    border-bottom:1.5px solid #c9a961;
+    border-left:1.5px solid #c9a961;
+    border-bottom-left-radius:16px; }
+  .corner.br { bottom:14px; right:14px;
+    border-bottom:1.5px solid #c9a961;
+    border-right:1.5px solid #c9a961;
+    border-bottom-right-radius:16px; }
+
+  /* Header */
+  .header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:6px;
+    border-bottom:1px solid rgba(201,169,97,0.3);
+    margin-bottom:10px;
+    position:relative;
     z-index:5;
+    flex-shrink:0;
   }
 
-  /* ═══════════════════════════════════
-     ՎԵՐԵՎԻ ԱՋ — ԱՄՍԱԹԻՎ
-     ═══════════════════════════════════ */
-  .issue-date {
-    position:absolute;
-    top:15px;
-    right:30px;
-    text-align:right;
-    z-index:10;
-    font-family:'Montserrat', sans-serif;
-  }
-
-  .issue-date-main {
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    color:#1a1a1a;
-    margin-bottom:4px;
-    text-shadow:0 1px 4px rgba(255,255,255,0.6);
-  }
-
-  .issue-date-sub {
-    font-size:8px;
-    font-weight:600;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:#4a3f28;
-    text-shadow:0 1px 4px rgba(255,255,255,0.6);
-  }
-
-  /* ═══════════════════════════════════
-     ՎԵՐԵՎԻ ՁԱԽ — SONA
-     ═══════════════════════════════════ */
-  .sona-tag {
-    position:absolute;
-    top:150px;
-    left:30px;
-    z-index:10;
-  }
-
-  .sona-tag-name {
+  /* ⬇️ SHՏԿՎԱԾ — line-height + padding-bottom ⬇️ */
+  .header-left {
     font-family:'Playfair Display', serif;
-    font-weight:900;
-    font-style:italic;
-    font-size:26px;
-    letter-spacing:5px;
-    background:linear-gradient(180deg, #c9a961 0%, #8a6f3d 100%);
+    font-style:italic; font-weight:900; font-size:16px;
+    letter-spacing:4px;
+    background:linear-gradient(180deg, #8a6f3d 0%, #c9a961 100%);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     background-clip:text;
-    line-height:1;
-    margin-bottom:6px;
-    text-shadow:0 2px 6px rgba(255,255,255,0.4);
+    padding-bottom:3px;
+    line-height:1.3;
   }
 
-  .sona-tag-sub {
+  .header-right {
     font-family:'Montserrat', sans-serif;
-    font-size:7px;
-    font-weight:600;
-    letter-spacing:4px;
+    font-size:6px;
+    font-weight:500;
+    letter-spacing:3px;
     text-transform:uppercase;
-    color:#4a3f28;
-    text-shadow:0 1px 4px rgba(255,255,255,0.6);
+    color:#a08858;
+    text-align:right;
+    line-height:1.6;
   }
 
-  /* ═══════════════════════════════════
-     ՆԵՐՔԵՎԻ ՁԱԽ — ՇՏՐԻԽ ԿՈԴ
-     ═══════════════════════════════════ */
-  .barcode-box {
-    position:absolute;
-    bottom:30px;
-    left:30px;
-    z-index:10;
-    background:rgba(255,255,255,0.92);
-    padding:10px 12px 8px;
-    border:1px solid rgba(0,0,0,0.15);
-    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+  /* Վերնագիր */
+  .title-block {
+    text-align:center;
+    margin-bottom:10px;
+    position:relative;
+    z-index:5;
+    flex-shrink:0;
   }
 
-  .barcode-lines {
-    width:100px;
-    height:36px;
-    background:repeating-linear-gradient(
-      90deg,
-      #1a1a1a 0,
-      #1a1a1a 2px,
-      transparent 2px,
-      transparent 3px,
-      #1a1a1a 3px,
-      #1a1a1a 6px,
-      transparent 6px,
-      transparent 8px,
-      #1a1a1a 8px,
-      #1a1a1a 9px,
-      transparent 9px,
-      transparent 12px,
-      #1a1a1a 12px,
-      #1a1a1a 14px,
-      transparent 14px,
-      transparent 17px,
-      #1a1a1a 17px,
-      #1a1a1a 21px,
-      transparent 21px,
-      transparent 23px,
-      #1a1a1a 23px,
-      #1a1a1a 25px,
-      transparent 25px,
-      transparent 28px,
-      #1a1a1a 28px,
-      #1a1a1a 32px,
-      transparent 32px,
-      transparent 34px
-    );
+  .page-label {
+    font-family:'Montserrat', sans-serif;
+    font-size:6px;
+    font-weight:600;
+    letter-spacing:7px;
+    text-transform:uppercase;
+    color:#c9a961;
     margin-bottom:5px;
   }
 
-  .barcode-number {
-    font-family:'Montserrat', sans-serif;
-    font-size:7px;
-    font-weight:600;
-    letter-spacing:3px;
-    text-align:center;
-    color:#1a1a1a;
-  }
-
-  /* ═══════════════════════════════════
-     ՆԵՐՔԵՎԻ ԿԵՆՏՐՈՆ — TAGLINE
-     ═══════════════════════════════════ */
-  .tagline {
-    position:absolute;
-    bottom:30px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:10;
-    text-align:center;
-    white-space:nowrap;
-  }
-
-  .tagline-text {
-    font-family:'Montserrat', sans-serif;
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    color:#1a1a1a;
-    text-shadow:0 1px 6px rgba(255,255,255,0.8);
-  }
-
-  .tagline-dots {
-    color:#8a6f3d;
-    margin:0 4px;
-  }
-
-  /* ═══════════════════════════════════
-     ՆԵՐՔԵՎԻ ԱՋ — ԳԻՆ
-     ═══════════════════════════════════ */
-  .price-tag {
-    position:absolute;
-    bottom:30px;
-    right:30px;
-    z-index:10;
-    text-align:right;
-    font-family:'Montserrat', sans-serif;
-  }
-
-  .price-main {
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:3px;
-    color:#1a1a1a;
-    text-shadow:0 1px 4px rgba(255,255,255,0.6);
-    margin-bottom:4px;
-  }
-
-  .price-issue {
-    font-size:7px;
-    font-weight:600;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:#4a3f28;
-    text-shadow:0 1px 4px rgba(255,255,255,0.6);
-  }
-
-  /* ═══════════════════════════════════
-     VOGUE ՄԵԾ ՏԱՌԵՐ (ներքևի մասում, փոքր)
-     ═══════════════════════════════════ */
-  .vogue-mini {
-    position:absolute;
-    bottom:60px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:10;
+  /* ⬇️ SHՏԿՎԱԾ — line-height + padding-bottom ⬇️ */
+  .title {
     font-family:'Playfair Display', serif;
     font-weight:900;
     font-style:italic;
-    font-size:22px;
-    letter-spacing:8px;
-    color:rgba(255,255,255,0.9);
-    text-shadow:0 2px 10px rgba(0,0,0,0.4);
-    margin-left:8px;
+    font-size:20px;
+    line-height:1.2;
+    background:linear-gradient(180deg, #4a3f28 0%, #1a1a1a 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    padding-bottom:4px;
+    margin-bottom:4px;
+    letter-spacing:0.5px;
   }
 
-  /* ═══════════════════════════════════
-     QR ԿՈԴ — ՎԵՐԵՎԻ ԿԵՆՏՐՈՆ (ըստ ցանկության)
-     ═══════════════════════════════════ */
-  .qr-corner {
-    position:absolute;
-    top:30px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:10;
-    background:#fff;
-    padding:5px;
-    border:1px solid rgba(201,169,97,0.6);
-    box-shadow:0 4px 15px rgba(0,0,0,0.2);
-  }
-
-  .qr-corner img {
-    width:55px;
-    height:55px;
-    display:block;
-  }
-
-  .qr-label {
-    font-family:'Montserrat', sans-serif;
-    font-size:5.5px;
-    font-weight:700;
+  .subtitle {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:11px;
+    color:#a08858;
     letter-spacing:2px;
-    text-transform:uppercase;
-    color:#1a1a1a;
-    text-align:center;
-    margin-top:3px;
   }
 
   /* ═══════════════════════════════════
-     ՄՈԲԱՅԼ
+     ԸՆԿԵՐՆԵՐ — 11 ՔԱՐՏ
      ═══════════════════════════════════ */
-  @media (max-width: 600px) {
-    .cover {
-      width:100%;
-      max-width:520px;
-      height:auto;
-      aspect-ratio:520/740;
-    }
+  .friends-list {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    overflow:hidden;
+    position:relative;
+    z-index:5;
+    min-height:0;
+  }
 
-    .sona-tag-name { font-size:20px; letter-spacing:3px; }
-    .issue-date-main { font-size:9px; letter-spacing:3px; }
-    .issue-date-sub { font-size:6.5px; }
-    .sona-tag-sub { font-size:6px; }
-    .barcode-lines { width:80px; height:30px; }
-    .barcode-number { font-size:6px; }
-    .tagline-text { font-size:7px; letter-spacing:3px; }
-    .price-main { font-size:8px; }
-    .price-issue { font-size:6px; }
-    .vogue-mini { font-size:16px; letter-spacing:5px; }
-    .qr-corner img { width:40px; height:40px; }
+  .friend-card {
+    position:relative;
+    padding:5px 12px 5px 34px;
+    background:linear-gradient(135deg, #ffffff 0%, #fdfaf3 100%);
+    border:1px solid rgba(201,169,97,0.25);
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(201,169,97,0.1);
+    transition:all 0.3s ease;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-height:0;
+  }
+
+  .friend-card:hover {
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px rgba(201,169,97,0.2);
+    border-color:rgba(201,169,97,0.5);
+  }
+
+  .friend-num-circle {
+    position:absolute;
+    left:7px;
+    top:50%;
+    transform:translateY(-50%);
+    width:21px;
+    height:21px;
+    border-radius:50%;
+    background:linear-gradient(135deg, #fdfaf3 0%, #f2e8d5 100%);
+    border:1px solid #c9a961;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-style:italic;
+    font-size:9px;
+    color:#8a6f3d;
+    line-height:1;
+    box-shadow:0 1px 4px rgba(201,169,97,0.2);
+  }
+
+  /* ⬇️ SHՏԿՎԱԾ — line-height 1.25 ⬇️ */
+  .friend-name {
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:9.5px;
+    color:#1a1a1a;
+    letter-spacing:0.3px;
+    margin-bottom:1px;
+    line-height:1.25;
+  }
+
+  .friend-words {
+    font-family:'Cormorant Garamond', serif;
+    font-size:8.5px;
+    line-height:1.3;
+    color:#3a3a3a;
+    letter-spacing:0.2px;
+  }
+
+  .friend-words em {
+    font-style:italic;
+    font-weight:600;
+    color:#a08858;
+  }
+
+  /* Փակագիծ */
+  .closing-line {
+    text-align:center;
+    padding:7px 0 4px;
+    margin-top:6px;
+    border-top:1px solid rgba(201,169,97,0.3);
+    position:relative;
+    z-index:5;
+    flex-shrink:0;
+  }
+
+  .closing-orn {
+    display:block;
+    color:#c9a961;
+    font-size:7px;
+    letter-spacing:7px;
+    margin-bottom:3px;
+  }
+
+  .closing-msg {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:10px;
+    color:#a08858;
+    letter-spacing:0.4px;
+  }
+
+  .closing-msg em {
+    font-style:normal;
+    font-weight:600;
+    color:#4a3f28;
+  }
+
+  /* Ֆուտեր */
+  .footer {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:6px;
+    margin-top:6px;
+    border-top:1px solid rgba(0,0,0,0.08);
+    position:relative;
+    z-index:5;
+    flex-shrink:0;
+  }
+
+  .page-number {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:13px;
+    color:#c9a961;
+  }
+
+  .footer-text {
+    font-family:'Montserrat', sans-serif;
+    font-size:6px;
+    font-weight:500;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#a08858;
   }
 </style>
 </head>
 <body>
 
-<div class="cover">
+<div class="page">
 
-  <!-- 👇 ՓՈԽԻՐ "back-cover.jpg" ՔՈ ՆԿԱՐԻ ԱՆՈՒՆՈՎ 👇 -->
-  <img src="Vogue fashion magazine cover.png" class="cover-img" alt="Sona - Back Cover">
+  <div class="flourish f1">❀</div>
+  <div class="flourish f2">✿</div>
+  <div class="flourish f3">❀</div>
+  <div class="flourish f4">✿</div>
+  <div class="flourish f5">❀</div>
+  <div class="flourish f6">✿</div>
 
-  <!-- ═══ ՎԵՐԵՎԻ ՁԱԽ — SONA ═══ -->
-  <div class="sona-tag">
-    <div class="sona-tag-name">SONA</div>
-    <div class="sona-tag-sub">The New Face of Style</div>
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="header">
+    <div class="header-left">Vogue</div>
+    <div class="header-right">
+      October 2026<br>
+      Special Edition
+    </div>
   </div>
 
-  <!-- ═══ ՎԵՐԵՎԻ ԱՋ — ԱՄՍԱԹԻՎ ═══ -->
-  <div class="issue-date">
-    <div class="issue-date-main">October 2026</div>
-    <div class="issue-date-sub">Special Edition</div>
+  <div class="title-block">
+    <div class="page-label">From Your Friends • II</div>
+    <div class="title">Շարունակություն<br>սրտի խոսքերի</div>
+    <div class="subtitle">— 11 ընկեր, 11 սիրտ —</div>
   </div>
 
-  <!-- ═══ VOGUE ՄԻՆԻ ═══ -->
-  <div class="vogue-mini">VOGUE</div>
+  <!-- ═══════════════════════════════════
+       11 ԸՆԿԵՐՆԵՐ (11-21)
+       ═══════════════════════════════════ -->
+  <div class="friends-list">
 
-  <!-- ═══ ՆԵՐՔԵՎԻ ՁԱԽ — ՇՏՐԻԽ ԿՈԴ ═══ -->
-  <div class="barcode-box">
-    <div class="barcode-lines"></div>
-    <div class="barcode-number">1 1 1 0 2 0 2 6</div>
+    <div class="friend-card">
+      <div class="friend-num-circle">11</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն ջան, քո ներկայությունը <em>լույս է</em>։ Շնորհակալ եմ, որ կաս։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">12</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Ծնունդդ շնորհավոր, իմ թանկ ընկեր։ Թող <em>ամեն ինչ լավ լինի</em>։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">13</div>
+      <div class="friend-name">Վիկա Սահակյան</div>
+      <div class="friend-words">
+        Սոնա ջան շնորհավորում եմ ծննդյանդ տոնի առթիվ, մաղթում եմ, որ <em>սիրենք ազգայինը</em> իր յուրաքանչյուր բացատրություններով հանդերձ, միշտ քեզ ուղեկից լինի 💚🥳
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">14</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Շնորհավորում եմ, Սոն ջան։ Թող կյանքդ լինի <em>հեքիաթի պես</em>։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">15</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն, դու իմ <em>հոգու ընկերն ես</em>։ Թող միշտ այսպիսին մնաս։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">16</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն ջան, <em>շնորհակալ եմ</em>, որ կաս։ Դու իմ ամենալավ ընկերուհին ես։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">17</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Թող ամեն օրդ լինի <em>լիքը ժպիտներով</em>։ Շնորհավորում եմ, Սոն։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">18</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն, դու <em>ոգեշնչում ես</em> բոլորիս։ Շարունակիր պարել ու ժպտալ։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">19</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Շնորհավորում եմ, Սոն ջան։ Թող կյանքդ լինի <em>հեքիաթի պես</em>։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">20</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն, դու իմ <em>հոգու ընկերն ես</em>։ Թող միշտ այսպիսին մնաս։
+      </div>
+    </div>
+
+    <div class="friend-card">
+      <div class="friend-num-circle">21</div>
+      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-words">
+        Սոն ջան, մաղթում եմ քեզ <em>անսահման երջանկություն</em>։ Թող երազանքներդ իրականանան։
+      </div>
+    </div>
+
   </div>
 
+  <div class="closing-line">
+    <span class="closing-orn">✦ ✦ ✦</span>
+    <span class="closing-msg">
+      քո մասին, քեզ համար, <em>սրտից</em> 💛
+    </span>
+  </div>
 
-  <!-- ═══ ՆԵՐՔԵՎԻ ԱՋ — ԳԻՆ ═══ -->
-  <div class="price-tag">
-    <div class="price-main">№ 23</div>
-    <div class="price-issue">Birthday Issue</div>
+  <div class="footer">
+    <div class="page-number">11</div>
+    <div class="footer-text">Vogue • Friends Edition</div>
   </div>
 
 </div>

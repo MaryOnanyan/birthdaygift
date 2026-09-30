@@ -4,14 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VOGUE — SONA | Special Birthday Edition</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background:linear-gradient(160deg,#1a1a1a 0%,#0d0d0d 100%);
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(201,169,97,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(201,169,97,0.06) 0%, transparent 50%),
+      linear-gradient(160deg,#1a1a1a 0%,#0d0d0d 100%);
     min-height:100vh;
     font-family:'Cormorant Garamond', serif;
     color:#f5f0e8;
@@ -19,7 +26,7 @@
   }
 
   /* ═══════════════════════════════════
-     HERO — ՄԵԾ ՎԵՐՆԱԳԻՐ
+     HERO — ԱՌԱՆՑ ԱՆԻՄԱՑԻԱ
      ═══════════════════════════════════ */
   .hero {
     min-height:100vh;
@@ -37,23 +44,22 @@
       linear-gradient(160deg,#1a1a1a 0%,#0d0d0d 100%);
   }
 
+  /* Աստղիկներ — առանց անիմացիա, միայն ստատիկ */
   .hero-star {
     position:absolute;
-    color:rgba(201,169,97,0.4);
+    color:rgba(201,169,97,0.5);
     font-size:20px;
-    animation:twinkle 3s infinite;
+    pointer-events:none;
+    text-shadow:0 0 15px rgba(201,169,97,0.6);
   }
-  .hs1 { top:15%; left:10%; animation-delay:0s; }
-  .hs2 { top:25%; right:15%; font-size:28px; animation-delay:0.5s; }
-  .hs3 { bottom:25%; left:20%; font-size:16px; animation-delay:1s; }
-  .hs4 { bottom:15%; right:10%; animation-delay:1.5s; }
-  .hs5 { top:50%; left:5%; font-size:24px; animation-delay:2s; }
-  .hs6 { top:60%; right:8%; font-size:18px; animation-delay:2.5s; }
-
-  @keyframes twinkle {
-    0%, 100% { opacity:0.3; transform:scale(1); }
-    50% { opacity:1; transform:scale(1.2); }
-  }
+  .hs1 { top:15%; left:10%; font-size:22px; }
+  .hs2 { top:25%; right:15%; font-size:28px; }
+  .hs3 { bottom:25%; left:20%; font-size:16px; }
+  .hs4 { bottom:15%; right:10%; font-size:24px; }
+  .hs5 { top:50%; left:5%; font-size:26px; }
+  .hs6 { top:60%; right:8%; font-size:18px; }
+  .hs7 { top:40%; left:15%; font-size:14px; }
+  .hs8 { top:70%; right:20%; font-size:20px; }
 
   .hero-label {
     font-family:'Montserrat', sans-serif;
@@ -63,8 +69,16 @@
     text-transform:uppercase;
     color:#c9a961;
     margin-bottom:24px;
-    opacity:0;
-    animation:fadeIn 1s ease 0.3s forwards;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+
+  .hero-label::before,
+  .hero-label::after {
+    content:"✦";
+    color:#c9a961;
+    font-size:12px;
   }
 
   .hero-title {
@@ -79,9 +93,9 @@
     background-clip:text;
     line-height:1;
     margin-bottom:20px;
-    opacity:0;
-    animation:fadeIn 1.2s ease 0.6s forwards;
     text-shadow:0 0 80px rgba(201,169,97,0.3);
+    margin-left:clamp(8px, 3vw, 20px);
+    padding-bottom:8px;
   }
 
   .hero-sub {
@@ -91,17 +105,28 @@
     color:rgba(232,213,168,0.85);
     letter-spacing:6px;
     margin-bottom:40px;
-    opacity:0;
-    animation:fadeIn 1s ease 1s forwards;
   }
 
   .hero-divider {
-    width:80px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:30px;
+  }
+
+  .hero-divider::before,
+  .hero-divider::after {
+    content:"";
+    width:60px;
     height:1px;
     background:linear-gradient(90deg, transparent, #c9a961, transparent);
-    margin-bottom:30px;
-    opacity:0;
-    animation:fadeIn 1s ease 1.3s forwards;
+  }
+
+  .hero-divider-star {
+    color:#c9a961;
+    font-size:12px;
+    letter-spacing:6px;
+    text-shadow:0 0 10px rgba(201,169,97,0.8);
   }
 
   .hero-info {
@@ -112,8 +137,6 @@
     text-transform:uppercase;
     color:rgba(201,169,97,0.7);
     margin-bottom:50px;
-    opacity:0;
-    animation:fadeIn 1s ease 1.5s forwards;
   }
 
   .scroll-indicator {
@@ -128,24 +151,14 @@
     letter-spacing:4px;
     text-transform:uppercase;
     text-align:center;
-    opacity:0;
-    animation:fadeIn 1s ease 2s forwards;
   }
 
   .scroll-arrow {
     font-size:24px;
     margin-top:10px;
-    animation:bounce 2s infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform:translateY(0); }
-    50% { transform:translateY(10px); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity:0; transform:translateY(20px); }
-    to { opacity:1; transform:translateY(0); }
+    color:#c9a961;
+    text-shadow:0 0 15px rgba(201,169,97,0.6);
+    display:block;
   }
 
   /* ═══════════════════════════════════
@@ -160,6 +173,7 @@
   .section-header {
     text-align:center;
     margin-bottom:60px;
+    position:relative;
   }
 
   .section-title {
@@ -171,6 +185,8 @@
     letter-spacing:4px;
     margin-bottom:12px;
     line-height:1.1;
+    padding-bottom:6px;
+    text-shadow:0 0 40px rgba(201,169,97,0.3);
   }
 
   .section-desc {
@@ -187,6 +203,17 @@
     font-weight:600;
   }
 
+  /* Աստղիկներ — ստատիկ */
+  .section-star {
+    position:absolute;
+    color:rgba(201,169,97,0.4);
+    pointer-events:none;
+  }
+  .ss1 { top:10%; left:5%; font-size:18px; }
+  .ss2 { top:20%; right:8%; font-size:14px; }
+  .ss3 { bottom:30%; left:10%; font-size:16px; }
+  .ss4 { bottom:15%; right:5%; font-size:20px; }
+
   /* ═══════════════════════════════════
      ԷՋԵՐԻ GRID
      ═══════════════════════════════════ */
@@ -197,19 +224,47 @@
   }
 
   .page-card {
-    background:linear-gradient(160deg,#f5f0e8 0%,#e8ddd0 100%);
-    border:1px solid rgba(201,169,97,0.5);
-    padding:24px 22px;
-    text-decoration:none;
-    color:#1a1a1a;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    min-height:200px;
-    transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position:relative;
-    overflow:hidden;
+  background:linear-gradient(160deg,#f5f0e8 0%,#e8ddd0 100%);
+  border:1px solid rgba(201,169,97,0.5);
+  padding:24px 22px;
+  text-decoration:none;
+  color:#1a1a1a;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:200px;
+  transition:transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+  position:relative;
+  overflow:hidden;
+  border-radius:4px;
+
+  /* ⬇️ ՆՈՐ ⬇️ */
+  opacity:0;
+  transform:translate3d(0, 40px, 0);
+}
+
+/* ⬇️ ՆՈՐ՝ երբ երևում է ⬇️ */
+.page-card.visible {
+  opacity:1;
+  transform:translate3d(0, 0, 0);
+}
+
+/* Hover */
+.page-card:hover {
+  transform:translate3d(0, -5px, 0);
+  box-shadow:0 12px 30px rgba(201,169,97,0.25);
+  border-color:#c9a961;
+}
+
+/* ⬇️ ՆՈՐ՝ mobile-ում միայն fade (ոչ translate) ⬇️ */
+@media (max-width: 600px) {
+  .page-card {
+    transform:none;
   }
+  .page-card.visible {
+    transform:none;
+  }
+}
 
   .page-card::before,
   .page-card::after {
@@ -217,26 +272,33 @@
     position:absolute;
     width:20px; height:20px;
     border:1px solid rgba(201,169,97,0.6);
-    transition:all 0.4s ease;
+    z-index:3;
   }
   .page-card::before {
     top:8px; left:8px;
     border-right:none; border-bottom:none;
+    border-top-left-radius:4px;
   }
   .page-card::after {
     bottom:8px; right:8px;
     border-left:none; border-top:none;
+    border-bottom-right-radius:4px;
   }
 
+  .card-star {
+    position:absolute;
+    top:12px;
+    right:12px;
+    color:rgba(201,169,97,0.6);
+    font-size:14px;
+    z-index:4;
+    text-shadow:0 0 8px rgba(201,169,97,0.5);
+  }
+
+  /* Hover — միայն translateY (շատ թեթև) */
   .page-card:hover {
-    transform:translateY(-8px) scale(1.02);
-    box-shadow:0 20px 50px rgba(201,169,97,0.35);
-    border-color:#c9a961;
-  }
-
-  .page-card:hover::before,
-  .page-card:hover::after {
-    width:28px; height:28px;
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(201,169,97,0.25);
     border-color:#c9a961;
   }
 
@@ -248,6 +310,8 @@
     color:#c9a961;
     line-height:1;
     margin-bottom:14px;
+    position:relative;
+    z-index:4;
   }
 
   .page-title {
@@ -257,6 +321,8 @@
     line-height:1.3;
     color:#1a1a1a;
     margin-bottom:8px;
+    position:relative;
+    z-index:4;
   }
 
   .page-desc {
@@ -266,6 +332,8 @@
     color:#8a7a5c;
     line-height:1.4;
     letter-spacing:0.3px;
+    position:relative;
+    z-index:4;
   }
 
   .page-arrow {
@@ -274,11 +342,8 @@
     color:#c9a961;
     margin-top:14px;
     text-align:right;
-    transition:transform 0.3s ease;
-  }
-
-  .page-card:hover .page-arrow {
-    transform:translateX(8px);
+    position:relative;
+    z-index:4;
   }
 
   /* Հատուկ քարտեր */
@@ -302,8 +367,10 @@
   .page-card.cover::after {
     border-color:rgba(232,213,168,0.6);
   }
+  .page-card.cover .card-star {
+    color:rgba(232,213,168,0.8);
+  }
 
-  /* ⬇️ ՆՈՐ՝ ԸՆԿԵՐՆԵՐԻ ՔԱՐՏԵՐ ⬇️ */
   .page-card.friends {
     background:
       radial-gradient(ellipse at 50% 50%, rgba(247,215,215,0.3) 0%, transparent 60%),
@@ -315,8 +382,16 @@
     color:#b76e79;
   }
 
+  .page-card.friends .card-star {
+    color:rgba(183,110,121,0.6);
+  }
+
   .page-card.special {
     background:linear-gradient(160deg,#f5e8d0 0%,#e8d5a8 100%);
+  }
+
+  .page-card.special .card-star {
+    color:rgba(201,169,97,0.8);
   }
 
   .page-card.back {
@@ -333,6 +408,13 @@
   .page-card.back .page-arrow {
     color:#1a1a1a;
   }
+  .page-card.back::before,
+  .page-card.back::after {
+    border-color:rgba(26,26,26,0.5);
+  }
+  .page-card.back .card-star {
+    color:rgba(26,26,26,0.6);
+  }
 
   /* ═══════════════════════════════════
      ՖՈՒՏԵՐ
@@ -342,6 +424,15 @@
     padding:60px 20px 40px;
     border-top:1px solid rgba(201,169,97,0.2);
     margin-top:60px;
+  }
+
+  .footer-star {
+    color:#c9a961;
+    font-size:14px;
+    letter-spacing:12px;
+    margin-bottom:20px;
+    display:block;
+    text-shadow:0 0 15px rgba(201,169,97,0.6);
   }
 
   .footer-text {
@@ -386,32 +477,230 @@
     .page-card.cover,
     .page-card.back { grid-column:span 2; }
     .hero { padding:40px 20px; }
+    .card-star { font-size:12px; top:10px; right:10px; }
   }
 
   /* ═══════════════════════════════════
-     SCROLL ԱՆԻՄԱՑԻԱՆԵՐ
-     ═══════════════════════════════════ */
-  .page-card {
-    opacity:0;
-    transform:translateY(30px);
-    transition:opacity 0.6s ease, transform 0.6s ease;
-  }
+   ՓԱՅԼՈՑ ԱՍՏՂԻԿՆԵՐ — ՖԻՔՍԵԴ
+   ═══════════════════════════════════ */
+.sparkles {
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
+}
 
-  .page-card.visible {
-    opacity:1;
-    transform:translateY(0);
-  }
+/* Ամեն աստղիկ */
+.sparkle {
+  position:absolute;
+  color:rgba(201,169,97,0.8);
+  text-shadow:0 0 12px rgba(201,169,97,0.9),
+              0 0 20px rgba(201,169,97,0.5);
+  /* ⬇️ GPU ⬇️ */
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
 
-  .page-card.visible:hover {
-    transform:translateY(-8px) scale(1.02);
+/* Աստղիկ 1 — վերև ձախ */
+.sp1 {
+  top:12%; left:8%;
+  font-size:20px;
+  animation: sparkleFade 3s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+/* Աստղիկ 2 — վերև աջ */
+.sp2 {
+  top:20%; right:12%;
+  font-size:16px;
+  animation: sparkleFade 4s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+/* Աստղիկ 3 — մեջտեղ ձախ */
+.sp3 {
+  top:42%; left:5%;
+  font-size:22px;
+  animation: sparkleFade 3.5s ease-in-out infinite;
+  animation-delay: 1.4s;
+}
+
+/* Աստղիկ 4 — մեջտեղ աջ */
+.sp4 {
+  top:52%; right:7%;
+  font-size:18px;
+  animation: sparkleFade 3.8s ease-in-out infinite;
+  animation-delay: 2.1s;
+}
+
+/* Աստղիկ 5 — ներքև ձախ */
+.sp5 {
+  bottom:22%; left:10%;
+  font-size:14px;
+  animation: sparkleFade 4.2s ease-in-out infinite;
+  animation-delay: 2.8s;
+}
+
+/* Աստղիկ 6 — ներքև աջ */
+.sp6 {
+  bottom:15%; right:9%;
+  font-size:24px;
+  animation: sparkleFade 3.2s ease-in-out infinite;
+  animation-delay: 3.5s;
+}
+
+/* Աստղիկ 7 — կենտրոն վերև */
+.sp7 {
+  top:30%; left:45%;
+  font-size:12px;
+  animation: sparkleFade 3.7s ease-in-out infinite;
+  animation-delay: 4.2s;
+}
+
+/* Աստղիկ 8 — կենտրոն ներքև */
+.sp8 {
+  bottom:35%; right:48%;
+  font-size:15px;
+  animation: sparkleFade 4.5s ease-in-out infinite;
+  animation-delay: 4.9s;
+}
+
+
+  /* ═══════════════════════════════════
+   ԼՐԱՑՈՒՑԻՉ ԱՍՏՂԻԿՆԵՐ (9-16)
+   ═══════════════════════════════════ */
+
+/* Աստղիկ 9 — կենտրոն */
+.sp9 {
+  top:18%; left:35%;
+  font-size:14px;
+  animation: sparkleFade 3.6s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+/* Աստղիկ 10 — կենտրոն */
+.sp10 {
+  top:8%; right:35%;
+  font-size:18px;
+  animation: sparkleFade 4.1s ease-in-out infinite;
+  animation-delay: 1.1s;
+}
+
+/* Աստղիկ 11 — մեջտեղ ձախ */
+.sp11 {
+  top:65%; left:18%;
+  font-size:13px;
+  animation: sparkleFade 3.3s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+/* Աստղիկ 12 — մեջտեղ աջ */
+.sp12 {
+  top:38%; right:25%;
+  font-size:17px;
+  animation: sparkleFade 4.6s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+
+/* Աստղիկ 13 — ներքև ձախ */
+.sp13 {
+  bottom:8%; left:22%;
+  font-size:20px;
+  animation: sparkleFade 3.4s ease-in-out infinite;
+  animation-delay: 3.2s;
+}
+
+/* Աստղիկ 14 — ներքև աջ */
+.sp14 {
+  bottom:28%; right:20%;
+  font-size:12px;
+  animation: sparkleFade 4.8s ease-in-out infinite;
+  animation-delay: 3.9s;
+}
+
+/* Աստղիկ 15 — մեջտեղ */
+.sp15 {
+  top:55%; left:42%;
+  font-size:16px;
+  animation: sparkleFade 3.9s ease-in-out infinite;
+  animation-delay: 4.6s;
+}
+
+/* Աստղիկ 16 — կենտրոն ներքև */
+.sp16 {
+  bottom:42%; right:40%;
+  font-size:15px;
+  animation: sparkleFade 4.3s ease-in-out infinite;
+  animation-delay: 5.3s;
+}
+
+/* ⬇️ Մոբայլում → միայն 6 աստղիկ ⬇️ */
+@media (max-width: 600px) {
+  .sp7, .sp8, .sp9, .sp10,
+  .sp11, .sp12, .sp13, .sp14,
+  .sp15, .sp16 {
+    display: none;
   }
+}
+
+/* ⬇️ Փափուկ փայլ → միայն opacity + scale ⬇️ */
+@keyframes sparkleFade {
+  0%, 100% {
+    opacity: 0.2;
+    transform: translateZ(0) scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateZ(0) scale(1.2) rotate(20deg);
+  }
+}
+
+/* ⬇️ Մոբայլում միայն 4 աստղիկ ⬇️ */
+@media (max-width: 600px) {
+  .sp5, .sp6, .sp7, .sp8 {
+    display: none;
+  }
+  .sparkle {
+    animation-duration: 5s !important;
+  }
+}
+
+/* ⬇️ Reduced motion → անջատել ⬇️ */
+@media (prefers-reduced-motion: reduce) {
+  .sparkle {
+    animation: none;
+    opacity: 0.5;
+  }
+}
 </style>
 </head>
 <body>
+<!-- ⬇️ ՓԱՅԼՈՑ ԱՍՏՂԻԿՆԵՐ ⬇️ -->
+<div class="sparkles">
+  <div class="sparkle sp1">✦</div>
+  <div class="sparkle sp2">✧</div>
+  <div class="sparkle sp3">✦</div>
+  <div class="sparkle sp4">✧</div>
+  <div class="sparkle sp5">✦</div>
+  <div class="sparkle sp6">✧</div>
+  <div class="sparkle sp7">✦</div>
+  <div class="sparkle sp8">✧</div>
 
-<!-- ═══════════════════════════════════
-     HERO — ՄԵԾ ՎԵՐՆԱԳԻՐ
-     ═══════════════════════════════════ -->
+    <!-- ⬇️ ՆՈՐ 8 ⬇️ -->
+  <div class="sparkle sp9">✦</div>
+  <div class="sparkle sp10">✧</div>
+  <div class="sparkle sp11">✦</div>
+  <div class="sparkle sp12">✧</div>
+  <div class="sparkle sp13">✦</div>
+  <div class="sparkle sp14">✧</div>
+  <div class="sparkle sp15">✦</div>
+  <div class="sparkle sp16">✧</div>
+</div>
+
+
+<!-- HERO -->
 <section class="hero">
 
   <div class="hero-star hs1">✦</div>
@@ -420,26 +709,34 @@
   <div class="hero-star hs4">✧</div>
   <div class="hero-star hs5">✦</div>
   <div class="hero-star hs6">✧</div>
+  <div class="hero-star hs7">✦</div>
+  <div class="hero-star hs8">✧</div>
 
   <div class="hero-label">Vogue Magazine</div>
   <div class="hero-title">SONA</div>
   <div class="hero-sub">— Special Birthday Edition —</div>
-  <div class="hero-divider"></div>
+
+  <div class="hero-divider">
+    <span class="hero-divider-star">✦ ✦ ✦</span>
+  </div>
+
   <div class="hero-info">October 2026 • 23 Pages</div>
 
   <div class="scroll-indicator">
-    Scroll<br>
+    Scroll
     <div class="scroll-arrow">↓</div>
   </div>
 
 </section>
 
-<!-- ═══════════════════════════════════
-     ԷՋԵՐԻ ԲԱԺԻՆ
-     ═══════════════════════════════════ -->
+<!-- ԷՋԵՐԻ ԲԱԺԻՆ -->
 <section class="pages-section" id="pages">
 
   <div class="section-header">
+    <div class="section-star ss1">✦</div>
+    <div class="section-star ss2">✧</div>
+    <div class="section-star ss3">✦</div>
+    <div class="section-star ss4">✧</div>
     <div class="section-title">Ամսագրի էջերը</div>
     <div class="section-desc">
       Սեղմիր ցանկացած էջի վրա • <strong>23 էջ</strong> • Սոնայի պատմությունը
@@ -448,17 +745,20 @@
 
   <div class="pages-grid">
 
-    <!-- Front Cover -->
+    <!-- 01 -->
     <a href="page1.html" class="page-card cover">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">01</div>
         <div class="page-title">Front Cover</div>
-        <div class="page-desc">VOGUE — Սոնայի դիմանկարը</div>
+        <div class="page-desc">The New Face of Style — Սոնա</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 02 -->
     <a href="page2.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">02</div>
         <div class="page-title">Editor's Note</div>
@@ -467,7 +767,9 @@
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 03 -->
     <a href="page3.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">03</div>
         <div class="page-title">Ծնողական սեր</div>
@@ -476,7 +778,9 @@
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 04 -->
     <a href="page4.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">04</div>
         <div class="page-title">Քույր, եղբայր</div>
@@ -485,7 +789,9 @@
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 05 -->
     <a href="page5.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">05</div>
         <div class="page-title">«Ժպիտը միլիոն դոլար արժե»</div>
@@ -494,7 +800,9 @@
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 06 -->
     <a href="page6.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">06</div>
         <div class="page-title">Երազանք, որ սկսվում է ժպիտից</div>
@@ -503,7 +811,9 @@
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 07 -->
     <a href="page7.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">07</div>
         <div class="page-title">Սո՛ն ջան...</div>
@@ -512,7 +822,9 @@
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 08 -->
     <a href="page8.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">08</div>
         <div class="page-title">Դե՛, ասա՛ հիմա...</div>
@@ -521,7 +833,9 @@
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 09 -->
     <a href="page9.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">09</div>
         <div class="page-title">Այս էջը քեզ համար է</div>
@@ -530,116 +844,141 @@
       <div class="page-arrow">→</div>
     </a>
 
-    <!-- ⬇️ ՆՈՐ՝ ԸՆԿԵՐՆԵՐԻ ԷՋԵՐԸ ⬇️ -->
-    <a href="page10.html" class="page-card friends">
+    <!-- 10 -->
+    <a href="page10.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">10</div>
-        <div class="page-title">Ընկերների խոսքերը</div>
-        <div class="page-desc">Սրտից • 1/2</div>
+        <div class="page-title">Rhythm of Life</div>
+        <div class="page-desc">Հունական/ազգային պարեր</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page11.html" class="page-card friends">
+    <!-- 11 -->
+    <a href="page11.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">11</div>
-        <div class="page-title">Շարունակություն</div>
-        <div class="page-desc">Սրտից • 2/2</div>
-      </div>
-      <div class="page-arrow">→</div>
-    </a>
-
-    <a href="page12.html" class="page-card">
-      <div>
-        <div class="page-num">12</div>
-        <div class="page-title">Rhythm of Life</div>
-        <div class="page-desc">Հունական պարեր</div>
-      </div>
-      <div class="page-arrow">→</div>
-    </a>
-
-    <a href="page13.html" class="page-card">
-      <div>
-        <div class="page-num">13</div>
         <div class="page-title">Սիրենք Ազգայինը</div>
         <div class="page-desc">Մեր արմատներն ու նվիրումը</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page14.html" class="page-card">
+    <!-- 12 -->
+    <a href="page12.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
-        <div class="page-num">14</div>
+        <div class="page-num">12</div>
         <div class="page-title">Behind the Scenes</div>
         <div class="page-desc">Կյանքն առանց ֆիլտրերի</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page15.html" class="page-card">
+    <!-- 13 -->
+    <a href="page13.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
-        <div class="page-num">15</div>
+        <div class="page-num">13</div>
         <div class="page-title">Future Dr. Sona</div>
         <div class="page-desc">«Ժպիտների պահապանը»</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page16.html" class="page-card">
+    <!-- 14 -->
+    <a href="page14.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
-        <div class="page-num">16</div>
+        <div class="page-num">14</div>
         <div class="page-title">The Art of Being Sona</div>
         <div class="page-desc">Vogue Editorial</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page17.html" class="page-card">
+    <!-- 15 -->
+    <a href="page15.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
-        <div class="page-num">17</div>
+        <div class="page-num">15</div>
         <div class="page-title">Look of the Day</div>
         <div class="page-desc">Անթերի դետալներ</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page18.html" class="page-card">
+    <!-- 16 -->
+    <a href="page16.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
-        <div class="page-num">18</div>
-        <div class="page-title">Ներկիր — Կատակային</div>
+        <div class="page-num">16</div>
+        <div class="page-title">Ներկիր — տոնական</div>
         <div class="page-desc">Your Canvas, Your Rules</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page19.html" class="page-card">
+    <!-- 17 -->
+    <a href="page17.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
-        <div class="page-num">19</div>
+        <div class="page-num">17</div>
         <div class="page-title">Ներկիր — Հուզիչ</div>
         <div class="page-desc">Colors of Your Soul</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page20.html" class="page-card">
+    <!-- 18 -->
+    <a href="page18.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
-        <div class="page-num">20</div>
+        <div class="page-num">18</div>
         <div class="page-title">Ներկիր — Ոգեշնչող</div>
         <div class="page-desc">Create Your Story</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
-    <a href="page21.html" class="page-card">
+    <!-- 19 -->
+    <a href="page19.html" class="page-card">
+      <div class="card-star">✦</div>
       <div>
-        <div class="page-num">21</div>
-        <div class="page-title">Ներկիր — Անձնական</div>
+        <div class="page-num">19</div>
+        <div class="page-title">Ներկիր — Արմատներ</div>
         <div class="page-desc">From Me to You 💛</div>
       </div>
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 20 -->
+    <a href="page20.html" class="page-card friends">
+      <div class="card-star">❀</div>
+      <div>
+        <div class="page-num">20</div>
+        <div class="page-title">Ընկերների խոսքերը</div>
+        <div class="page-desc">Սրտից • 1/2</div>
+      </div>
+      <div class="page-arrow">→</div>
+    </a>
+
+    <!-- 21 -->
+    <a href="page21.html" class="page-card friends">
+      <div class="card-star">❀</div>
+      <div>
+        <div class="page-num">21</div>
+        <div class="page-title">Շարունակություն</div>
+        <div class="page-desc">Սրտից • 2/2</div>
+      </div>
+      <div class="page-arrow">→</div>
+    </a>
+
+    <!-- 22 -->
     <a href="page22.html" class="page-card special">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">22</div>
         <div class="page-title">Happy Birthday, Sona</div>
@@ -648,7 +987,9 @@
       <div class="page-arrow">→</div>
     </a>
 
+    <!-- 23 -->
     <a href="page23.html" class="page-card back">
+      <div class="card-star">✦</div>
       <div>
         <div class="page-num">23</div>
         <div class="page-title">Back Cover</div>
@@ -661,36 +1002,43 @@
 
 </section>
 
-<!-- ═══════════════════════════════════
-     ՖՈՒՏԵՐ
-     ═══════════════════════════════════ -->
+<!-- ՖՈՒՏԵՐ -->
 <footer class="footer">
+  <span class="footer-star">✦ ✦ ✦</span>
   <div class="footer-text">Made with 💛 • For Sona</div>
   <div class="footer-ornament">✦ ✦ ✦</div>
   <div class="footer-signature">October 2026</div>
 </footer>
 
-<!-- ═══════════════════════════════════
-     SCROLL ԱՆԻՄԱՑԻԱ
-     ═══════════════════════════════════ -->
-<script>
-  const cards = document.querySelectorAll('.page-card');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, index * 50);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  cards.forEach(card => observer.observe(card));
-</script>
-
 </body>
+
+
+<script>
+  // ═══ SCROLL ԱՆԻՄԱՑԻԱ — ԹԵԹԵՎ ═══
+  (function() {
+    const cards = document.querySelectorAll('.page-card');
+    if (!cards.length) return;
+
+    // Եթե browser-ը չի աջակցում → ցույց տուր բոլորին
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(c => c.classList.add('visible'));
+      return;
+    }
+
+    // ⬇️ ԹԵԹԵՎ ⬇️
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);    // ⬅️ ՄԻԱՅՆ 1 ԱՆԳԱՄ
+        }
+      });
+    }, {
+      threshold: 0.05,                          // ⬅️ ՇԱՏ ՓՈՔՐ
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    cards.forEach(c => observer.observe(c));
+  })();
+</script>
 </html>

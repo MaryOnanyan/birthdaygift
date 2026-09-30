@@ -2,12 +2,11 @@
 <html lang="hy">
 <head>
 <meta charset="UTF-8">
-<title>VOGUE — From Your Friends</title>
+<title>VOGUE — Happy Birthday, Sona</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="print.css">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-
   body {
     background:#0d0d0d;
     display:flex; justify-content:center; align-items:center;
@@ -18,284 +17,215 @@
   .page {
     position:relative;
     width:520px; height:740px;
-    background:
-      radial-gradient(ellipse at 20% 10%, rgba(232,213,168,0.4) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 90%, rgba(232,213,168,0.3) 0%, transparent 50%),
-      linear-gradient(170deg, #fdfaf3 0%, #f8f0e2 50%, #f2e8d5 100%);
+    background:linear-gradient(160deg,#f5f0e8 0%,#efe8dc 50%,#e8ddd0 100%);
     overflow:hidden;
     box-shadow:0 30px 80px rgba(0,0,0,0.8);
-    padding:22px 30px 18px;
+    padding:35px 40px 30px;
     display:flex;
     flex-direction:column;
   }
 
-  .flourish {
+  /* Ոսկե անկյուններ */
+  .corner { position:absolute; width:50px; height:50px;
+    border:1px solid rgba(201,169,97,0.9); z-index:10; }
+  .corner.tl { top:14px; left:14px; border-right:none; border-bottom:none; }
+  .corner.tr { top:14px; right:14px; border-left:none; border-bottom:none; }
+  .corner.bl { bottom:14px; left:14px; border-right:none; border-top:none; }
+  .corner.br { bottom:14px; right:14px; border-left:none; border-top:none; }
+
+  /* Դեկորատիվ աստղեր ֆոնի վրա */
+  .star {
     position:absolute;
-    color:rgba(201,169,97,0.25);
+    color:rgba(201,169,97,0.4);
     font-size:18px;
     z-index:1;
-    pointer-events:none;
   }
-  .f1 { top:70px; left:45px; font-size:20px; transform:rotate(-20deg); }
-  .f2 { top:170px; right:50px; font-size:16px; transform:rotate(15deg); }
-  .f3 { bottom:180px; left:50px; font-size:18px; transform:rotate(-10deg); }
-  .f4 { bottom:90px; right:60px; font-size:20px; transform:rotate(25deg); }
-  .f5 { top:45%; right:40px; font-size:14px; transform:rotate(-15deg); }
+  .star-1 { top:80px; left:40px; }
+  .star-2 { top:140px; right:50px; font-size:24px; }
+  .star-3 { bottom:180px; left:60px; font-size:20px; }
+  .star-4 { bottom:100px; right:45px; }
+  .star-5 { top:50%; left:30px; font-size:14px; }
+  .star-6 { top:60%; right:35px; font-size:16px; }
 
-  .corner { position:absolute; width:50px; height:50px; z-index:10; }
-  .corner.tl { top:14px; left:14px;
-    border-top:1.5px solid #c9a961; border-left:1.5px solid #c9a961;
-    border-top-left-radius:16px; }
-  .corner.tr { top:14px; right:14px;
-    border-top:1.5px solid #c9a961; border-right:1.5px solid #c9a961;
-    border-top-right-radius:16px; }
-  .corner.bl { bottom:14px; left:14px;
-    border-bottom:1.5px solid #c9a961; border-left:1.5px solid #c9a961;
-    border-bottom-left-radius:16px; }
-  .corner.br { bottom:14px; right:14px;
-    border-bottom:1.5px solid #c9a961; border-right:1.5px solid #c9a961;
-    border-bottom-right-radius:16px; }
-
+  /* ── ՎԵՐԵՎԻ ՀԱՏՎԱԾ ── */
   .header {
     display:flex; justify-content:space-between; align-items:center;
-    padding-bottom:6px;
-    border-bottom:1px solid rgba(201,169,97,0.3);
-    margin-bottom:10px;
-    position:relative; z-index:5;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(201,169,97,0.4);
+    margin-bottom:20px;
+    position:relative;
+    z-index:5;
   }
 
-  /* ⬇️ SHՏԿՎԱԾ — padding-bottom + line-height ⬇️ */
   .header-left {
     font-family:'Playfair Display', serif;
-    font-style:italic; font-weight:900; font-size:16px;
-    letter-spacing:4px;
-    background:linear-gradient(180deg, #8a6f3d 0%, #c9a961 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    padding-bottom:3px;
-    line-height:1.3;
+    font-style:italic; font-weight:900; font-size:20px;
+    letter-spacing:4px; color:#1a1a1a;
   }
 
   .header-right {
-    font-family:'Montserrat', sans-serif;
-    font-size:6px; font-weight:500;
-    letter-spacing:3px; text-transform:uppercase;
-    color:#a08858; text-align:right; line-height:1.6;
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c; text-align:right;
   }
 
-  .title-block {
+  /* ── ԿԵՆՏՐՈՆԱԿԱՆ ՀԱՏՎԱԾ ── */
+  .main-content {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    margin-bottom:10px;
-    position:relative; z-index:5;
+    position:relative;
+    z-index:5;
+    padding:20px 0;
   }
+
   .page-label {
     font-family:'Montserrat', sans-serif;
-    font-size:6.5px; font-weight:600;
-    letter-spacing:7px; text-transform:uppercase;
-    color:#c9a961; margin-bottom:5px;
-  }
-
-  /* ⬇️ SHՏԿՎԱԾ — padding-bottom + line-height ⬇️ */
-  .title {
-    font-family:'Playfair Display', serif;
-    font-weight:900; font-style:italic;
-    font-size:22px;
-    line-height:1.2;
-    background:linear-gradient(180deg, #4a3f28 0%, #1a1a1a 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    padding-bottom:4px;
-    margin-bottom:4px;
-    letter-spacing:0.5px;
-  }
-
-  .subtitle {
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic; font-size:11px;
-    color:#a08858; letter-spacing:2px;
-  }
-
-  .qr-section {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-    padding:8px 14px;
-    background:linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(253,250,243,0.9) 100%);
-    border:1px solid rgba(201,169,97,0.35);
-    border-radius:10px;
-    margin-bottom:10px;
-    box-shadow:0 4px 15px rgba(201,169,97,0.12);
-    position:relative; z-index:5;
-  }
-  .qr-section::before,
-  .qr-section::after {
-    content:"";
-    position:absolute;
-    width:8px; height:8px;
-    border:1.5px solid #c9a961;
-  }
-  .qr-section::before {
-    top:-5px; left:-5px;
-    border-right:none; border-bottom:none;
-    border-top-left-radius:5px;
-  }
-  .qr-section::after {
-    bottom:-5px; right:-5px;
-    border-left:none; border-top:none;
-    border-bottom-right-radius:5px;
-  }
-  .qr-wrapper {
-    position:relative;
-    padding:5px;
-    background:#fff;
-    border-radius:6px;
-    box-shadow:0 0 0 1px #c9a961, 0 3px 10px rgba(201,169,97,0.2);
-    flex-shrink:0;
-  }
-  .qr-wrapper img {
-    width:55px; height:55px;
-    display:block; border-radius:3px;
-  }
-  .qr-text { flex:1; }
-  .qr-title {
-    font-family:'Playfair Display', serif;
-    font-style:italic; font-weight:700;
-    font-size:12px; color:#1a1a1a;
-    line-height:1.25; margin-bottom:3px;
-    letter-spacing:0.3px;
-  }
-  .qr-sub {
-    font-family:'Montserrat', sans-serif;
-    font-size:6px; font-weight:600;
-    letter-spacing:3.5px; text-transform:uppercase;
+    font-size:8px;
+    font-weight:600;
+    letter-spacing:8px;
+    text-transform:uppercase;
     color:#c9a961;
+    margin-bottom:14px;
   }
 
-  .friends-list {
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    overflow:hidden;
-    position:relative; z-index:5;
-    min-height:0;
+  /* Ոսկե դեկոր գիծ */
+  .gold-line {
+    width:60px;
+    height:2px;
+    background:linear-gradient(90deg, transparent, #c9a961, transparent);
+    margin-bottom:24px;
   }
 
-  .friend-card {
-    position:relative;
-    padding:6px 12px 6px 36px;
-    background:linear-gradient(135deg, #ffffff 0%, #fdfaf3 100%);
-    border:1px solid rgba(201,169,97,0.25);
-    border-radius:8px;
-    box-shadow:0 2px 8px rgba(201,169,97,0.1);
-    transition:all 0.3s ease;
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    min-height:0;
-  }
-
-  .friend-card:hover {
-    transform:translateY(-2px);
-    box-shadow:0 6px 18px rgba(201,169,97,0.2);
-    border-color:rgba(201,169,97,0.5);
-  }
-
-  .friend-num-circle {
-    position:absolute;
-    left:8px;
-    top:50%;
-    transform:translateY(-50%);
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    background:linear-gradient(135deg, #fdfaf3 0%, #f2e8d5 100%);
-    border:1px solid #c9a961;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  /* Happy Birthday - մեծ տողերով */
+  .happy {
     font-family:'Playfair Display', serif;
     font-weight:900;
     font-style:italic;
-    font-size:9px;
-    color:#8a6f3d;
+    font-size:42px;
     line-height:1;
-    box-shadow:0 1px 4px rgba(201,169,97,0.2);
-  }
-
-  /* ⬇️ SHՏԿՎԱԾ — line-height 1.25 ⬇️ */
-  .friend-name {
-    font-family:'Playfair Display', serif;
-    font-weight:700;
-    font-style:italic;
-    font-size:10px;
     color:#1a1a1a;
-    letter-spacing:0.3px;
-    margin-bottom:1px;
-    line-height:1.25;
+    letter-spacing:2px;
+    margin-bottom:4px;
   }
 
-  .friend-words {
-    font-family:'Cormorant Garamond', serif;
-    font-size:9px;
-    line-height:1.3;
-    color:#3a3a3a;
-    letter-spacing:0.2px;
-  }
-
-  .friend-words em {
+  .birthday {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
     font-style:italic;
-    font-weight:600;
-    color:#a08858;
+    font-size:62px;
+    line-height:1;
+    background:linear-gradient(180deg, #c9a961 0%, #8a6f3d 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    letter-spacing:4px;
+    margin-bottom:20px;
+    text-shadow:0 2px 20px rgba(201,169,97,0.3);
   }
 
-  .closing {
-    text-align:center;
-    padding-top:7px;
-    margin-top:7px;
-    border-top:1px solid rgba(201,169,97,0.3);
-    position:relative; z-index:5;
+  /* Անվան մեծ տառեր */
+  .sona-name {
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size:80px;
+    line-height:1;
+    color:#1a1a1a;
+    letter-spacing:16px;
+    margin-bottom:8px;
+    margin-left:16px; /* letter-spacing-ի պատճառով */
   }
-  .closing-ornament {
-    color:#c9a961;
-    font-size:8px;
-    letter-spacing:7px;
-    margin-bottom:3px;
-  }
-  .closing-text {
+
+  .sona-sub {
     font-family:'Cormorant Garamond', serif;
     font-style:italic;
-    font-size:10px;
-    color:#a08858;
-    line-height:1.4;
+    font-size:14px;
+    color:#8a7a5c;
+    letter-spacing:3px;
+    margin-bottom:30px;
+  }
+
+  .gold-line-2 {
+    width:100px;
+    height:1px;
+    background:linear-gradient(90deg, transparent, #c9a961, transparent);
+    margin-bottom:24px;
+  }
+
+  /* Վերջին խոսքը */
+  .final-message {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:15px;
+    line-height:1.65;
+    color:#2a2a2a;
+    max-width:380px;
+    margin:0 auto 20px;
     letter-spacing:0.3px;
   }
-  .closing-text em {
+
+  .final-message em {
     font-style:normal;
     font-weight:600;
-    color:#4a3f28;
+    color:#1a1a1a;
+    background:linear-gradient(180deg, transparent 60%, rgba(201,169,97,0.4) 60%);
+    padding:0 2px;
   }
 
-  .footer {
-    display:flex; justify-content:space-between; align-items:center;
-    padding-top:6px;
-    margin-top:6px;
-    border-top:1px solid rgba(0,0,0,0.08);
-    position:relative; z-index:5;
+  /* Ստորագրություն */
+  .signature {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:16px;
+    color:#1a1a1a;
+    letter-spacing:1px;
+    margin-bottom:6px;
   }
+
+  .signature-sub {
+    font-family:'Montserrat', sans-serif;
+    font-size:7px;
+    font-weight:600;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#c9a961;
+  }
+
+  /* ── ՆԵՐՔԵՎԻ ՀԱՏՎԱԾ ── */
+  .footer {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:14px;
+    border-top:1px solid rgba(201,169,97,0.4);
+    position:relative;
+    z-index:5;
+    margin-top:20px;
+  }
+
   .page-number {
     font-family:'Playfair Display', serif;
-    font-style:italic; font-size:13px; color:#c9a961;
+    font-style:italic; font-size:15px; color:#c9a961;
   }
+
   .footer-text {
-    font-family:'Montserrat', sans-serif;
-    font-size:6px; font-weight:500;
-    letter-spacing:3px; text-transform:uppercase;
-    color:#a08858;
+    font-family:'Montserrat', sans-serif; font-size:7px;
+    font-weight:600; letter-spacing:4px; text-transform:uppercase;
+    color:#8a7a5c;
+  }
+
+  /* Ոսկե դեկոր ներքևում */
+  .bottom-decoration {
+    text-align:center;
+    font-size:14px;
+    color:#c9a961;
+    letter-spacing:10px;
+    margin-top:12px;
+    position:relative;
+    z-index:5;
   }
 </style>
 </head>
@@ -303,17 +233,20 @@
 
 <div class="page">
 
-  <div class="flourish f1">❀</div>
-  <div class="flourish f2">✿</div>
-  <div class="flourish f3">❀</div>
-  <div class="flourish f4">✿</div>
-  <div class="flourish f5">❀</div>
-
   <div class="corner tl"></div>
   <div class="corner tr"></div>
   <div class="corner bl"></div>
   <div class="corner br"></div>
 
+  <!-- Դեկորատիվ աստղեր -->
+  <div class="star star-1">✦</div>
+  <div class="star star-2">✧</div>
+  <div class="star star-3">✦</div>
+  <div class="star star-4">✧</div>
+  <div class="star star-5">✦</div>
+  <div class="star star-6">✧</div>
+
+  <!-- Header -->
   <div class="header">
     <div class="header-left">Vogue</div>
     <div class="header-right">
@@ -322,117 +255,39 @@
     </div>
   </div>
 
-  <div class="title-block">
-    <div class="page-label">From Your Friends</div>
-    <div class="title">Սոնայի ընկերների խոսքերը</div>
-    <div class="subtitle">— սրտից, հոգուց —</div>
-  </div>
+  <!-- Կենտրոնական մաս -->
+  <div class="main-content">
 
-  <div class="qr-section">
-    <div class="qr-wrapper">
-      <img src="qr-main.png" alt="QR Code">
-    </div>
-    <div class="qr-text">
-      <div class="qr-title">Սկանավորի՛ր և լսիր նրանց</div>
-      <div class="qr-sub">Scan to Hear Their Voices</div>
-    </div>
-  </div>
+    <div class="page-label">The Final Page</div>
+    <div class="gold-line"></div>
 
-  <div class="friends-list">
+    <div class="happy">Happy</div>
+    <div class="birthday">Birthday</div>
 
-    <div class="friend-card">
-      <div class="friend-num-circle">01</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Սոն ջան, շնորհավորում եմ։ Թող ամեն օրդ <em>լիքը ժպիտներով</em> լինի։
-      </div>
+    <div class="sona-name">SONA</div>
+    <div class="sona-sub">— the one and only —</div>
+
+    <div class="gold-line-2"></div>
+
+    <div class="final-message">
+      Այս ամսագիրը ոչ թե նվեր է, այլ <em>շնորհակալություն</em>։<br>
+      Շնորհակալություն՝ որ կաս, որ այդքան ջերմ ես,<br>
+      որ ամեն ինչ ավելի լավն ես դարձնում։<br>
+      Թող այս տարին լինի քո <em>ամենագեղեցիկ</em> տարին։ 💛
     </div>
 
-    <div class="friend-card">
-      <div class="friend-num-circle">02</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Ծնունդդ շնորհավոր, Սոն։ <em>Հպարտ եմ</em>, որ քեզ ճանաչում եմ։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">03</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Մաղթում եմ քեզ <em>անսահման երջանկություն</em>։ Թող երազանքներդ իրականանան։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">04</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Սոն, դու այն մարդկանցից ես, ում մոտ <em>միշտ լավ է</em>։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">05</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Ծնունդդ շնորհավոր, իմ սիրելի՛ ընկերուհի։ <em>Ապրիր</em>, ինչպես սիրտդ ուզում է։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">06</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Սոն ջան, քո ներկայությունը <em>լույս է</em>։ Շնորհակալ եմ, որ կաս։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">07</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Ծնունդդ շնորհավոր, իմ թանկ ընկեր։ Թող <em>ամեն ինչ լավ լինի</em>։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">08</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Սոն, դու <em>ոգեշնչում ես</em> բոլորիս։ Շարունակիր պարել ու ժպտալ։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">09</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Շնորհավորում եմ, Սոն ջան։ Թող կյանքդ լինի <em>հեքիաթի պես</em>։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">10</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Սոն, դու իմ <em>հոգու ընկերն ես</em>։ Թող միշտ այսպիսին մնաս։
-      </div>
-    </div>
+    <div class="signature">Սիրով՝ քո Մերիշկա</div>
+    <div class="signature-sub">Forever & Always</div>
 
   </div>
 
-  <div class="closing">
-    <div class="closing-ornament">✦ ✦ ✦</div>
-    <div class="closing-text">
-      Սկանավորի՛ր QR-ը և <em>լսիր նրանց ձայնը</em> 💛
-    </div>
-  </div>
-
+  <!-- Footer -->
   <div class="footer">
-    <div class="page-number">10</div>
-    <div class="footer-text">Vogue • Friends Edition</div>
+    <div class="page-number">23</div>
+    <div class="footer-text">Vogue • Birthday Edition</div>
   </div>
+
+  <div class="bottom-decoration">✦ ✦ ✦</div>
 
 </div>
 
