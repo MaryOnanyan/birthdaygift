@@ -2,7 +2,7 @@
 <html lang="hy">
 <head>
 <meta charset="UTF-8">
-<title>VOGUE — From Your Friends</title>
+<title>VOGUE — From Your Friends I</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="print.css">
 <style>
@@ -62,9 +62,9 @@
     border-bottom:1px solid rgba(201,169,97,0.3);
     margin-bottom:10px;
     position:relative; z-index:5;
+    flex-shrink:0;
   }
 
-  /* ⬇️ SHՏԿՎԱԾ — padding-bottom + line-height ⬇️ */
   .header-left {
     font-family:'Playfair Display', serif;
     font-style:italic; font-weight:900; font-size:16px;
@@ -88,6 +88,7 @@
     text-align:center;
     margin-bottom:10px;
     position:relative; z-index:5;
+    flex-shrink:0;
   }
   .page-label {
     font-family:'Montserrat', sans-serif;
@@ -96,7 +97,6 @@
     color:#c9a961; margin-bottom:5px;
   }
 
-  /* ⬇️ SHՏԿՎԱԾ — padding-bottom + line-height ⬇️ */
   .title {
     font-family:'Playfair Display', serif;
     font-weight:900; font-style:italic;
@@ -129,6 +129,7 @@
     margin-bottom:10px;
     box-shadow:0 4px 15px rgba(201,169,97,0.12);
     position:relative; z-index:5;
+    flex-shrink:0;
   }
   .qr-section::before,
   .qr-section::after {
@@ -174,11 +175,14 @@
     color:#c9a961;
   }
 
+  /* ═══════════════════════════════════
+     ԸՆԿԵՐՆԵՐ — 6 ՔԱՐՏ
+     ═══════════════════════════════════ */
   .friends-list {
     flex:1;
     display:flex;
     flex-direction:column;
-    gap:5px;
+    gap:6px;
     overflow:hidden;
     position:relative; z-index:5;
     min-height:0;
@@ -186,7 +190,7 @@
 
   .friend-card {
     position:relative;
-    padding:6px 12px 6px 36px;
+    padding:8px 12px 8px 36px;
     background:linear-gradient(135deg, #ffffff 0%, #fdfaf3 100%);
     border:1px solid rgba(201,169,97,0.25);
     border-radius:8px;
@@ -197,6 +201,7 @@
     flex-direction:column;
     justify-content:center;
     min-height:0;
+    overflow:hidden;                /* ⬅️ ԿԱՐևՈՐ */
   }
 
   .friend-card:hover {
@@ -227,7 +232,6 @@
     box-shadow:0 1px 4px rgba(201,169,97,0.2);
   }
 
-  /* ⬇️ SHՏԿՎԱԾ — line-height 1.25 ⬇️ */
   .friend-name {
     font-family:'Playfair Display', serif;
     font-weight:700;
@@ -235,16 +239,25 @@
     font-size:10px;
     color:#1a1a1a;
     letter-spacing:0.3px;
-    margin-bottom:1px;
+    margin-bottom:2px;
     line-height:1.25;
+    flex-shrink:0;
   }
 
+  /* ⬇️ ԿԱՐևՈՐ — տեքստը auto-fit ⬇️ */
   .friend-words {
     font-family:'Cormorant Garamond', serif;
     font-size:9px;
     line-height:1.3;
     color:#3a3a3a;
     letter-spacing:0.2px;
+    overflow:hidden;                /* ⬅️ Չի դուրս գա */
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-line-clamp:3;           /* ⬅️ ԱՌԱՎԵԼԱԳՈՒՅՆ 3 ՏՈՂ */
+    -webkit-box-orient:vertical;
+    flex:1;
+    min-height:0;
   }
 
   .friend-words em {
@@ -259,6 +272,7 @@
     margin-top:7px;
     border-top:1px solid rgba(201,169,97,0.3);
     position:relative; z-index:5;
+    flex-shrink:0;
   }
   .closing-ornament {
     color:#c9a961;
@@ -286,6 +300,7 @@
     margin-top:6px;
     border-top:1px solid rgba(0,0,0,0.08);
     position:relative; z-index:5;
+    flex-shrink:0;
   }
   .page-number {
     font-family:'Playfair Display', serif;
@@ -323,7 +338,7 @@
   </div>
 
   <div class="title-block">
-    <div class="page-label">From Your Friends</div>
+    <div class="page-label">From Your Friends • I</div>
     <div class="title">Սոնայի ընկերների խոսքերը</div>
     <div class="subtitle">— սրտից, հոգուց —</div>
   </div>
@@ -338,85 +353,56 @@
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════
+       6 ԸՆԿԵՐՆԵՐ
+       ═══════════════════════════════════ -->
   <div class="friends-list">
 
     <div class="friend-card">
       <div class="friend-num-circle">01</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-name">Ռիվետա Մոսինյան</div>
       <div class="friend-words">
-        Սոն ջան, շնորհավորում եմ։ Թող ամեն օրդ <em>լիքը ժպիտներով</em> լինի։
+        Իմ շատ-շատ սիրելի Սոնա, շնորհավորում եմ ծննդյանդ օրվա կապակցությամբ։ Քեզ մաղթում եմ անսպառ էներգիա, որպեսզի կարողանաս պատվով հաղթահարես գիտության և արվեստի խաչմերուկներում միախառնված գործերդ։ Մաղթում եմ քաջ առողջություն և <em>անսպառ բեմեր ու ելույթներ</em> 💃
       </div>
     </div>
 
     <div class="friend-card">
       <div class="friend-num-circle">02</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-name">Յանա Օսիպովա</div>
       <div class="friend-words">
-        Ծնունդդ շնորհավոր, Սոն։ <em>Հպարտ եմ</em>, որ քեզ ճանաչում եմ։
+        Ծնունդդ շնորհավոր, իմ պոզիտիվ, տաղանդավոր ու ամենախարիզմատիկ Սոնուլ։ ❤️ Շատ ուրախ եմ, որ մեր ճամփորդությունը պատճառ հանդիսացավ, որ մենք մտերմանանք։ Ուզում եմ՝ միշտ էս լավ տեսակդ պահպանես։ <em>Քո Յանչ😘</em>
       </div>
     </div>
 
     <div class="friend-card">
       <div class="friend-num-circle">03</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-name">Նանե Սարգսյան</div>
       <div class="friend-words">
-        Մաղթում եմ քեզ <em>անսահման երջանկություն</em>։ Թող երազանքներդ իրականանան։
+        Սոնսսս…շնորհավոր ծնունդդ😍 Ուզում եմ, որ կյանքումդ միշտ շատ լինեն մարդիկ ու պահեր, որոնց կողքին քեզ երջանիկ կզգաս։ Երբեք չկորցնես բարությունդ ու էն յուրահատուկ լույսը, որով տարբերվում ես բոլորից։ <em>Շնորհավոր ծնունդդ, սիրելիս։</em>
       </div>
     </div>
 
     <div class="friend-card">
       <div class="friend-num-circle">04</div>
-      <div class="friend-name">Ռիվետա Մոսինյան</div>
+      <div class="friend-name">Արեն Ձավարյան</div>
       <div class="friend-words">
-        Իմ շատ-շատ սիրելի Սոնա, շնորհավորում եմ ծննդյանդ օրվա կապակցությամբ։ Քեզ մաղթում եմ անսպառ էներգիա, որպեսզի կարողանաս պատվով հաղթահարես գիտութան և արվեստի խաչմերուկներում միախառնված, բայց քեզ այդքան հոգեհարազատ և պարտավորեցնող գործերդ։ Մաղթում եմ քաջ առողջություն 💉 և <em>անսպառ բեմեր ու ելույթներ</em> 💃։ Թող քո կյանքը լցված լինի քո նման ջերմ օրերով, քո պես պոզիտիվ մարդկանցով, քո նման գեղեցիկ երազանքներով, իսկ ես էլ, դե գիտես, անվերջ պատրաստ եմ տանել քո մուննաթները ու տրամադրության վայրիվերումները 😆 սիրում եմ քեզ շատ 💛
+        <em>Տաղանդավոր Սոնայիս</em> ծնունդը շնորհավոր💛 Մեծ հաջողություններ ու նպատակների իրականացում եմ մաղթում, ու էդքան ջանքերի գոհացնող արդյունքներ։
       </div>
     </div>
 
     <div class="friend-card">
       <div class="friend-num-circle">05</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
+      <div class="friend-name">Աստղիկ Միքայելյան</div>
       <div class="friend-words">
-        Ծնունդդ շնորհավոր, իմ սիրելի՛ ընկերուհի։ <em>Ապրիր</em>, ինչպես սիրտդ ուզում է։
+        Սոնս շնորհավոր ծնունդդ, միշտ շրջապատված լինես <em>անկեղծ մարդկանցով։</em>
       </div>
     </div>
 
     <div class="friend-card">
       <div class="friend-num-circle">06</div>
-      <div class="friend-name">Աստղիկ Միքայելյան</div>
+      <div class="friend-name">Ինա Ճուղուրյան</div>
       <div class="friend-words">
-        Սոնս շնորհավոր ծնունդդ, միշտ շրջապատված լինես <em>անկեղծ մարդկանցով:</em>
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">07</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Ծնունդդ շնորհավոր, իմ թանկ ընկեր։ Թող <em>ամեն ինչ լավ լինի</em>։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">08</div>
-      <div class="friend-name">Արեն Ձավարյան</div>
-      <div class="friend-words">
-        <em>Տաղանդավոր Սոնայիս</em> ծնունդը շնորհավոր💛 Մեծ հաջողություններ ու նպատակների իրականացում եմ մաղթում, ու էդքան ջանքերի գոհացնող արդյունքներ, ամեն ինչում իր սրտացավ վերաբերմունքին համարժեք գնահատանք ու մշտապես աճելու շարժառիթներ
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">09</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Շնորհավորում եմ, Սոն ջան։ Թող կյանքդ լինի <em>հեքիաթի պես</em>։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">10</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Սոն, դու իմ <em>հոգու ընկերն ես</em>։ Թող միշտ այսպիսին մնաս։
+        Բարով ես ծնվել, <em>ՍՈւՐԲՍ</em>, բարեգործություններդ անսպառ լինեն, հետևորդներդ էլ օր օրի շատանան🤣
       </div>
     </div>
 
@@ -430,7 +416,7 @@
   </div>
 
   <div class="footer">
-    <div class="page-number">20</div>
+    <div class="page-number">19</div>
     <div class="footer-text">Vogue • Friends Edition</div>
   </div>
 

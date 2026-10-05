@@ -65,12 +65,16 @@
 
   /* ── ՀԵՐՈՍԻ ՆԿԱՐ ── */
   .hero-photo {
-    position:relative;
-    width:70%; height:200px;
-    margin:0 auto 12px;
-    padding:6px; background:#fff;
-    box-shadow:0 8px 25px rgba(0,0,0,0.15);
-    transform:rotate(-1deg);
+  position:relative;
+  flex:1;                    /* ⬅️ ՆՈՐ՝ ձգվում է */
+  width:85%;                 /* ⬅️ 70% → 85% */
+  min-height:0;              /* ⬅️ ՆՈՐ՝ կարևոր */
+  margin:0 auto 12px;
+  padding:6px; background:#fff;
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  transform:rotate(-1deg);
+  display:flex;              /* ⬅️ ՆՈՐ */
+  flex-direction:column;     /* ⬅️ ՆՈՐ */
   }
   .hero-photo::after {
     content:""; position:absolute; inset:6px;
@@ -78,9 +82,11 @@
     pointer-events:none;
   }
   .hero-photo img {
-    width:100%; height:100%;
-    object-fit:cover; display:block;
-    filter:sepia(0.1) contrast(1.02);
+  width:100%;
+  height:100%;               /* ⬅️ կարևոր */
+  object-fit:cover;
+  display:block;
+  filter:sepia(0.1) contrast(1.02); 
   }
   .hero-photo .placeholder {
     width:100%; height:100%;
@@ -230,7 +236,7 @@
   </div>
 
   <div class="footer">
-    <div class="page-number">05</div>
+    <div class="page-number">04</div>
     <div class="footer-text">Vogue • Interview Edition</div>
   </div>
 
