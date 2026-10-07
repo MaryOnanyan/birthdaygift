@@ -371,9 +371,83 @@
     border-bottom-right-radius:8px;
   }
 
+  /* ═══════════════════════════════════
+   ՆԱՎԻԳԱՑԻԱ — ԿՈՃԱԿՆԵՐ
+   ═══════════════════════════════════ */
+.page-nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:20px;
+  padding-top:16px;
+  border-top:1px solid rgba(201,169,97,0.3);
+  position:relative;
+  z-index:5;
+}
+
+.nav-btn {
+  font-family:'Montserrat', sans-serif;
+  font-size:8px;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#c9a961;
+  text-decoration:none;
+  padding:10px 18px;
+  border:1.5px solid rgba(201,169,97,0.5);
+  border-radius:2px;
+  background:transparent;
+  transition:all 0.3s ease;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.nav-btn:hover {
+  background:rgba(201,169,97,0.1);
+  border-color:#c9a961;
+  color:#e8d5a8;
+  transform:translateY(-2px);
+  box-shadow:0 4px 15px rgba(201,169,97,0.2);
+}
+
+.nav-btn:active {
+  transform:translateY(0);
+}
+
+/* Գունավոր տարբերակներ */
+.nav-prev {
+  color:#a08858;
+  border-color:rgba(160,136,88,0.4);
+}
+
+.nav-next {
+  color:#c9a961;
+  border-color:rgba(201,169,97,0.6);
+  background:linear-gradient(135deg, rgba(201,169,97,0.08) 0%, rgba(232,213,168,0.05) 100%);
+}
+
+.nav-next:hover {
+  background:linear-gradient(135deg, rgba(201,169,97,0.2) 0%, rgba(232,213,168,0.1) 100%);
+}
+
+/* ⬇️ Էջի վերևում (եթե ուզում ես) ⬇️ */
+.page-nav-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+  padding-bottom:16px;
+  border-bottom:1px solid rgba(201,169,97,0.3);
+}
+
 </style>
 </head>
 <body>
+
+
 
 <div class="cover">
 
