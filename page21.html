@@ -5,6 +5,8 @@
 <title>VOGUE — From Your Friends II</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="print.css">
+<link rel="icon" type="image/png" href="favicon.png">
+
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -141,13 +143,13 @@
   }
 
   /* ═══════════════════════════════════
-     6 ԸՆԿԵՐՆԵՐ
+     5 ԸՆԿԵՐՆԵՐ
      ═══════════════════════════════════ */
   .friends-list {
     flex:1;
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:8px;
     overflow:hidden;
     position:relative;
     z-index:5;
@@ -156,7 +158,7 @@
 
   .friend-card {
     position:relative;
-    padding:8px 12px 8px 36px;
+    padding:10px 14px 10px 38px;
     background:linear-gradient(135deg, #ffffff 0%, #fdfaf3 100%);
     border:1px solid rgba(201,169,97,0.25);
     border-radius:8px;
@@ -165,7 +167,6 @@
     flex:1;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     min-height:0;
     overflow:hidden;
   }
@@ -178,7 +179,7 @@
 
   .friend-num-circle {
     position:absolute;
-    left:8px;
+    left:10px;
     top:50%;
     transform:translateY(-50%);
     width:22px;
@@ -202,28 +203,38 @@
     font-family:'Playfair Display', serif;
     font-weight:700;
     font-style:italic;
-    font-size:10px;
+    font-size:11px;
     color:#1a1a1a;
     letter-spacing:0.3px;
-    margin-bottom:2px;
+    margin-bottom:3px;
     line-height:1.25;
     flex-shrink:0;
+    text-align:left;
   }
 
-  /* ⬇️ ԿԱՐևՈՐ — տեքստը auto-fit ⬇️ */
+  /* ⬇️ ՏԵՔՍՏԸ՝ ՁԱԽԻՑ, ՈՒՂՂԱՀԱՅԱՑ ԿԵՆՏՐՈՆ ⬇️ */
+  .friend-words-wrapper {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;      /* ⬅️ ՈՒՂՂԱՀԱՅԱՑ ԿԵՆՏՐՈՆ */
+    min-height:0;
+    width:100%;
+  }
+
   .friend-words {
     font-family:'Cormorant Garamond', serif;
-    font-size:9px;
-    line-height:1.3;
+    font-size:9.5px;
+    line-height:1.4;
     color:#3a3a3a;
     letter-spacing:0.2px;
     overflow:hidden;
     text-overflow:ellipsis;
     display:-webkit-box;
-    -webkit-line-clamp:3;
+    -webkit-line-clamp:4;
     -webkit-box-orient:vertical;
-    flex:1;
-    min-height:0;
+    text-align:left;             /* ⬅️ ՁԱԽԻՑ */
+    width:100%;
   }
 
   .friend-words em {
@@ -320,59 +331,61 @@
   <div class="title-block">
     <div class="page-label">From Your Friends • II</div>
     <div class="title">Շարունակություն<br>սրտի խոսքերի</div>
-    <div class="subtitle">— 6 ընկեր, 6 սիրտ —</div>
+    <div class="subtitle">— 5 ընկեր, 5 սիրտ —</div>
   </div>
 
   <!-- ═══════════════════════════════════
-       6 ԸՆԿԵՐՆԵՐ (14-19)
+       5 ԸՆԿԵՐՆԵՐ (07-11)
        ═══════════════════════════════════ -->
   <div class="friends-list">
 
     <div class="friend-card">
-      <div class="friend-num-circle">14</div>
+      <div class="friend-num-circle">07</div>
       <div class="friend-name">Հարութ Դալլաքյան</div>
-      <div class="friend-words">
-        Շնորհավոր Սոնա ջան, ցանկանում եմ քաջ առողջություն ու կոկոմ վարդի պես միշտ թարմ ու գեղեցիկ լինես։ Ծիծաղադեմ, միաժամանակ խիստ, կազմակերպող ու խելացի և ամենավերջում <em>ՍԻՐՈՒՆ</em>
+      <div class="friend-words-wrapper">
+        <div class="friend-words">
+          Շնորհավոր Սոնա ջան, ցանկանում եմ քաջ առողջություն ու կոկոմ վարդի պես միշտ թարմ ու գեղեցիկ լինես։ Ծիծաղադեմ, միաժամանակ խիստ, կազմակերպող ու խելացի և ամենավերջում <em>ՍԻՐՈՒՆ</em>
+        </div>
       </div>
     </div>
 
     <div class="friend-card">
-      <div class="friend-num-circle">15</div>
+      <div class="friend-num-circle">08</div>
       <div class="friend-name">Գայանե</div>
-      <div class="friend-words">
-        Շնորհավոր Ծնունդդ, սիրուն Սոնյա։ Քեզ մաղթում եմ մեծ բեմեր ու վնասված ատամներով լի՜քը պացիենտներ։ Թող քո կյանքի միակ դժվարությունը <em>"Eichhörnchen"</em> բառն արտասանելը լինի
+      <div class="friend-words-wrapper">
+        <div class="friend-words">
+          Շնորհավոր Ծնունդդ, սիրուն Սոնյա։ Քեզ մաղթում եմ մեծ բեմեր ու վնասված ատամներով լի՜քը պացիենտներ։ Թող քո կյանքի միակ դժվարությունը <em>"Eichhörnchen"</em> բառն արտասանելը լինի
+        </div>
       </div>
     </div>
 
     <div class="friend-card">
-      <div class="friend-num-circle">16</div>
+      <div class="friend-num-circle">09</div>
       <div class="friend-name">Վիկա Սահակյան</div>
-      <div class="friend-words">
-        Սոնա ջան շնորհավորում եմ ծննդյանդ տոնի առթիվ, մաղթում եմ, որ <em>սիրենք ազգայինը</em> իր յուրաքանչյուր բացատրություններով հանդերձ, միշտ քեզ ուղեկից լինի 💚🥳
+      <div class="friend-words-wrapper">
+        <div class="friend-words">
+          Սոնա ջան շնորհավորում եմ ծննդյանդ տոնի առթիվ, մաղթում եմ, որ <em>սիրենք ազգայինը</em> իր յուրաքանչյուր բացատրություններով հանդերձ, միշտ քեզ ուղեկից լինի 💚🥳
+        </div>
       </div>
     </div>
 
     <div class="friend-card">
-      <div class="friend-num-circle">17</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Սոն ջան, <em>շնորհակալ եմ</em>, որ կաս։ Դու իմ ամենալավ ընկերուհին ես։
+      <div class="friend-num-circle">10</div>
+      <div class="friend-name">Վարուժան Բեկթաշյան</div>
+      <div class="friend-words-wrapper">
+        <div class="friend-words">
+          Սոն ջան, ծնունդդ շնորհավոր սիրելիս: Քեզ, քո նման լուսավոր, պայծառ ու խինդ լի կյանք եմ մաղթում: <em>Մասնագիտական վերելքներ</em>. դժվարությամբ ձեռք բերածը ավելի արժեքավոր ա: 💋
+        </div>
       </div>
     </div>
 
     <div class="friend-card">
-      <div class="friend-num-circle">18</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Թող ամեն օրդ լինի <em>լիքը ժպիտներով</em>։ Շնորհավորում եմ, Սոն։
-      </div>
-    </div>
-
-    <div class="friend-card">
-      <div class="friend-num-circle">19</div>
-      <div class="friend-name">[Ընկերոջ անուն]</div>
-      <div class="friend-words">
-        Սոն, դու <em>ոգեշնչում ես</em> բոլորիս։ Շարունակիր պարել ու ժպտալ։
+      <div class="friend-num-circle">11</div>
+      <div class="friend-name">Էլեոնորա Գրիգորյան</div>
+      <div class="friend-words-wrapper">
+        <div class="friend-words">
+          Շնորհավոր ծնունդդ Սոնաաաաս։ Ուզում եմ որ ՔՈ նոր տարին ամենասիրուն պահերով լցված լինի, ուզում եմ շատ-շատ երջանիկ լինես էս կյանքում ու որտեղ էլ որ լինես միշտ քո դրական էներգիայով լցնես էդ միջավայրը։ <em>Սիրում եմ քեզ շաատ</em>։ Գրկում եմմմմմ🫂
+        </div>
       </div>
     </div>
 
@@ -393,4 +406,4 @@
 </div>
 
 </body>
-</html>
+</html>	
